@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>こよりび | 出逢いが紡ぐ、ちょっと前向きな毎日</title>
+<meta name="description" content="こよりびは、人と人との出逢いを通じて、ちょっと前向きな毎日を紡ぐコミュニティです。運営:株式会社燈心">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---------- Hero ---------- */
+.hero{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  position:relative;
+  padding:6.5rem 1.2rem 5rem;
+}
+.hero-inner{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(2rem, 7vw, 5.5rem);
+}
+.hero-flower{ position:relative; width:clamp(160px, 28vw, 250px); flex-shrink:0; }
+.hero-flower svg{ cursor:pointer; }
+.hero-flower:hover svg{ transform:rotate(360deg); }
+.hero-flower::before{
+  content:"";
+  position:absolute; inset:-38%;
+  background:radial-gradient(circle, rgba(235,220,168,.55), transparent 62%);
+  animation:breath 7s ease-in-out infinite;
+  z-index:-1;
+}
+@keyframes breath{
+  0%,100%{ opacity:.5; transform:scale(.96); }
+  50%{ opacity:.95; transform:scale(1.05); }
+}
+
+/* 縦書きの詩:右から  主文2行 → 詩4行 → 結び1行 */
+.hero-copy{
+  display:flex;
+  flex-direction:row-reverse;   /* DOM先頭を右端に */
+  align-items:flex-start;
+  gap:clamp(1.3rem, 3vw, 2.4rem);
+}
+.hero-copy .tate{ height:auto; }
+.hero-copy .tate br{ line-height:inherit; }
+.hero-copy .main{
+  font-size:clamp(1.2rem, 2.8vw, 1.65rem);
+  font-weight:500;
+  white-space:nowrap;
+}
+.hero-copy .poem{
+  font-size:clamp(.88rem, 1.9vw, 1.05rem);
+  color:var(--sumi-soft);
+  white-space:nowrap;
+  padding-top:2.4em;
+  line-height:2.6;
+}
+.hero-copy .sub{
+  font-size:clamp(.82rem, 1.6vw, .95rem);
+  color:var(--kin-deep);
+  white-space:nowrap;
+  padding-top:4.2em;
+}
+.hero-load{ opacity:0; animation:heroin 1.8s ease .3s forwards; }
+.hero-load.d2{ animation-delay:.9s; }
+.hero-load.d3{ animation-delay:1.5s; }
+.hero-load.d4{ animation-delay:2.1s; }
+@keyframes heroin{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+
+.scroll-cue{
+  position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+  font-family:var(--latin); font-size:.62rem; letter-spacing:.5em; text-indent:.5em;
+  color:var(--kin); text-align:center;
+}
+.scroll-cue::after{
+  content:""; display:block; width:1px; height:44px;
+  margin:.8rem auto 0;
+  background:linear-gradient(var(--kin), transparent);
+  animation:cue 2.6s ease-in-out infinite;
+}
+@keyframes cue{ 0%{ transform:scaleY(0); transform-origin:top; } 55%{ transform:scaleY(1); transform-origin:top; } 56%{ transform-origin:bottom; } 100%{ transform:scaleY(0); transform-origin:bottom; } }
+
+@media (max-width:560px){
+  .hero-inner{ flex-direction:column; gap:2.6rem; }
+  .hero-flower{ width:150px; }
+  .hero-copy .poem{ padding-top:1.6em; }
+  .hero-copy .sub{ padding-top:3em; }
+}
+
+/* ---------- 序 ---------- */
+.intro{ text-align:center; }
+.intro p{ font-size:clamp(1rem, 2vw, 1.12rem); line-height:2.6; }
+.intro .more{ margin-top:3rem; }
+.link-line{
+  font-size:.9rem; letter-spacing:.28em;
+  color:var(--kin-deep);
+  border-bottom:1px solid var(--line);
+  padding-bottom:.35rem;
+  transition:border-color .3s;
+}
+.link-line:hover{ border-color:var(--kin); }
+
+/* ---------- 世界観 ---------- */
+.sekai{ background:var(--washi-deep); }
+.sekai-cols{
+  display:flex; justify-content:center;
+  gap:clamp(2rem, 7vw, 5.5rem);
+  margin-top:1.5rem;
+}
+.sekai-col{
+  text-align:center;
+  padding:1.6rem 1.4rem;
+  transition:transform .5s cubic-bezier(.25,.8,.3,1), background .5s;
+  border-radius:2px;
+}
+.sekai-col:hover{ transform:translateY(-6px); background:rgba(255,255,255,.55); }
+.sekai-col .word{
+  font-size:clamp(1.3rem, 2.6vw, 1.6rem);
+  font-weight:500;
+  height:9.5em;
+  margin:0 auto;
+}
+.sekai-col .note{ margin-top:1.6rem; font-size:.82rem; color:var(--sumi-soft); line-height:2; }
+.sekai-head{ text-align:center; margin-bottom:3rem; }
+.sekai-head p{ color:var(--sumi-soft); font-size:.95rem; margin-top:1rem; }
+
+/* ---------- 素敵会・イベント一覧 ---------- */
+.event-head{ text-align:center; }
+.event-lead{
+  text-align:center; color:var(--sumi-soft);
+  font-size:.98rem; line-height:2.4;
+  max-width:34em; margin:0 auto 4rem;
+}
+.event-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:clamp(1.6rem, 3.5vw, 2.6rem);
+}
+.event-card{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.55);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.event-card::before, .event-card::after{
+  content:""; position:absolute; width:14px; height:14px; z-index:2;
+}
+.event-card::before{ top:-1px; left:-1px; border-top:1px solid var(--kin); border-left:1px solid var(--kin); }
+.event-card::after{ bottom:-1px; right:-1px; border-bottom:1px solid var(--kin); border-right:1px solid var(--kin); }
+.event-photo{ overflow:hidden; aspect-ratio:1/1; }
+.event-photo img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 1.4s cubic-bezier(.2,.7,.2,1);
+}
+.event-card:hover .event-photo img{ transform:scale(1.045); }
+.event-body{
+  padding:1.8rem 1.6rem 2rem;
+  display:flex; flex-direction:column; flex:1;
+}
+.event-date{
+  font-family:var(--latin);
+  font-size:.78rem; letter-spacing:.34em;
+  color:var(--kin);
+  margin-bottom:.7rem;
+}
+.event-place{
+  font-family:var(--serif);
+  letter-spacing:.2em;
+  color:var(--sumi-soft);
+  font-size:.78rem;
+  margin-left:.8em;
+}
+.event-name{
+  font-size:clamp(1.12rem, 2.2vw, 1.3rem);
+  letter-spacing:.12em;
+  margin-bottom:1rem;
+  line-height:1.8;
+}
+.event-desc{
+  font-size:.88rem; color:var(--sumi-soft);
+  line-height:2.1;
+  margin-bottom:1.8rem;
+  flex:1;
+}
+.event-body .btn{
+  align-self:flex-start;
+  padding:.8rem 2.2rem;
+  font-size:.84rem;
+}
+
+/* ---------- 紹介動画 ---------- */
+.movie{ background:var(--washi-deep); text-align:center; }
+.movie-frame{
+  max-width:760px;
+  margin:1rem auto 0;
+  aspect-ratio:16/9;
+  border:1px solid var(--line);
+  background:
+    radial-gradient(420px 220px at 50% 60%, rgba(235,220,168,.30), transparent 70%),
+    #2E2A23;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+.movie-frame .flower-mini{ width:56px; margin:0 auto 1.2rem; opacity:.95; }
+.movie-frame .soon{
+  font-family:var(--latin);
+  color:var(--kin-pale);
+  letter-spacing:.55em; text-indent:.55em;
+  font-size:clamp(.8rem, 1.8vw, .95rem);
+}
+.movie-frame .soon-ja{
+  color:rgba(249,246,239,.55);
+  font-size:.78rem;
+  letter-spacing:.24em;
+  margin-top:1rem;
+}
+.movie-note{ margin-top:1.6rem; font-size:.82rem; color:var(--sumi-soft); }
+
+/* ---------- 参加CTA ---------- */
+.join{
+  text-align:center;
+  background:
+    radial-gradient(600px 300px at 50% 120%, rgba(216,194,135,.22), transparent 70%),
+    var(--washi);
+}
+.join p{ color:var(--sumi-soft); margin:1.6rem auto 3rem; max-width:32em; }
+.join .ig-note{ font-size:.82rem; margin-top:1.6rem; }
+</style>
+</head>
+<body>
+
+<header class="site" id="siteHeader">
+  <a class="brand" href="index.html" aria-label="こよりび トップページ">
+    <svg viewBox="-70 -70 140 140" aria-hidden="true">
+      <g class="petal-target"></g>
+      <circle r="5" fill="#EFE3C2"/>
+    </svg>
+    <span class="name">こよりび</span>
+  </a>
+  <nav class="global" aria-label="サイト内メニュー">
+    <a href="philosophy.html">想い</a>
+    <a href="#sutekikai">集い</a>
+    <a href="#join">ご参加</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-flower hero-load">
+      <svg viewBox="-70 -70 140 140" aria-label="こよりびのロゴ">
+        <g class="petal-target"></g>
+        <circle r="5" fill="#EFE3C2"/>
+      </svg>
+    </div>
+    <div class="hero-copy">
+      <h1 class="main tate hero-load d2">木々が寄り添うことで、<br>生まれる光がある。</h1>
+      <p class="poem tate hero-load d3">人もまた、<br>誰かと出逢い、<br>想いを重ねることで<br>心に光が灯る。</p>
+      <p class="sub tate hero-load d4">ちょっと前向きになれる毎日を紡ぐ。</p>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">SCROLL</div>
+</div>
+
+<!-- ============ 序 ============ -->
+<section class="intro">
+  <div class="wrap-narrow reveal">
+    <span class="eyebrow">Koyoribi</span>
+    <p>
+      こよりびは、人と人との出逢いを通じて、<br>
+      ちょっと前向きな毎日を紡ぐコミュニティです。
+    </p>
+    <div class="more">
+      <a class="link-line" href="philosophy.html">こよりびの想いを読む</a>
+    </div>
+  </div>
+</section>
+
+<div class="rule" aria-hidden="true"></div>
+
+<!-- ============ 世界観 ============ -->
+<section class="sekai">
+  <div class="wrap reveal">
+    <div class="sekai-head">
+      <span class="eyebrow">Atmosphere</span>
+      <h2 class="section-title" style="display:inline-block;">大切にしている空気</h2>
+      <p>過剰に説明されなくても、入った瞬間に安心できる場所を。</p>
+    </div>
+    <div class="sekai-cols">
+      <div class="sekai-col reveal">
+        <div class="word tate">静けさ</div>
+        <p class="note">急かされない、<br>ゆったりとした時間。</p>
+      </div>
+      <div class="sekai-col reveal">
+        <div class="word tate">温かさ</div>
+        <p class="note">一人ひとりを仲間として<br>迎えるおもてなし。</p>
+      </div>
+      <div class="sekai-col reveal">
+        <div class="word tate">余白</div>
+        <p class="note">詰め込みすぎない、<br>心がほどける間。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 素敵会・今後の集い ============ -->
+<section id="sutekikai">
+  <div class="wrap">
+    <div class="event-head reveal">
+      <span class="eyebrow">Gathering</span>
+      <h2 class="section-title">素敵会 ― これからの集い</h2>
+    </div>
+    <p class="event-lead reveal">
+      こよりびが紡ぐ集いの時間、それが「素敵会」です。<br>
+      互いの素敵な部分を見つけ、認め、応援する。<br>
+      受け取った光を、また次の誰かへ手渡していく時間。
+    </p>
+
+    <div class="event-grid">
+
+      <!-- 8/8 大阪「巡」 -->
+      <article class="event-card hover-lift reveal">
+        <div class="event-photo">
+          <img src="event-meguri.jpg" alt="素敵会 in 大阪「巡」 8月8日(土)17:00開催の告知" loading="lazy">
+        </div>
+        <div class="event-body">
+          <p class="event-date">2026.08.08 SAT 17:00-<span class="event-place">大阪</span></p>
+          <h3 class="event-name">素敵会 in 大阪「巡」</h3>
+          <p class="event-desc">
+            人情深い大阪の皆さんと、想いや温かさ、繋がりが巡る時間に。
+            お寿司の振る舞い、立食での交流、ビンゴ大会、そして想いを伝え合う「こよりびカード」。
+          </p>
+          <a class="btn" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+        </div>
+      </article>
+
+      <!-- 10/3 The Table -->
+      <article class="event-card hover-lift reveal">
+        <div class="event-photo">
+          <img src="event-thetable.jpg" alt="The Table presented by こよりび 10月3日(土)18:00開催の告知" loading="lazy">
+        </div>
+        <div class="event-body">
+          <p class="event-date">2026.10.03 SAT 18:00-<span class="event-place">東京</span></p>
+          <h3 class="event-name">The Table<br><span style="font-size:.72em; color:var(--sumi-soft); letter-spacing:.18em;">presented by こよりび</span></h3>
+          <p class="event-desc">
+            全員が、主役。ひとつの食卓を囲み、みんなが繋がる。
+            大学生や社会人、プロの歌手、カメラマン、日本文化を継承する職人まで集う、バイタリティに溢れる一夜。
+          </p>
+          <a class="btn" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+        </div>
+      </article>
+
+      <!-- 11/21 一燈 -->
+      <article class="event-card hover-lift reveal">
+        <div class="event-photo">
+          <img src="event-itto.jpg" alt="素敵会「一燈」 11月21日(土)開催の告知" loading="lazy">
+        </div>
+        <div class="event-body">
+          <p class="event-date">2026.11.21 SAT 18:00-<span class="event-place">東京</span></p>
+          <h3 class="event-name">素敵会「一燈」</h3>
+          <p class="event-desc">
+            秋の夜に、一発限定の特別な花火を打ち上げる。
+            大切な人への感謝を想い、花火や縁日を自分たちの手でつくり上げて楽しむ会。
+          </p>
+          <a class="btn" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+        </div>
+      </article>
+
+      <!-- 12/19 Re-Loved Market -->
+      <article class="event-card hover-lift reveal">
+        <div class="event-photo">
+          <img src="event-reloved.jpg" alt="素敵会「Re-Loved Market」 12月19日(土)18:00開催の告知" loading="lazy">
+        </div>
+        <div class="event-body">
+          <p class="event-date">2026.12.19 SAT 18:00-<span class="event-place">東京</span></p>
+          <h3 class="event-name">素敵会「Re-Loved Market」</h3>
+          <p class="event-desc">
+            “Re-Loved” ― 誰かの手に一度渡り、愛されたもの。
+            その大切なものを次に繋げるマーケットをつくり、想いとモノが循環する一日を。
+          </p>
+          <a class="btn" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 紹介動画 ============ -->
+<section class="movie">
+  <div class="wrap reveal">
+    <span class="eyebrow">Movie</span>
+    <h2 class="section-title" style="display:inline-block;">こよりびの紹介動画</h2>
+    <!--
+      動画公開時はこの movie-frame の中身を差し替え:
+      <video src="koyoribi-movie.mp4" controls playsinline
+             poster="movie-poster.jpg" style="width:100%; height:100%; object-fit:cover;"></video>
+      YouTube の場合:
+      <iframe src="https://www.youtube.com/embed/XXXXX" title="こよりび紹介動画"
+              style="width:100%; height:100%; border:0;" allowfullscreen></iframe>
+    -->
+    <div class="movie-frame">
+      <div>
+        <div class="flower-mini">
+          <svg viewBox="-70 -70 140 140" aria-hidden="true">
+            <g class="petal-target"></g>
+            <circle r="5" fill="#EFE3C2"/>
+          </svg>
+        </div>
+        <p class="soon">COMING SOON</p>
+        <p class="soon-ja">ただいま、丁寧に仕込んでいます。</p>
+      </div>
+    </div>
+    <p class="movie-note">こよりびの時間と空気を、映像でお届けする準備をしています。</p>
+  </div>
+</section>
+
+<!-- ============ 参加CTA ============ -->
+<section class="join" id="join">
+  <div class="wrap-narrow reveal">
+    <span class="eyebrow">Join</span>
+    <h2 class="section-title" style="display:inline-block;">ご参加を希望される方へ</h2>
+    <p>
+      肩書きや実績は、必要ありません。<br>
+      人の素敵な部分を見つけようとする心を、お持ちください。
+    </p>
+    <a class="btn" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">Instagram から申し込む</a>
+    <p class="ig-note">
+      Instagram の DM、または各イベント投稿へのコメントにて<br>
+      「参加希望」とお送りください。
+    </p>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="mark">
+    <svg viewBox="-70 -70 140 140" aria-hidden="true">
+      <g class="petal-target"></g>
+      <circle r="5" fill="#EFE3C2"/>
+    </svg>
+  </div>
+  <div>こよりび<div class="latin">KOYORIBI</div></div>
+  <p class="company">
+    運営 ― 株式会社燈心<br>
+    コミュニティ事業「こよりび」
+  </p>
+  <p class="copy">&copy; 2026 Tomoshibi Inc.</p>
+</footer>
+
+<script>
+/* ロゴの七枚花弁を生成(添付ロゴの金の階調を再現) */
+(function(){
+  const colors = ["#B3913E","#D8C287","#8F7430","#E3CE93","#A08434","#CDB06A","#93783A"];
+  const path = "M0 -12 C 13 -21, 23 -38, 19 -52 C 15 -66, -15 -66, -19 -52 C -23 -38, -13 -21, 0 -12 Z";
+  document.querySelectorAll(".petal-target").forEach(g=>{
+    for(let i=0;i<7;i++){
+      const p = document.createElementNS("http://www.w3.org/2000/svg","path");
+      p.setAttribute("d", path);
+      p.setAttribute("fill", colors[i]);
+      p.setAttribute("transform", `rotate(${i*(360/7)})`);
+      g.appendChild(p);
+    }
+  });
+})();
+
+/* スクロール出現 */
+(function(){
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{ threshold:.12 });
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+})();
+
+/* ヘッダーの影 */
+(function(){
+  const h = document.getElementById("siteHeader");
+  addEventListener("scroll", ()=> h.classList.toggle("scrolled", scrollY > 30), { passive:true });
+})();
+</script>
+</body>
+</html>

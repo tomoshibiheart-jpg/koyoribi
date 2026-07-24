@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>想い | こよりび</title>
+<meta name="description" content="こよりびが生まれた物語と、Mission・Vision・Value。人と人が寄り添うことで、新しい光が生まれる。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---------- ページヘッダー ---------- */
+.page-hero{
+  padding:11rem 1.5rem 5.5rem;
+  text-align:center;
+  background:
+    radial-gradient(700px 340px at 50% -20%, rgba(235,220,168,.35), transparent 70%),
+    var(--washi);
+}
+.page-hero h1{
+  font-size:clamp(1.7rem, 4vw, 2.3rem);
+  letter-spacing:.3em; text-indent:.3em;
+}
+.page-hero p{
+  margin-top:1.4rem;
+  color:var(--sumi-soft);
+  font-size:.95rem;
+}
+
+/* ---------- 物語 ---------- */
+.story p{
+  margin-bottom:2.2rem;
+  line-height:2.5;
+}
+.story .strong{
+  font-size:1.08rem;
+  font-weight:500;
+  color:var(--kin-deep);
+}
+.story-voices{
+  margin:3.2rem 0;
+  padding:2.4rem clamp(1.6rem, 5vw, 3rem);
+  border-left:1px solid var(--kin);
+  background:rgba(255,255,255,.45);
+}
+.story-voices p{
+  margin-bottom:1.1rem;
+  font-size:1.02rem;
+  letter-spacing:.1em;
+}
+.story-voices p:last-child{ margin-bottom:0; }
+
+/* ---------- MVV ---------- */
+.mvv{ background:var(--washi-deep); }
+.mvv-item{
+  display:grid;
+  grid-template-columns:minmax(120px, 200px) 1fr;
+  gap:clamp(1.6rem, 5vw, 4rem);
+  padding:3.4rem 0;
+}
+.mvv-item + .mvv-item{ border-top:1px solid var(--line); }
+.mvv-label .en{
+  font-family:var(--latin);
+  font-size:.72rem; letter-spacing:.45em;
+  color:var(--kin);
+  text-transform:uppercase;
+  display:block; margin-bottom:.8rem;
+}
+.mvv-label .ja{
+  font-size:clamp(1.15rem, 2.4vw, 1.45rem);
+  font-weight:500;
+  line-height:1.9;
+}
+.mvv-body p{ color:var(--sumi-soft); font-size:.96rem; }
+.mvv-body .lead{
+  color:var(--sumi); font-size:1.02rem;
+  margin-bottom:1rem; font-weight:500;
+}
+@media (max-width:640px){
+  .mvv-item{ grid-template-columns:1fr; gap:1.2rem; }
+}
+
+/* ---------- 求める人 ---------- */
+.people-lead{ text-align:center; margin-bottom:3.5rem; }
+.people-lead .big{
+  font-size:clamp(1.2rem, 2.8vw, 1.55rem);
+  font-weight:500;
+  margin-top:1.2rem;
+  line-height:2.2;
+}
+.people-list{
+  list-style:none;
+  max-width:34em;
+  margin:0 auto;
+}
+.people-list li{
+  padding:1.3rem 0 1.3rem 2rem;
+  position:relative;
+  border-bottom:1px solid var(--line);
+  font-size:.98rem;
+}
+.people-list li::before{
+  content:"";
+  position:absolute; left:.2rem; top:1.95rem;
+  width:8px; height:8px;
+  background:var(--kin-pale);
+  border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);
+}
+.people-note{
+  text-align:center;
+  margin-top:3rem;
+  color:var(--sumi-soft);
+  line-height:2.4;
+}
+
+/* ---------- 仲間 ---------- */
+.nakama{ background:var(--washi-deep); }
+.nakama-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  margin-top:1rem;
+}
+.nakama-cell{
+  background:var(--washi-deep);
+  padding:2.2rem 1.8rem;
+  font-size:.92rem;
+  line-height:2.1;
+  color:var(--sumi-soft);
+}
+.nakama-cell{
+  transition:transform .45s cubic-bezier(.25,.8,.3,1), background .45s;
+}
+.nakama-cell:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,.75);
+}
+.nakama-cell .t{
+  display:block;
+  color:var(--sumi);
+  font-weight:500;
+  font-size:1rem;
+  margin-bottom:.7rem;
+  letter-spacing:.12em;
+}
+
+/* ---------- 結び ---------- */
+.musubi{ text-align:center; }
+.musubi p{
+  font-size:clamp(1.02rem, 2vw, 1.15rem);
+  line-height:2.7;
+  margin-bottom:3rem;
+}
+</style>
+</head>
+<body>
+
+<header class="site" id="siteHeader">
+  <a class="brand" href="index.html" aria-label="こよりび トップページ">
+    <svg viewBox="-70 -70 140 140" aria-hidden="true">
+      <g class="petal-target"></g>
+      <circle r="5" fill="#EFE3C2"/>
+    </svg>
+    <span class="name">こよりび</span>
+  </a>
+  <nav class="global" aria-label="サイト内メニュー">
+    <a href="philosophy.html" class="current">想い</a>
+    <a href="index.html#sutekikai">集い</a>
+    <a href="index.html#join">ご参加</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <span class="eyebrow">Philosophy</span>
+  <h1>こよりびの想い</h1>
+  <p>木寄日 ― 木々が寄り添うことで生まれる光。</p>
+</div>
+
+<!-- ============ 物語 ============ -->
+<section class="story">
+  <div class="wrap-narrow reveal">
+    <span class="eyebrow">Story</span>
+    <h2 class="section-title">こよりびが生まれた物語</h2>
+    <p>
+      現代は、効率や成果、肩書き、損得によって、人や物事の価値が判断されやすい社会です。
+      便利で豊かになった一方で、目的のない出逢いや、誰かのために時間を使うこと、
+      理由のない優しさといった、数字では測れないものが失われつつあります。
+    </p>
+    <p>
+      代表は、これまで多くの大人たちから、優しい想いや繋がりを受け取ってきました。
+      それを自分だけでとどめてしまうのは、あまりに勿体ない。
+      その想いから、こよりびは生まれました。
+    </p>
+    <p>
+      資本主義社会の中で失われつつある「非効率」を、あえて取り戻す。
+      お金だけではない資本 ― 人脈や関係性という、目に見えない豊かさを紡いでいく。
+    </p>
+    <div class="story-voices">
+      <p>「この人と出逢えてよかった」</p>
+      <p>「今日ここに来てよかった」</p>
+      <p>「明日から、もう少し頑張ってみよう」</p>
+    </div>
+    <p class="strong">
+      そう思える時間を紡ぐために、こよりびはあります。
+    </p>
+  </div>
+</section>
+
+<!-- ============ MVV ============ -->
+<section class="mvv">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center; margin-bottom:1.5rem;">
+      <span class="eyebrow">Mission / Vision / Value</span>
+      <h2 class="section-title" style="display:inline-block;">掲げるもの</h2>
+    </div>
+
+    <div class="mvv-item reveal">
+      <div class="mvv-label">
+        <span class="en">Mission</span>
+        <div class="ja">ちょっと前向きに<br>なれる毎日を紡ぐ</div>
+      </div>
+      <div class="mvv-body">
+        <p class="lead">人生を大きく変える出来事だけが、人を前向きにするわけではありません。</p>
+        <p>
+          誰かにかけてもらった言葉。誰かを応援した経験、応援された経験。
+          偶然出逢った人から受け取った優しさ。
+          こよりびは、そうした小さな灯りが生まれる時間をつくり、
+          参加した人の日常が、昨日よりも少し前向きになることを目指します。
+        </p>
+      </div>
+    </div>
+
+    <div class="mvv-item reveal">
+      <div class="mvv-label">
+        <span class="en">Vision</span>
+        <div class="ja">世界にはまだ<br>美しさがある</div>
+      </div>
+      <div class="mvv-body">
+        <p class="lead">AIの時代に大切になるのは、人の心、絆です。</p>
+        <p>
+          効率や利益が優先される社会の中にも、人を想う心や、損得を超えた優しさ、
+          誰かの挑戦を自分のことのように応援する姿があります。
+          こよりびは、人と人が出逢うことで生まれる、目には見えない美しさを信じ、
+          その美しさを見つけ、守り、広げていきます。
+        </p>
+      </div>
+    </div>
+
+    <div class="mvv-item reveal">
+      <div class="mvv-label">
+        <span class="en">Value</span>
+        <div class="ja">継灯<span style="font-size:.75em; color:var(--sumi-soft);">(けいとう)</span></div>
+      </div>
+      <div class="mvv-body">
+        <p class="lead">受け取った灯りを、次の誰かへ手渡す。</p>
+        <p>
+          こよりびで勇気をもらった人が、別の場所で誰かを励ます。
+          応援された人が、次は誰かの挑戦を応援する。
+          自分だけが満たされて終わるのではなく、受け取ったものを次へとつないでいく。
+          それが、こよりびの大切にする行動指針です。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 求める人 ============ -->
+<section>
+  <div class="wrap-narrow">
+    <div class="people-lead reveal">
+      <span class="eyebrow">For You</span>
+      <h2 class="section-title" style="display:inline-block;">こよりびが求める人</h2>
+      <p class="big">
+        肩書きや実績のある人では、ありません。<br>
+        人の素敵な部分を、見つけようとする人です。
+      </p>
+    </div>
+    <ul class="people-list reveal">
+      <li>誰かの話を、真剣に聞ける人</li>
+      <li>人の挑戦を、笑わずに応援できる人</li>
+      <li>受け取るだけでなく、自分のできる形で誰かに返そうとする人</li>
+      <li>「損得ではなく、尊徳」で人としての温かさを大切にできる人</li>
+    </ul>
+    <p class="people-note reveal">
+      完成された人である必要はありません。<br>
+      悩んでいても、立ち止まっていても、自信がなくても構いません。<br>
+      こよりびは、互いの存在によって、少しずつ前を向いていく場所です。
+    </p>
+  </div>
+</section>
+
+<!-- ============ 仲間 ============ -->
+<section class="nakama">
+  <div class="wrap reveal">
+    <span class="eyebrow">Together</span>
+    <h2 class="section-title">共に文化をつくる仲間へ</h2>
+    <div class="nakama-grid">
+      <div class="nakama-cell"><span class="t">つくる</span>イベントの企画や運営に、共に関わってくださる方。</div>
+      <div class="nakama-cell"><span class="t">表現する</span>写真、映像、デザイン、音楽、文章で、世界観を表現してくださる方。</div>
+      <div class="nakama-cell"><span class="t">生かす</span>自分の経験や専門性を、誰かのために生かしたい方。</div>
+      <div class="nakama-cell"><span class="t">支える</span>場所や食事、技術、資金を通じて、活動を支えてくださる企業・個人。</div>
+      <div class="nakama-cell"><span class="t">広げる</span>この考え方に共感し、自分の地域でも灯りを広げたい方。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 結び ============ -->
+<section class="musubi">
+  <div class="wrap-narrow reveal">
+    <p>
+      人と人が寄り添うことで、新しい光が生まれる。<br>
+      そこで受け取った光が、次の誰かへと継がれていく。<br>
+      その循環を、こよりびは求めています。
+    </p>
+    <a class="btn" href="index.html#sutekikai">次回の集いを見る</a>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="mark">
+    <svg viewBox="-70 -70 140 140" aria-hidden="true">
+      <g class="petal-target"></g>
+      <circle r="5" fill="#EFE3C2"/>
+    </svg>
+  </div>
+  <div>こよりび<div class="latin">KOYORIBI</div></div>
+  <p class="company">
+    運営 ― 株式会社燈心<br>
+    コミュニティ事業「こよりび」
+  </p>
+  <p class="copy">&copy; 2026 Tomoshibi Inc.</p>
+</footer>
+
+<script>
+(function(){
+  const colors = ["#B3913E","#D8C287","#8F7430","#E3CE93","#A08434","#CDB06A","#93783A"];
+  const path = "M0 -12 C 13 -21, 23 -38, 19 -52 C 15 -66, -15 -66, -19 -52 C -23 -38, -13 -21, 0 -12 Z";
+  document.querySelectorAll(".petal-target").forEach(g=>{
+    for(let i=0;i<7;i++){
+      const p = document.createElementNS("http://www.w3.org/2000/svg","path");
+      p.setAttribute("d", path);
+      p.setAttribute("fill", colors[i]);
+      p.setAttribute("transform", `rotate(${i*(360/7)})`);
+      g.appendChild(p);
+    }
+  });
+})();
+(function(){
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{ threshold:.15 });
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+})();
+(function(){
+  const h = document.getElementById("siteHeader");
+  addEventListener("scroll", ()=> h.classList.toggle("scrolled", scrollY > 30), { passive:true });
+})();
+</script>
+</body>
+</html>
