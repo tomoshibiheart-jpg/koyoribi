@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>想い | こよりび</title>
-<meta name="description" content="こよりびが生まれた物語と、Mission・Vision・Value。人と人が寄り添うことで、新しい光が生まれる。">
+<meta name="description" content="継灯しよう。世界には、まだ美しさがある。こよりびのブランドメッセージと、Mission・Vision・Value。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
+/* 折り返し単位(スマホで不自然な改行を防ぐ) */
+.nb{ display:inline-block; }
+
 /* ---------- ページヘッダー ---------- */
 .page-hero{
   padding:11rem 1.5rem 5.5rem;
@@ -22,42 +25,42 @@
   font-size:clamp(1.7rem, 4vw, 2.3rem);
   letter-spacing:.3em; text-indent:.3em;
 }
-.page-hero p{
-  margin-top:1.4rem;
-  color:var(--sumi-soft);
-  font-size:.95rem;
-}
+.page-hero p{ margin-top:1.4rem; color:var(--sumi-soft); font-size:.95rem; }
 
-/* ---------- 物語 ---------- */
-.story p{
-  margin-bottom:2.2rem;
-  line-height:2.5;
+/* ---------- ブランドメッセージ ---------- */
+.message{ text-align:center; }
+.message .msg-block{
+  font-size:clamp(1.02rem, 2.2vw, 1.2rem);
+  line-height:2.9;
+  margin-bottom:2.8rem;
 }
-.story .strong{
-  font-size:1.08rem;
+.message .msg-block:last-of-type{ margin-bottom:0; }
+.message .keito{
+  margin-top:3.6rem;
+  padding-top:3.2rem;
+  border-top:1px solid var(--line);
+}
+.message .keito .big{
+  font-size:clamp(1.5rem, 3.4vw, 2rem);
   font-weight:500;
+  letter-spacing:.26em; text-indent:.26em;
   color:var(--kin-deep);
+  line-height:2;
 }
-.story-voices{
-  margin:3.2rem 0;
-  padding:2.4rem clamp(1.6rem, 5vw, 3rem);
-  border-left:1px solid var(--kin);
-  background:rgba(255,255,255,.45);
+.message .keito .sub{
+  margin-top:1.4rem;
+  font-size:clamp(1rem, 2vw, 1.12rem);
+  letter-spacing:.18em;
 }
-.story-voices p{
-  margin-bottom:1.1rem;
-  font-size:1.02rem;
-  letter-spacing:.1em;
-}
-.story-voices p:last-child{ margin-bottom:0; }
 
 /* ---------- MVV ---------- */
 .mvv{ background:var(--washi-deep); }
 .mvv-item{
   display:grid;
-  grid-template-columns:minmax(120px, 200px) 1fr;
+  grid-template-columns:minmax(140px, 230px) 1fr;
   gap:clamp(1.6rem, 5vw, 4rem);
-  padding:3.4rem 0;
+  padding:3.6rem 0;
+  transition:background .5s;
 }
 .mvv-item + .mvv-item{ border-top:1px solid var(--line); }
 .mvv-label .en{
@@ -65,57 +68,58 @@
   font-size:.72rem; letter-spacing:.45em;
   color:var(--kin);
   text-transform:uppercase;
-  display:block; margin-bottom:.8rem;
+  display:block; margin-bottom:1rem;
 }
 .mvv-label .ja{
-  font-size:clamp(1.15rem, 2.4vw, 1.45rem);
+  font-size:clamp(1.18rem, 2.5vw, 1.5rem);
   font-weight:500;
-  line-height:1.9;
+  line-height:1.95;
 }
-.mvv-body p{ color:var(--sumi-soft); font-size:.96rem; }
-.mvv-body .lead{
-  color:var(--sumi); font-size:1.02rem;
-  margin-bottom:1rem; font-weight:500;
+.mvv-body p{
+  color:var(--sumi-soft);
+  font-size:.98rem;
+  line-height:2.6;
 }
+.mvv-body p + p{ margin-top:1.7rem; }
 @media (max-width:640px){
-  .mvv-item{ grid-template-columns:1fr; gap:1.2rem; }
+  .mvv-item{ grid-template-columns:1fr; gap:1.3rem; padding:2.8rem 0; }
 }
 
-/* ---------- 求める人 ---------- */
+/* ---------- 灯りを分かち合える人 ---------- */
 .people-lead{ text-align:center; margin-bottom:3.5rem; }
 .people-lead .big{
-  font-size:clamp(1.2rem, 2.8vw, 1.55rem);
+  font-size:clamp(1.15rem, 2.6vw, 1.5rem);
   font-weight:500;
   margin-top:1.2rem;
-  line-height:2.2;
+  line-height:2.3;
 }
-.people-list{
-  list-style:none;
-  max-width:34em;
-  margin:0 auto;
-}
+.people-list{ list-style:none; max-width:32em; margin:0 auto; }
 .people-list li{
-  padding:1.3rem 0 1.3rem 2rem;
+  padding:1.5rem 0 1.5rem 2rem;
   position:relative;
   border-bottom:1px solid var(--line);
-  font-size:.98rem;
+  font-size:1rem;
+  transition:padding-left .4s cubic-bezier(.25,.8,.3,1), color .4s;
 }
+.people-list li:hover{ padding-left:2.5rem; color:var(--kin-deep); }
 .people-list li::before{
   content:"";
-  position:absolute; left:.2rem; top:1.95rem;
+  position:absolute; left:.2rem; top:2.15rem;
   width:8px; height:8px;
   background:var(--kin-pale);
   border-radius:50% 50% 50% 0;
   transform:rotate(-45deg);
+  transition:background .4s;
 }
+.people-list li:hover::before{ background:var(--kin); }
 .people-note{
   text-align:center;
-  margin-top:3rem;
+  margin-top:3.2rem;
   color:var(--sumi-soft);
-  line-height:2.4;
+  line-height:2.5;
 }
 
-/* ---------- 仲間 ---------- */
+/* ---------- 灯し手 ---------- */
 .nakama{ background:var(--washi-deep); }
 .nakama-grid{
   display:grid;
@@ -131,14 +135,9 @@
   font-size:.92rem;
   line-height:2.1;
   color:var(--sumi-soft);
-}
-.nakama-cell{
   transition:transform .45s cubic-bezier(.25,.8,.3,1), background .45s;
 }
-.nakama-cell:hover{
-  transform:translateY(-4px);
-  background:rgba(255,255,255,.75);
-}
+.nakama-cell:hover{ transform:translateY(-4px); background:rgba(255,255,255,.75); }
 .nakama-cell .t{
   display:block;
   color:var(--sumi);
@@ -151,9 +150,11 @@
 /* ---------- 結び ---------- */
 .musubi{ text-align:center; }
 .musubi p{
-  font-size:clamp(1.02rem, 2vw, 1.15rem);
-  line-height:2.7;
+  font-size:clamp(1rem, 2vw, 1.15rem);
+  line-height:2.8;
   margin-bottom:3rem;
+  max-width:30em;
+  margin-left:auto; margin-right:auto;
 }
 </style>
 </head>
@@ -180,56 +181,50 @@
   <p>木寄日 ― 木々が寄り添うことで生まれる光。</p>
 </div>
 
-<!-- ============ 物語 ============ -->
-<section class="story">
+<!-- ============ ブランドメッセージ ============ -->
+<section class="message">
   <div class="wrap-narrow reveal">
-    <span class="eyebrow">Story</span>
-    <h2 class="section-title">こよりびが生まれた物語</h2>
-    <p>
-      現代は、効率や成果、肩書き、損得によって、人や物事の価値が判断されやすい社会です。
-      便利で豊かになった一方で、目的のない出逢いや、誰かのために時間を使うこと、
-      理由のない優しさといった、数字では測れないものが失われつつあります。
+    <span class="eyebrow">Brand Message</span>
+
+    <p class="msg-block">
+      <span class="nb">木々が寄り添うことで生まれた光</span><span class="nb">――『こよりび』。</span><br>
+      <span class="nb">人もまた、誰かと出逢い、</span><span class="nb">想いを重ねることで、</span><span class="nb">心に灯りがともる。</span>
     </p>
-    <p>
-      代表は、これまで多くの大人たちから、優しい想いや繋がりを受け取ってきました。
-      それを自分だけでとどめてしまうのは、あまりに勿体ない。
-      その想いから、こよりびは生まれました。
+
+    <p class="msg-block">
+      <span class="nb">私たちは、その小さな灯りに触れた人が、</span><span class="nb">昨日より少し前向きな気持ちで</span><span class="nb">今日を歩めるような毎日を紡いでいきます。</span><br>
+      <span class="nb">そして、受け取った灯りを</span><span class="nb">次の誰かへ手渡していく。</span>
     </p>
-    <p>
-      資本主義社会の中で失われつつある「非効率」を、あえて取り戻す。
-      お金だけではない資本 ― 人脈や関係性という、目に見えない豊かさを紡いでいく。
-    </p>
-    <div class="story-voices">
-      <p>「この人と出逢えてよかった」</p>
-      <p>「今日ここに来てよかった」</p>
-      <p>「明日から、もう少し頑張ってみよう」</p>
+
+    <div class="keito">
+      <p class="big">継灯しよう。</p>
+      <p class="sub"><span class="nb">世界には、</span><span class="nb">まだ美しさがある。</span></p>
     </div>
-    <p class="strong">
-      そう思える時間を紡ぐために、こよりびはあります。
-    </p>
   </div>
 </section>
 
-<!-- ============ MVV ============ -->
+<!-- ============ 私たちの想い(MVV) ============ -->
 <section class="mvv">
   <div class="wrap">
     <div class="reveal" style="text-align:center; margin-bottom:1.5rem;">
       <span class="eyebrow">Mission / Vision / Value</span>
-      <h2 class="section-title" style="display:inline-block;">掲げるもの</h2>
+      <h2 class="section-title" style="display:inline-block;">私たちの想い</h2>
     </div>
 
     <div class="mvv-item reveal">
       <div class="mvv-label">
         <span class="en">Mission</span>
-        <div class="ja">ちょっと前向きに<br>なれる毎日を紡ぐ</div>
+        <div class="ja"><span class="nb">ちょっと前向きに</span><span class="nb">なれる毎日を紡ぐ。</span></div>
       </div>
       <div class="mvv-body">
-        <p class="lead">人生を大きく変える出来事だけが、人を前向きにするわけではありません。</p>
         <p>
-          誰かにかけてもらった言葉。誰かを応援した経験、応援された経験。
-          偶然出逢った人から受け取った優しさ。
-          こよりびは、そうした小さな灯りが生まれる時間をつくり、
-          参加した人の日常が、昨日よりも少し前向きになることを目指します。
+          <span class="nb">誰かの一言に救われた、あの日。</span><br>
+          <span class="nb">思いがけない出逢いに、</span><span class="nb">心がほどけた日。</span><br>
+          <span class="nb">受け取った灯りを、</span><span class="nb">今度は誰かへ手渡せた日。</span>
+        </p>
+        <p>
+          <span class="nb">人は、そんな小さな灯りを</span><span class="nb">重ねながら、</span><br>
+          <span class="nb">少しずつ前へ歩いていけるのだと</span><span class="nb">思います。</span>
         </p>
       </div>
     </div>
@@ -237,15 +232,19 @@
     <div class="mvv-item reveal">
       <div class="mvv-label">
         <span class="en">Vision</span>
-        <div class="ja">世界にはまだ<br>美しさがある</div>
+        <div class="ja"><span class="nb">世界にはまだ</span><span class="nb">美しさがある</span></div>
       </div>
       <div class="mvv-body">
-        <p class="lead">AIの時代に大切になるのは、人の心、絆です。</p>
         <p>
-          効率や利益が優先される社会の中にも、人を想う心や、損得を超えた優しさ、
-          誰かの挑戦を自分のことのように応援する姿があります。
-          こよりびは、人と人が出逢うことで生まれる、目には見えない美しさを信じ、
-          その美しさを見つけ、守り、広げていきます。
+          <span class="nb">効率や利益が優先される社会の中で、</span><span class="nb">見落としてしまうもの。</span>
+        </p>
+        <p>
+          <span class="nb">人を思いやる、</span><span class="nb">損得を超えた優しさ。</span><br>
+          <span class="nb">自然に生まれる笑顔。</span><br>
+          <span class="nb">自分のことのように</span><span class="nb">誰かを応援する姿。</span>
+        </p>
+        <p>
+          <span class="nb">こよりびは、人と人が出逢うことで</span><span class="nb">生まれる、</span><span class="nb">目には見えない美しさを</span><span class="nb">信じています。</span>
         </p>
       </div>
     </div>
@@ -253,51 +252,50 @@
     <div class="mvv-item reveal">
       <div class="mvv-label">
         <span class="en">Value</span>
-        <div class="ja">継灯<span style="font-size:.75em; color:var(--sumi-soft);">(けいとう)</span></div>
+        <div class="ja">継灯<span style="font-size:.72em; color:var(--sumi-soft);">(けいとう)</span></div>
       </div>
       <div class="mvv-body">
-        <p class="lead">受け取った灯りを、次の誰かへ手渡す。</p>
         <p>
-          こよりびで勇気をもらった人が、別の場所で誰かを励ます。
-          応援された人が、次は誰かの挑戦を応援する。
-          自分だけが満たされて終わるのではなく、受け取ったものを次へとつないでいく。
-          それが、こよりびの大切にする行動指針です。
+          <span class="nb">受け取った灯りを、</span><span class="nb">次の誰かへ手渡す。</span>
+        </p>
+        <p>
+          <span class="nb">こよりびでもらった灯りを</span><span class="nb">繋いでいく。</span><br>
+          <span class="nb">応援された人が、次は</span><span class="nb">誰かの挑戦を応援する。</span><br>
+          <span class="nb">それが、こよりびの</span><span class="nb">大切にする価値観です。</span>
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 求める人 ============ -->
+<!-- ============ 灯りを分かち合える人 ============ -->
 <section>
   <div class="wrap-narrow">
     <div class="people-lead reveal">
       <span class="eyebrow">For You</span>
-      <h2 class="section-title" style="display:inline-block;">こよりびが求める人</h2>
+      <h2 class="section-title" style="display:inline-block;">灯りを分かち合える人</h2>
       <p class="big">
-        肩書きや実績のある人では、ありません。<br>
-        人の素敵な部分を、見つけようとする人です。
+        <span class="nb">肩書きや実績のある人ではなく、</span><br>
+        <span class="nb">人の素敵な部分を</span><span class="nb">見つけようとする人。</span>
       </p>
     </div>
     <ul class="people-list reveal">
-      <li>誰かの話を、真剣に聞ける人</li>
-      <li>人の挑戦を、笑わずに応援できる人</li>
-      <li>受け取るだけでなく、自分のできる形で誰かに返そうとする人</li>
-      <li>「損得ではなく、尊徳」で人としての温かさを大切にできる人</li>
+      <li>人の挑戦を、応援できる人</li>
+      <li>継灯の価値観に共感できる人</li>
+      <li>「損得ではなく、尊徳」で考動できる人</li>
     </ul>
     <p class="people-note reveal">
-      完成された人である必要はありません。<br>
-      悩んでいても、立ち止まっていても、自信がなくても構いません。<br>
-      こよりびは、互いの存在によって、少しずつ前を向いていく場所です。
+      <span class="nb">完成された人である</span><span class="nb">必要はありません。</span><br>
+      <span class="nb">こよりびは、互いの存在によって、</span><span class="nb">少しずつ前を向いていく場所です。</span>
     </p>
   </div>
 </section>
 
-<!-- ============ 仲間 ============ -->
+<!-- ============ 灯し手 ============ -->
 <section class="nakama">
   <div class="wrap reveal">
     <span class="eyebrow">Together</span>
-    <h2 class="section-title">共に文化をつくる仲間へ</h2>
+    <h2 class="section-title">共に文化をつくる灯し手へ</h2>
     <div class="nakama-grid">
       <div class="nakama-cell"><span class="t">つくる</span>イベントの企画や運営に、共に関わってくださる方。</div>
       <div class="nakama-cell"><span class="t">表現する</span>写真、映像、デザイン、音楽、文章で、世界観を表現してくださる方。</div>
@@ -312,11 +310,11 @@
 <section class="musubi">
   <div class="wrap-narrow reveal">
     <p>
-      人と人が寄り添うことで、新しい光が生まれる。<br>
-      そこで受け取った光が、次の誰かへと継がれていく。<br>
-      その循環を、こよりびは求めています。
+      <span class="nb">人と人が寄り添うことで、</span><span class="nb">新しい光が生まれる。</span>
+      <span class="nb">そこで受け取った光が、</span><span class="nb">次の誰かへと継がれていく。</span>
+      <span class="nb">その循環を、</span><span class="nb">こよりびは求めています。</span>
     </p>
-    <a class="btn" href="index.html#sutekikai">次回の集いを見る</a>
+    <a class="btn" href="index.html#sutekikai">これからの集いを見る</a>
   </div>
 </section>
 
@@ -352,7 +350,7 @@
 (function(){
   const io = new IntersectionObserver(es=>{
     es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
-  },{ threshold:.15 });
+  },{ threshold:.12 });
   document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 })();
 (function(){

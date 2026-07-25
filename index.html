@@ -3,14 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>こよりび | 出逢いが紡ぐ、ちょっと前向きな毎日</title>
-<meta name="description" content="こよりびは、人と人との出逢いを通じて、ちょっと前向きな毎日を紡ぐコミュニティです。運営:株式会社燈心">
+<title>こよりび | 木々が寄り添うことで、生まれる光がある。</title>
+<meta name="description" content="こよりびは、人と人との出逢いを通じて、ちょっと前向きな毎日を紡ぐ場です。運営:株式会社燈心">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-/* ---------- Hero ---------- */
+/* ============ オープニング(灯りがともる) ============ */
+#opening{
+  position:fixed; inset:0; z-index:100;
+  background:var(--washi);
+  display:grid; place-items:center;
+  animation:openOut 1.1s ease 2.9s forwards;
+}
+#opening .op-inner{ text-align:center; }
+#opening .op-flower{
+  width:clamp(120px, 22vw, 165px);
+  margin:0 auto;
+  position:relative;
+}
+#opening .op-flower::before{
+  content:"";
+  position:absolute; inset:-45%;
+  background:radial-gradient(circle, rgba(235,220,168,.75), transparent 62%);
+  opacity:0;
+  animation:opGlow 2.2s ease .5s forwards;
+}
+#opening .op-name{
+  margin-top:1.6rem;
+  font-size:1.05rem;
+  letter-spacing:.5em; text-indent:.5em;
+  opacity:0;
+  animation:opFade 1.3s ease 1.8s forwards;
+}
+#opening .op-latin{
+  font-family:var(--latin);
+  font-size:.6rem; letter-spacing:.55em; text-indent:.55em;
+  color:var(--kin);
+  margin-top:.7rem;
+  opacity:0;
+  animation:opFade 1.3s ease 2.2s forwards;
+}
+/* 花弁が一枚ずつ灯る */
+#opening .op-flower path{
+  opacity:0;
+  transform-box:fill-box;
+  transform-origin:50% 100%;
+  animation:petalIn .95s cubic-bezier(.2,.8,.3,1) forwards;
+}
+@keyframes petalIn{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+@keyframes opGlow{ to{ opacity:1; } }
+@keyframes opFade{ to{ opacity:1; } }
+@keyframes openOut{ to{ opacity:0; visibility:hidden; } }
+
+/* オープニング中は背面をスクロールさせない */
+body.op-lock{ overflow:hidden; }
+
+@media (prefers-reduced-motion: reduce){
+  #opening{ display:none; }
+}
+
+/* ============ Hero ============ */
 .hero{
   min-height:100svh;
   display:grid;
@@ -24,7 +81,7 @@
   justify-content:center;
   gap:clamp(2rem, 7vw, 5.5rem);
 }
-.hero-flower{ position:relative; width:clamp(160px, 28vw, 250px); flex-shrink:0; }
+.hero-flower{ position:relative; width:clamp(150px, 26vw, 235px); flex-shrink:0; }
 .hero-flower svg{ cursor:pointer; }
 .hero-flower:hover svg{ transform:rotate(360deg); }
 .hero-flower::before{
@@ -39,43 +96,32 @@
   50%{ opacity:.95; transform:scale(1.05); }
 }
 
-/* 縦書きの詩:右から  主文2行 → 詩4行 → 結び1行 */
+/* 縦書き:右から 主文2行 → 詩4行(同じ大きさ・太さ) */
 .hero-copy{
   display:flex;
-  flex-direction:row-reverse;   /* DOM先頭を右端に */
+  flex-direction:row-reverse;
   align-items:flex-start;
-  gap:clamp(1.3rem, 3vw, 2.4rem);
+  gap:clamp(1.3rem, 3.2vw, 2.4rem);
 }
-.hero-copy .tate{ height:auto; }
-.hero-copy .tate br{ line-height:inherit; }
-.hero-copy .main{
-  font-size:clamp(1.2rem, 2.8vw, 1.65rem);
+.hero-copy .line{
+  font-size:clamp(1.15rem, 2.7vw, 1.6rem);
   font-weight:500;
+  color:var(--sumi);
   white-space:nowrap;
 }
-.hero-copy .poem{
-  font-size:clamp(.88rem, 1.9vw, 1.05rem);
-  color:var(--sumi-soft);
-  white-space:nowrap;
-  padding-top:2.4em;
-  line-height:2.6;
-}
-.hero-copy .sub{
-  font-size:clamp(.82rem, 1.6vw, .95rem);
-  color:var(--kin-deep);
-  white-space:nowrap;
-  padding-top:4.2em;
-}
-.hero-load{ opacity:0; animation:heroin 1.8s ease .3s forwards; }
-.hero-load.d2{ animation-delay:.9s; }
-.hero-load.d3{ animation-delay:1.5s; }
-.hero-load.d4{ animation-delay:2.1s; }
+.hero-copy .poem{ padding-top:2.2em; }
+
+.hero-load{ opacity:0; animation:heroin 1.6s ease forwards; }
+.hero-load.d1{ animation-delay:3.5s; }
+.hero-load.d2{ animation-delay:4.0s; }
+.hero-load.d3{ animation-delay:4.5s; }
 @keyframes heroin{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
 
 .scroll-cue{
   position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
   font-family:var(--latin); font-size:.62rem; letter-spacing:.5em; text-indent:.5em;
   color:var(--kin); text-align:center;
+  opacity:0; animation:heroin 1.6s ease 5.2s forwards;
 }
 .scroll-cue::after{
   content:""; display:block; width:1px; height:44px;
@@ -85,14 +131,17 @@
 }
 @keyframes cue{ 0%{ transform:scaleY(0); transform-origin:top; } 55%{ transform:scaleY(1); transform-origin:top; } 56%{ transform-origin:bottom; } 100%{ transform:scaleY(0); transform-origin:bottom; } }
 
-@media (max-width:560px){
-  .hero-inner{ flex-direction:column; gap:2.6rem; }
-  .hero-flower{ width:150px; }
-  .hero-copy .poem{ padding-top:1.6em; }
-  .hero-copy .sub{ padding-top:3em; }
+@media (prefers-reduced-motion: reduce){
+  .hero-load, .scroll-cue{ opacity:1; animation:none; }
 }
 
-/* ---------- 序 ---------- */
+@media (max-width:560px){
+  .hero-inner{ flex-direction:column; gap:2.4rem; }
+  .hero-flower{ width:140px; }
+  .hero-copy .poem{ padding-top:1.4em; }
+}
+
+/* ============ 序 ============ */
 .intro{ text-align:center; }
 .intro p{ font-size:clamp(1rem, 2vw, 1.12rem); line-height:2.6; }
 .intro .more{ margin-top:3rem; }
@@ -105,7 +154,7 @@
 }
 .link-line:hover{ border-color:var(--kin); }
 
-/* ---------- 世界観 ---------- */
+/* ============ 世界観 ============ */
 .sekai{ background:var(--washi-deep); }
 .sekai-cols{
   display:flex; justify-content:center;
@@ -129,7 +178,7 @@
 .sekai-head{ text-align:center; margin-bottom:3rem; }
 .sekai-head p{ color:var(--sumi-soft); font-size:.95rem; margin-top:1rem; }
 
-/* ---------- 素敵会・イベント一覧 ---------- */
+/* ============ 素敵会・イベント一覧 ============ */
 .event-head{ text-align:center; }
 .event-lead{
   text-align:center; color:var(--sumi-soft);
@@ -195,7 +244,7 @@
   font-size:.84rem;
 }
 
-/* ---------- 紹介動画 ---------- */
+/* ============ 紹介動画 ============ */
 .movie{ background:var(--washi-deep); text-align:center; }
 .movie-frame{
   max-width:760px;
@@ -224,7 +273,7 @@
 }
 .movie-note{ margin-top:1.6rem; font-size:.82rem; color:var(--sumi-soft); }
 
-/* ---------- 参加CTA ---------- */
+/* ============ 参加CTA ============ */
 .join{
   text-align:center;
   background:
@@ -235,7 +284,23 @@
 .join .ig-note{ font-size:.82rem; margin-top:1.6rem; }
 </style>
 </head>
-<body>
+<body class="op-lock">
+
+<!-- ============ オープニング ============ -->
+<div id="opening" aria-hidden="true">
+  <div class="op-inner">
+    <div class="op-flower">
+      <svg viewBox="-70 -70 140 140">
+        <g class="petal-target petal-stagger"></g>
+        <circle r="5" fill="#EFE3C2" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="1s" begin="1.4s" fill="freeze"/>
+        </circle>
+      </svg>
+    </div>
+    <div class="op-name">こよりび</div>
+    <div class="op-latin">KOYORIBI</div>
+  </div>
+</div>
 
 <header class="site" id="siteHeader">
   <a class="brand" href="index.html" aria-label="こよりび トップページ">
@@ -255,16 +320,15 @@
 <!-- ============ HERO ============ -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-flower hero-load">
+    <div class="hero-flower hero-load d1">
       <svg viewBox="-70 -70 140 140" aria-label="こよりびのロゴ">
         <g class="petal-target"></g>
         <circle r="5" fill="#EFE3C2"/>
       </svg>
     </div>
     <div class="hero-copy">
-      <h1 class="main tate hero-load d2">木々が寄り添うことで、<br>生まれる光がある。</h1>
-      <p class="poem tate hero-load d3">人もまた、<br>誰かと出逢い、<br>想いを重ねることで<br>心に光が灯る。</p>
-      <p class="sub tate hero-load d4">ちょっと前向きになれる毎日を紡ぐ。</p>
+      <h1 class="line tate hero-load d2">木々が寄り添うことで、<br>生まれる光がある。</h1>
+      <p class="line poem tate hero-load d3">人もまた、<br>誰かと出逢い、<br>想いを重ねることで<br>心に光が灯る。</p>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true">SCROLL</div>
@@ -276,7 +340,7 @@
     <span class="eyebrow">Koyoribi</span>
     <p>
       こよりびは、人と人との出逢いを通じて、<br>
-      ちょっと前向きな毎日を紡ぐコミュニティです。
+      ちょっと前向きな毎日を紡ぐ場です。
     </p>
     <div class="more">
       <a class="link-line" href="philosophy.html">こよりびの想いを読む</a>
@@ -321,7 +385,7 @@
     <p class="event-lead reveal">
       こよりびが紡ぐ集いの時間、それが「素敵会」です。<br>
       互いの素敵な部分を見つけ、認め、応援する。<br>
-      受け取った光を、また次の誰かへ手渡していく時間。
+      受け取った灯りを、また次の誰かへ手渡していく時間。
     </p>
 
     <div class="event-grid">
@@ -456,19 +520,31 @@
 </footer>
 
 <script>
-/* ロゴの七枚花弁を生成(添付ロゴの金の階調を再現) */
+/* ロゴの七枚花弁を生成 */
 (function(){
   const colors = ["#B3913E","#D8C287","#8F7430","#E3CE93","#A08434","#CDB06A","#93783A"];
   const path = "M0 -12 C 13 -21, 23 -38, 19 -52 C 15 -66, -15 -66, -19 -52 C -23 -38, -13 -21, 0 -12 Z";
   document.querySelectorAll(".petal-target").forEach(g=>{
+    const stagger = g.classList.contains("petal-stagger");
     for(let i=0;i<7;i++){
       const p = document.createElementNS("http://www.w3.org/2000/svg","path");
       p.setAttribute("d", path);
       p.setAttribute("fill", colors[i]);
       p.setAttribute("transform", `rotate(${i*(360/7)})`);
+      if(stagger) p.style.animationDelay = (0.28 + i*0.16) + "s";
       g.appendChild(p);
     }
   });
+})();
+
+/* オープニング終了後にスクロールを解放 */
+(function(){
+  const op = document.getElementById("opening");
+  const unlock = ()=> document.body.classList.remove("op-lock");
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){ unlock(); return; }
+  setTimeout(unlock, 3900);
+  /* 念のためのフォールバック */
+  setTimeout(()=>{ if(op) op.style.display = "none"; }, 4600);
 })();
 
 /* スクロール出現 */
