@@ -118,7 +118,7 @@ body.op-lock{ overflow:hidden; }
 @keyframes heroin{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
 
 .scroll-cue{
-  position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+  position:absolute; bottom:2rem; left:0; right:0;
   font-family:var(--latin); font-size:.62rem; letter-spacing:.5em; text-indent:.5em;
   color:var(--kin); text-align:center;
   opacity:0; animation:heroin 1.6s ease 5.2s forwards;
@@ -217,10 +217,15 @@ body.op-lock{ overflow:hidden; }
   margin-bottom:1.8rem;
   flex:1;
 }
-.event-body .btn{
+.event-body .btn-apply{
   align-self:flex-start;
-  padding:.8rem 2.2rem;
-  font-size:.84rem;
+}
+.event-body .apply-note{
+  margin-top:.9rem;
+  font-size:.74rem;
+  letter-spacing:.08em;
+  color:var(--sumi-soft);
+  opacity:.85;
 }
 
 /* ============ 紹介動画 ============ */
@@ -252,15 +257,41 @@ body.op-lock{ overflow:hidden; }
 }
 .movie-note{ margin-top:1.6rem; font-size:.82rem; color:var(--sumi-soft); }
 
-/* ============ 参加CTA ============ */
-.join{
+/* ============ 一行CTA ============ */
+.ask{
   text-align:center;
-  background:
-    radial-gradient(600px 300px at 50% 120%, rgba(216,194,135,.22), transparent 70%),
-    var(--washi);
+  padding:clamp(4rem, 8vw, 6rem) 1.4rem;
 }
-.join p{ color:var(--sumi-soft); margin:1.6rem auto 3rem; max-width:32em; }
-.join .ig-note{ font-size:.82rem; margin-top:1.6rem; }
+.ask-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.9em;
+  font-size:clamp(.95rem, 2vw, 1.08rem);
+  letter-spacing:.2em;
+  color:var(--sumi);
+  padding-bottom:.6rem;
+  border-bottom:1px solid var(--line);
+  transition:color .4s, border-color .4s;
+}
+.ask-link .arrow{
+  color:var(--kin);
+  transition:transform .45s cubic-bezier(.25,.8,.3,1);
+}
+.ask-link .ig{
+  font-family:var(--latin);
+  font-size:.82em;
+  letter-spacing:.28em;
+  color:var(--kin-deep);
+}
+.ask-link:hover, .ask-link:focus-visible{
+  color:var(--kin-deep);
+  border-color:var(--kin);
+}
+.ask-link:hover .arrow{ transform:translateX(6px); }
+
+@media (max-width:420px){
+  .ask-link{ flex-wrap:wrap; justify-content:center; gap:.5em; letter-spacing:.12em; }
+}
 </style>
 </head>
 <body class="op-lock">
@@ -292,7 +323,7 @@ body.op-lock{ overflow:hidden; }
   <nav class="global" aria-label="サイト内メニュー">
     <a href="philosophy.html">想い</a>
     <a href="#sutekikai">集い</a>
-    <a href="#join">ご参加</a>
+    <a href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">ご参加</a>
   </nav>
 </header>
 
@@ -358,7 +389,8 @@ body.op-lock{ overflow:hidden; }
             人情深い大阪の皆さんと、想いや温かさ、繋がりが巡る時間に。
             お寿司の振る舞い、立食での交流、ビンゴ大会、そして想いを伝え合う「こよりびカード」。
           </p>
-          <a class="btn" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+          <a class="btn-apply" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+          <p class="apply-note">Instagram の DM もしくは投稿へのコメントにて</p>
         </div>
       </article>
 
@@ -374,7 +406,8 @@ body.op-lock{ overflow:hidden; }
             全員が、主役。ひとつの食卓を囲み、みんなが繋がる。
             大学生や社会人、プロの歌手、カメラマン、日本文化を継承する職人まで集う、バイタリティに溢れる一夜。
           </p>
-          <a class="btn" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+          <a class="btn-apply" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+          <p class="apply-note">Instagram の DM もしくは投稿へのコメントにて</p>
         </div>
       </article>
 
@@ -390,7 +423,8 @@ body.op-lock{ overflow:hidden; }
             秋の夜に、一発限定の特別な花火を打ち上げる。
             大切な人への感謝を想い、花火や縁日を自分たちの手でつくり上げて楽しむ会。
           </p>
-          <a class="btn" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+          <a class="btn-apply" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+          <p class="apply-note">Instagram の DM もしくは投稿へのコメントにて</p>
         </div>
       </article>
 
@@ -406,7 +440,8 @@ body.op-lock{ overflow:hidden; }
             “Re-Loved” ― 誰かの手に一度渡り、愛されたもの。
             その大切なものを次に繋げるマーケットをつくり、想いとモノが循環する一日を。
           </p>
-          <a class="btn" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+          <a class="btn-apply" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
+          <p class="apply-note">Instagram の DM もしくは投稿へのコメントにて</p>
         </div>
       </article>
 
@@ -443,22 +478,13 @@ body.op-lock{ overflow:hidden; }
   </div>
 </section>
 
-<!-- ============ 参加CTA ============ -->
-<section class="join" id="join">
-  <div class="wrap-narrow reveal">
-    <span class="eyebrow">Join</span>
-    <h2 class="section-title" style="display:inline-block;">ご参加を希望される方へ</h2>
-    <p>
-      肩書きや実績は、必要ありません。<br>
-      人の素敵な部分を見つけようとする心を、お持ちください。
-    </p>
-    <a class="btn" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">Instagram から申し込む</a>
-    <p class="ig-note">
-      Instagram の DM、または各イベント投稿へのコメントにて<br>
-      「参加希望」とお送りください。
-    </p>
-  </div>
-</section>
+<!-- ============ 一行CTA ============ -->
+<div class="rule" aria-hidden="true"></div>
+<div class="ask reveal">
+  <a class="ask-link" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">
+    こよりびについて聞いてみる<span class="arrow" aria-hidden="true">→</span><span class="ig">Instagram</span>
+  </a>
+</div>
 
 <footer class="site">
   <div class="mark">

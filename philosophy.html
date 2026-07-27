@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>想い | こよりび</title>
-<meta name="description" content="継灯しよう。世界には、まだ美しさがある。こよりびのブランドメッセージと、Mission・Vision・Value。">
+<meta name="description" content="継灯しよう。世界にはまだ美しさがある。こよりびのブランドメッセージと、Mission・Vision・Value。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
@@ -85,42 +85,8 @@
   .mvv-item{ grid-template-columns:1fr; gap:1.3rem; padding:2.8rem 0; }
 }
 
-/* ---------- 灯りを分かち合える人 ---------- */
-.people-lead{ text-align:center; margin-bottom:3.5rem; }
-.people-lead .big{
-  font-size:clamp(1.15rem, 2.6vw, 1.5rem);
-  font-weight:500;
-  margin-top:1.2rem;
-  line-height:2.3;
-}
-.people-list{ list-style:none; max-width:32em; margin:0 auto; }
-.people-list li{
-  padding:1.5rem 0 1.5rem 2rem;
-  position:relative;
-  border-bottom:1px solid var(--line);
-  font-size:1rem;
-  transition:padding-left .4s cubic-bezier(.25,.8,.3,1), color .4s;
-}
-.people-list li:hover{ padding-left:2.5rem; color:var(--kin-deep); }
-.people-list li::before{
-  content:"";
-  position:absolute; left:.2rem; top:2.15rem;
-  width:8px; height:8px;
-  background:var(--kin-pale);
-  border-radius:50% 50% 50% 0;
-  transform:rotate(-45deg);
-  transition:background .4s;
-}
-.people-list li:hover::before{ background:var(--kin); }
-.people-note{
-  text-align:center;
-  margin-top:3.2rem;
-  color:var(--sumi-soft);
-  line-height:2.5;
-}
-
 /* ---------- 灯し手 ---------- */
-.nakama{ background:var(--washi-deep); }
+.nakama{ background:var(--washi); }
 .nakama-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
@@ -130,7 +96,7 @@
   margin-top:1rem;
 }
 .nakama-cell{
-  background:var(--washi-deep);
+  background:var(--washi);
   padding:2.2rem 1.8rem;
   font-size:.92rem;
   line-height:2.1;
@@ -171,7 +137,7 @@
   <nav class="global" aria-label="サイト内メニュー">
     <a href="philosophy.html" class="current">想い</a>
     <a href="index.html#sutekikai">集い</a>
-    <a href="index.html#join">ご参加</a>
+    <a href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">ご参加</a>
   </nav>
 </header>
 
@@ -198,7 +164,7 @@
 
     <div class="keito">
       <p class="big">継灯しよう。</p>
-      <p class="sub"><span class="nb">世界には、</span><span class="nb">まだ美しさがある。</span></p>
+      <p class="sub"><span class="nb">世界にはまだ美しさがある</span></p>
     </div>
   </div>
 </section>
@@ -268,28 +234,7 @@
   </div>
 </section>
 
-<!-- ============ 灯りを分かち合える人 ============ -->
-<section>
-  <div class="wrap-narrow">
-    <div class="people-lead reveal">
-      <span class="eyebrow">For You</span>
-      <h2 class="section-title" style="display:inline-block;">灯りを分かち合える人</h2>
-      <p class="big">
-        <span class="nb">肩書きや実績のある人ではなく、</span><br>
-        <span class="nb">人の素敵な部分を</span><span class="nb">見つけようとする人。</span>
-      </p>
-    </div>
-    <ul class="people-list reveal">
-      <li>人の挑戦を、応援できる人</li>
-      <li>継灯の価値観に共感できる人</li>
-      <li>「損得ではなく、尊徳」で考動できる人</li>
-    </ul>
-    <p class="people-note reveal">
-      <span class="nb">完成された人である</span><span class="nb">必要はありません。</span><br>
-      <span class="nb">こよりびは、互いの存在によって、</span><span class="nb">少しずつ前を向いていく場所です。</span>
-    </p>
-  </div>
-</section>
+<div class="rule" aria-hidden="true"></div>
 
 <!-- ============ 灯し手 ============ -->
 <section class="nakama">
