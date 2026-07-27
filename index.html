@@ -154,29 +154,8 @@ body.op-lock{ overflow:hidden; }
 }
 .link-line:hover{ border-color:var(--kin); }
 
-/* ============ 世界観 ============ */
-.sekai{ background:var(--washi-deep); }
-.sekai-cols{
-  display:flex; justify-content:center;
-  gap:clamp(2rem, 7vw, 5.5rem);
-  margin-top:1.5rem;
-}
-.sekai-col{
-  text-align:center;
-  padding:1.6rem 1.4rem;
-  transition:transform .5s cubic-bezier(.25,.8,.3,1), background .5s;
-  border-radius:2px;
-}
-.sekai-col:hover{ transform:translateY(-6px); background:rgba(255,255,255,.55); }
-.sekai-col .word{
-  font-size:clamp(1.3rem, 2.6vw, 1.6rem);
-  font-weight:500;
-  height:9.5em;
-  margin:0 auto;
-}
-.sekai-col .note{ margin-top:1.6rem; font-size:.82rem; color:var(--sumi-soft); line-height:2; }
-.sekai-head{ text-align:center; margin-bottom:3rem; }
-.sekai-head p{ color:var(--sumi-soft); font-size:.95rem; margin-top:1rem; }
+/* 折り返し単位(スマホで不自然な改行を防ぐ) */
+.nb{ display:inline-block; }
 
 /* ============ 素敵会・イベント一覧 ============ */
 .event-head{ text-align:center; }
@@ -350,31 +329,6 @@ body.op-lock{ overflow:hidden; }
 
 <div class="rule" aria-hidden="true"></div>
 
-<!-- ============ 世界観 ============ -->
-<section class="sekai">
-  <div class="wrap reveal">
-    <div class="sekai-head">
-      <span class="eyebrow">Atmosphere</span>
-      <h2 class="section-title" style="display:inline-block;">大切にしている空気</h2>
-      <p>過剰に説明されなくても、入った瞬間に安心できる場所を。</p>
-    </div>
-    <div class="sekai-cols">
-      <div class="sekai-col reveal">
-        <div class="word tate">静けさ</div>
-        <p class="note">急かされない、<br>ゆったりとした時間。</p>
-      </div>
-      <div class="sekai-col reveal">
-        <div class="word tate">温かさ</div>
-        <p class="note">一人ひとりを仲間として<br>迎えるおもてなし。</p>
-      </div>
-      <div class="sekai-col reveal">
-        <div class="word tate">余白</div>
-        <p class="note">詰め込みすぎない、<br>心がほどける間。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ 素敵会・今後の集い ============ -->
 <section id="sutekikai">
   <div class="wrap">
@@ -383,9 +337,11 @@ body.op-lock{ overflow:hidden; }
       <h2 class="section-title">素敵会 ― これからの集い</h2>
     </div>
     <p class="event-lead reveal">
-      こよりびが紡ぐ集いの時間、それが「素敵会」です。<br>
-      互いの素敵な部分を見つけ、認め、応援する。<br>
-      受け取った灯りを、また次の誰かへ手渡していく時間。
+      <span class="nb">こよりびが紡ぐ集いの時間、</span><br>
+      <span class="nb">それが「素敵会」です。</span><br>
+      <span class="nb">互いの素敵な部分を見つけ、</span><span class="nb">応援する。</span><br>
+      <span class="nb">受け取った灯りを、</span><br>
+      <span class="nb">また次の誰かへ</span><span class="nb">手渡していく時間。</span>
     </p>
 
     <div class="event-grid">
