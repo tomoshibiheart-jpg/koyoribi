@@ -269,17 +269,18 @@ body.op-lock{ overflow:hidden; }
 .gallery-head p{ color:var(--sumi-soft); font-size:.93rem; margin-top:1rem; line-height:2.2; }
 .gallery-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap:clamp(.7rem, 1.6vw, 1.1rem);
+  max-width:880px;
+  margin:0 auto;
 }
 .gallery-grid figure{
   margin:0;
   overflow:hidden;
   position:relative;
-  aspect-ratio:4/3;
+  aspect-ratio:1/1;
   background:#E5DFD2;
 }
-.gallery-grid figure.tall{ aspect-ratio:3/4; }
 .gallery-grid img{
   width:100%; height:100%; object-fit:cover;
   transition:transform 1.5s cubic-bezier(.2,.7,.2,1), filter .6s;
@@ -290,9 +291,8 @@ body.op-lock{ overflow:hidden; }
   pointer-events:none;
 }
 .gallery-grid figure:hover img{ transform:scale(1.06); }
-@media (min-width:760px){
-  .gallery-grid{ grid-template-columns:repeat(4, 1fr); }
-  .gallery-grid figure:nth-child(1){ grid-column:span 2; grid-row:span 2; aspect-ratio:1/1; }
+@media (min-width:560px){
+  .gallery-grid{ grid-template-columns:repeat(2, 1fr); }
 }
 
 /* ============ 写真の帯 ============ */
@@ -581,11 +581,7 @@ body.op-lock{ overflow:hidden; }
       <figure><img src="gallery-02.jpg" alt="食卓を囲んで寿司を握る素敵会の参加者たち" loading="lazy"></figure>
       <figure><img src="gallery-01.jpg" alt="こよりびの鉢巻をつけて寿司を握る参加者" loading="lazy"></figure>
       <figure><img src="gallery-03.jpg" alt="会場で談笑する参加者たち" loading="lazy"></figure>
-      <figure><img src="gallery-04.jpg" alt="テーブルに並べられたこよりびカード" loading="lazy"></figure>
-      <figure class="tall"><img src="gallery-05.jpg" alt="花束を手に笑顔の参加者" loading="lazy"></figure>
-      <figure class="tall"><img src="gallery-07.jpg" alt="座敷で食卓を囲む参加者たち" loading="lazy"></figure>
-      <figure class="tall"><img src="gallery-08.jpg" alt="座敷に集まった参加者たちの集合写真" loading="lazy"></figure>
-      <figure><img src="gallery-06.jpg" alt="会の終わりに店の前で撮影した集合写真" loading="lazy"></figure>
+      <figure><img src="gallery-08.jpg" alt="座敷に集まった参加者たちの集合写真" loading="lazy"></figure>
     </div>
   </div>
 </section>
