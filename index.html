@@ -10,19 +10,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
+/* 折り返し単位(スマホで不自然な改行を防ぐ) */
+.nb{ display:inline-block; }
+
 /* ============ オープニング(灯りがともる) ============ */
 #opening{
   position:fixed; inset:0; z-index:100;
+  width:100%; height:100%;
   background:var(--washi);
-  display:grid; place-items:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   animation:openOut 1.1s ease 2.9s forwards;
 }
-#opening .op-inner{ text-align:center; }
+#opening .op-inner{
+  width:100%;
+  max-width:100%;
+  text-align:center;
+  padding:0 1.2rem;
+}
 #opening .op-flower{
   width:clamp(120px, 22vw, 165px);
-  margin:0 auto;
+  margin-left:auto; margin-right:auto;
   position:relative;
 }
+#opening .op-flower svg{ display:block; width:100%; height:auto; }
 #opening .op-flower::before{
   content:"";
   position:absolute; inset:-45%;
@@ -45,33 +57,23 @@
   opacity:0;
   animation:opFade 1.3s ease 2.2s forwards;
 }
-/* 花弁が一枚ずつ灯る */
-#opening .op-flower path{
-  opacity:0;
-  transform-box:fill-box;
-  transform-origin:50% 100%;
-  animation:petalIn .95s cubic-bezier(.2,.8,.3,1) forwards;
-}
-@keyframes petalIn{
-  from{ opacity:0; }
-  to{ opacity:1; }
-}
+#opening .op-flower path{ opacity:0; animation:petalIn .95s cubic-bezier(.2,.8,.3,1) forwards; }
+@keyframes petalIn{ from{ opacity:0; } to{ opacity:1; } }
 @keyframes opGlow{ to{ opacity:1; } }
 @keyframes opFade{ to{ opacity:1; } }
 @keyframes openOut{ to{ opacity:0; visibility:hidden; } }
 
-/* オープニング中は背面をスクロールさせない */
 body.op-lock{ overflow:hidden; }
 
-@media (prefers-reduced-motion: reduce){
-  #opening{ display:none; }
-}
+@media (prefers-reduced-motion: reduce){ #opening{ display:none; } }
 
 /* ============ Hero ============ */
 .hero{
   min-height:100svh;
-  display:grid;
-  place-items:center;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   position:relative;
   padding:6.5rem 1.2rem 5rem;
 }
@@ -79,10 +81,15 @@ body.op-lock{ overflow:hidden; }
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:clamp(2rem, 7vw, 5.5rem);
+  gap:clamp(1.8rem, 6vw, 5rem);
+  max-width:100%;
 }
-.hero-flower{ position:relative; width:clamp(150px, 26vw, 235px); flex-shrink:0; }
-.hero-flower svg{ cursor:pointer; }
+.hero-flower{
+  position:relative;
+  width:clamp(140px, 24vw, 225px);
+  flex-shrink:0;
+}
+.hero-flower svg{ display:block; width:100%; height:auto; cursor:pointer; }
 .hero-flower:hover svg{ transform:rotate(360deg); }
 .hero-flower::before{
   content:"";
@@ -96,15 +103,15 @@ body.op-lock{ overflow:hidden; }
   50%{ opacity:.95; transform:scale(1.05); }
 }
 
-/* 縦書き:右から 主文2行 → 詩4行(同じ大きさ・太さ) */
 .hero-copy{
   display:flex;
   flex-direction:row-reverse;
   align-items:flex-start;
-  gap:clamp(1.3rem, 3.2vw, 2.4rem);
+  justify-content:center;
+  gap:clamp(1.2rem, 3vw, 2.4rem);
 }
 .hero-copy .line{
-  font-size:clamp(1.15rem, 2.7vw, 1.6rem);
+  font-size:clamp(1.1rem, 2.6vw, 1.6rem);
   font-weight:500;
   color:var(--sumi);
   white-space:nowrap;
@@ -135,10 +142,11 @@ body.op-lock{ overflow:hidden; }
   .hero-load, .scroll-cue{ opacity:1; animation:none; }
 }
 
-@media (max-width:560px){
-  .hero-inner{ flex-direction:column; gap:2.4rem; }
-  .hero-flower{ width:140px; }
-  .hero-copy .poem{ padding-top:1.4em; }
+@media (max-width:600px){
+  .hero-inner{ flex-direction:column; gap:2.2rem; }
+  .hero-flower{ width:135px; }
+  .hero-copy .poem{ padding-top:1.3em; }
+  .hero-copy .line{ font-size:1.02rem; }
 }
 
 /* ============ 序 ============ */
@@ -146,16 +154,13 @@ body.op-lock{ overflow:hidden; }
 .intro p{ font-size:clamp(1rem, 2vw, 1.12rem); line-height:2.6; }
 .intro .more{ margin-top:3rem; }
 .link-line{
-  font-size:.9rem; letter-spacing:.28em;
+  font-size:.9rem; letter-spacing:.28em; text-indent:.28em;
   color:var(--kin-deep);
   border-bottom:1px solid var(--line);
   padding-bottom:.35rem;
   transition:border-color .3s;
 }
 .link-line:hover{ border-color:var(--kin); }
-
-/* 折り返し単位(スマホで不自然な改行を防ぐ) */
-.nb{ display:inline-block; }
 
 /* ============ 素敵会・イベント一覧 ============ */
 .event-head{ text-align:center; }
@@ -166,7 +171,7 @@ body.op-lock{ overflow:hidden; }
 }
 .event-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 290px), 1fr));
   gap:clamp(1.6rem, 3.5vw, 2.6rem);
 }
 .event-card{
@@ -176,25 +181,26 @@ body.op-lock{ overflow:hidden; }
   display:flex;
   flex-direction:column;
   overflow:hidden;
+  min-width:0;
 }
 .event-card::before, .event-card::after{
   content:""; position:absolute; width:14px; height:14px; z-index:2;
 }
 .event-card::before{ top:-1px; left:-1px; border-top:1px solid var(--kin); border-left:1px solid var(--kin); }
 .event-card::after{ bottom:-1px; right:-1px; border-bottom:1px solid var(--kin); border-right:1px solid var(--kin); }
-.event-photo{ overflow:hidden; aspect-ratio:1/1; }
+.event-photo{ overflow:hidden; aspect-ratio:1/1; position:relative; }
 .event-photo img{
   width:100%; height:100%; object-fit:cover;
-  transition:transform 1.4s cubic-bezier(.2,.7,.2,1);
+  transition:transform 1.4s cubic-bezier(.2,.7,.2,1), filter .6s;
 }
-.event-card:hover .event-photo img{ transform:scale(1.045); }
+.event-card:not(.is-past):hover .event-photo img{ transform:scale(1.045); }
 .event-body{
   padding:1.8rem 1.6rem 2rem;
   display:flex; flex-direction:column; flex:1;
 }
 .event-date{
   font-family:var(--latin);
-  font-size:.78rem; letter-spacing:.34em;
+  font-size:.78rem; letter-spacing:.3em;
   color:var(--kin);
   margin-bottom:.7rem;
 }
@@ -206,7 +212,7 @@ body.op-lock{ overflow:hidden; }
   margin-left:.8em;
 }
 .event-name{
-  font-size:clamp(1.12rem, 2.2vw, 1.3rem);
+  font-size:clamp(1.1rem, 2.2vw, 1.3rem);
   letter-spacing:.12em;
   margin-bottom:1rem;
   line-height:1.8;
@@ -214,18 +220,146 @@ body.op-lock{ overflow:hidden; }
 .event-desc{
   font-size:.88rem; color:var(--sumi-soft);
   line-height:2.1;
-  margin-bottom:1.8rem;
+  margin-bottom:1.6rem;
   flex:1;
 }
-.event-body .btn-apply{
-  align-self:flex-start;
-}
-.event-body .apply-note{
-  margin-top:.9rem;
-  font-size:.74rem;
-  letter-spacing:.08em;
+.event-actions{ display:flex; flex-direction:column; gap:.7rem; align-items:stretch; }
+.event-actions .apply-note{
+  font-size:.72rem;
+  letter-spacing:.06em;
   color:var(--sumi-soft);
   opacity:.85;
+  text-align:center;
+  margin-top:.2rem;
+}
+
+/* --- 終了した会 --- */
+.event-card.is-past{ background:rgba(240,238,233,.7); border-color:rgba(120,115,105,.22); }
+.event-card.is-past::before, .event-card.is-past::after{ border-color:rgba(120,115,105,.4); }
+.event-card.is-past .event-photo img{ filter:grayscale(1) opacity(.55); }
+.event-card.is-past .event-date{ color:#8A857B; }
+.event-card.is-past .event-name,
+.event-card.is-past .event-desc,
+.event-card.is-past .event-place{ color:#8A857B; }
+.past-badge{
+  position:absolute; z-index:3;
+  top:1rem; left:1rem;
+  background:rgba(70,66,60,.86);
+  color:#EDE9E0;
+  font-size:.74rem;
+  letter-spacing:.24em; text-indent:.24em;
+  padding:.45rem 1.1rem;
+}
+.btn-done{
+  display:block;
+  text-align:center;
+  background:transparent;
+  border:1px solid rgba(120,115,105,.35);
+  color:#8A857B;
+  padding:.9rem 1rem;
+  font-size:.86rem;
+  letter-spacing:.2em; text-indent:.2em;
+  cursor:not-allowed;
+  pointer-events:none;
+}
+
+/* ============ これまでの素敵会(写真) ============ */
+.gallery{ background:var(--washi-deep); }
+.gallery-head{ text-align:center; margin-bottom:3.4rem; }
+.gallery-head p{ color:var(--sumi-soft); font-size:.93rem; margin-top:1rem; line-height:2.2; }
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap:clamp(.7rem, 1.6vw, 1.1rem);
+}
+.gallery-grid figure{
+  margin:0;
+  overflow:hidden;
+  position:relative;
+  aspect-ratio:4/3;
+  background:#E5DFD2;
+}
+.gallery-grid figure.tall{ aspect-ratio:3/4; }
+.gallery-grid img{
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 1.5s cubic-bezier(.2,.7,.2,1), filter .6s;
+}
+.gallery-grid figure::after{
+  content:""; position:absolute; inset:0;
+  box-shadow:inset 0 0 0 1px rgba(143,116,48,.22);
+  pointer-events:none;
+}
+.gallery-grid figure:hover img{ transform:scale(1.06); }
+@media (min-width:760px){
+  .gallery-grid{ grid-template-columns:repeat(4, 1fr); }
+  .gallery-grid figure:nth-child(1){ grid-column:span 2; grid-row:span 2; aspect-ratio:1/1; }
+}
+
+/* ============ 写真の帯 ============ */
+.band{
+  position:relative;
+  height:clamp(240px, 40vh, 400px);
+  background-image:
+    linear-gradient(rgba(35,32,27,.52), rgba(35,32,27,.52)),
+    url("band.jpg");
+  background-size:cover;
+  background-position:center 32%;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  padding:0 1.4rem;
+}
+.band p{
+  color:#F6F1E6;
+  font-size:clamp(1.05rem, 2.6vw, 1.45rem);
+  letter-spacing:.2em; text-indent:.2em;
+  line-height:2.4;
+  text-shadow:0 2px 22px rgba(0,0,0,.5);
+}
+
+/* ============ 参加者の声 ============ */
+.voices-head{ text-align:center; margin-bottom:3.6rem; }
+.voices-head p{ color:var(--sumi-soft); font-size:.93rem; margin-top:1rem; }
+.voices{
+  columns:2;
+  column-gap:clamp(1.2rem, 2.6vw, 2rem);
+}
+@media (max-width:720px){ .voices{ columns:1; } }
+.voice{
+  break-inside:avoid;
+  margin:0 0 clamp(1.2rem, 2.6vw, 2rem);
+  padding:2rem 1.7rem 1.8rem;
+  background:rgba(255,255,255,.62);
+  border:1px solid var(--line);
+  position:relative;
+}
+.voice::before{
+  content:"“";
+  position:absolute; top:.1rem; left:1rem;
+  font-family:var(--latin);
+  font-size:3.4rem;
+  color:var(--kin-pale);
+  line-height:1;
+}
+.voice .strong{
+  display:block;
+  font-size:1.02rem;
+  font-weight:500;
+  color:var(--sumi);
+  line-height:2.2;
+  margin-bottom:.9rem;
+}
+.voice p{
+  font-size:.9rem;
+  color:var(--sumi-soft);
+  line-height:2.3;
+  margin:0;
+}
+.voice .who{
+  display:block;
+  margin-top:1.4rem;
+  font-size:.76rem;
+  letter-spacing:.16em;
+  color:var(--kin-deep);
 }
 
 /* ============ 紹介動画 ============ */
@@ -243,6 +377,7 @@ body.op-lock{ overflow:hidden; }
   position:relative;
 }
 .movie-frame .flower-mini{ width:56px; margin:0 auto 1.2rem; opacity:.95; }
+.movie-frame .flower-mini svg{ display:block; width:100%; height:auto; }
 .movie-frame .soon{
   font-family:var(--latin);
   color:var(--kin-pale);
@@ -252,16 +387,13 @@ body.op-lock{ overflow:hidden; }
 .movie-frame .soon-ja{
   color:rgba(249,246,239,.55);
   font-size:.78rem;
-  letter-spacing:.24em;
+  letter-spacing:.24em; text-indent:.24em;
   margin-top:1rem;
 }
 .movie-note{ margin-top:1.6rem; font-size:.82rem; color:var(--sumi-soft); }
 
 /* ============ 一行CTA ============ */
-.ask{
-  text-align:center;
-  padding:clamp(4rem, 8vw, 6rem) 1.4rem;
-}
+.ask{ text-align:center; padding:clamp(4rem, 8vw, 6rem) 1.4rem; }
 .ask-link{
   display:inline-flex;
   align-items:center;
@@ -273,22 +405,15 @@ body.op-lock{ overflow:hidden; }
   border-bottom:1px solid var(--line);
   transition:color .4s, border-color .4s;
 }
-.ask-link .arrow{
-  color:var(--kin);
-  transition:transform .45s cubic-bezier(.25,.8,.3,1);
-}
+.ask-link .arrow{ color:var(--kin); transition:transform .45s cubic-bezier(.25,.8,.3,1); }
 .ask-link .ig{
   font-family:var(--latin);
   font-size:.82em;
-  letter-spacing:.28em;
+  letter-spacing:.28em; text-indent:.28em;
   color:var(--kin-deep);
 }
-.ask-link:hover, .ask-link:focus-visible{
-  color:var(--kin-deep);
-  border-color:var(--kin);
-}
+.ask-link:hover, .ask-link:focus-visible{ color:var(--kin-deep); border-color:var(--kin); }
 .ask-link:hover .arrow{ transform:translateX(6px); }
-
 @media (max-width:420px){
   .ask-link{ flex-wrap:wrap; justify-content:center; gap:.5em; letter-spacing:.12em; }
 }
@@ -323,7 +448,7 @@ body.op-lock{ overflow:hidden; }
   <nav class="global" aria-label="サイト内メニュー">
     <a href="philosophy.html">想い</a>
     <a href="#sutekikai">集い</a>
-    <a href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">ご参加</a>
+    <a href="#voices">声</a>
   </nav>
 </header>
 
@@ -360,7 +485,7 @@ body.op-lock{ overflow:hidden; }
 
 <div class="rule" aria-hidden="true"></div>
 
-<!-- ============ 素敵会・今後の集い ============ -->
+<!-- ============ 素敵会・これからの集い ============ -->
 <section id="sutekikai">
   <div class="wrap">
     <div class="event-head reveal">
@@ -375,10 +500,10 @@ body.op-lock{ overflow:hidden; }
       <span class="nb">また次の誰かへ</span><span class="nb">手渡していく時間。</span>
     </p>
 
-    <div class="event-grid">
+    <div class="event-grid" id="eventGrid">
 
       <!-- 8/8 大阪「巡」 -->
-      <article class="event-card hover-lift reveal">
+      <article class="event-card hover-lift reveal" data-end="2026-08-08" data-form="meguri">
         <div class="event-photo">
           <img src="event-meguri.jpg" alt="素敵会 in 大阪「巡」 8月8日(土)17:00開催の告知" loading="lazy">
         </div>
@@ -389,13 +514,12 @@ body.op-lock{ overflow:hidden; }
             人情深い大阪の皆さんと、想いや温かさ、繋がりが巡る時間に。
             お寿司の振る舞い、立食での交流、ビンゴ大会、そして想いを伝え合う「こよりびカード」。
           </p>
-          <a class="btn-apply" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
-          <p class="apply-note">Instagram の DM もしくは投稿へのコメントにて</p>
+          <div class="event-actions"></div>
         </div>
       </article>
 
       <!-- 10/3 The Table -->
-      <article class="event-card hover-lift reveal">
+      <article class="event-card hover-lift reveal" data-end="2026-10-03" data-form="thetable">
         <div class="event-photo">
           <img src="event-thetable.jpg" alt="The Table presented by こよりび 10月3日(土)18:00開催の告知" loading="lazy">
         </div>
@@ -406,15 +530,14 @@ body.op-lock{ overflow:hidden; }
             全員が、主役。ひとつの食卓を囲み、みんなが繋がる。
             大学生や社会人、プロの歌手、カメラマン、日本文化を継承する職人まで集う、バイタリティに溢れる一夜。
           </p>
-          <a class="btn-apply" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
-          <p class="apply-note">Instagram の DM もしくは投稿へのコメントにて</p>
+          <div class="event-actions"></div>
         </div>
       </article>
 
       <!-- 11/21 一燈 -->
-      <article class="event-card hover-lift reveal">
+      <article class="event-card hover-lift reveal" data-end="2026-11-21" data-form="itto">
         <div class="event-photo">
-          <img src="event-itto.jpg" alt="素敵会「一燈」 11月21日(土)開催の告知" loading="lazy">
+          <img src="event-itto.jpg" alt="素敵会「一燈」 11月21日(土)18:00開催の告知" loading="lazy">
         </div>
         <div class="event-body">
           <p class="event-date">2026.11.21 SAT 18:00-<span class="event-place">東京</span></p>
@@ -423,13 +546,12 @@ body.op-lock{ overflow:hidden; }
             秋の夜に、一発限定の特別な花火を打ち上げる。
             大切な人への感謝を想い、花火や縁日を自分たちの手でつくり上げて楽しむ会。
           </p>
-          <a class="btn-apply" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
-          <p class="apply-note">Instagram の DM もしくは投稿へのコメントにて</p>
+          <div class="event-actions"></div>
         </div>
       </article>
 
       <!-- 12/19 Re-Loved Market -->
-      <article class="event-card hover-lift reveal">
+      <article class="event-card hover-lift reveal" data-end="2026-12-19" data-form="reloved">
         <div class="event-photo">
           <img src="event-reloved.jpg" alt="素敵会「Re-Loved Market」 12月19日(土)18:00開催の告知" loading="lazy">
         </div>
@@ -440,10 +562,97 @@ body.op-lock{ overflow:hidden; }
             “Re-Loved” ― 誰かの手に一度渡り、愛されたもの。
             その大切なものを次に繋げるマーケットをつくり、想いとモノが循環する一日を。
           </p>
-          <a class="btn-apply" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">参加を申し込む</a>
-          <p class="apply-note">Instagram の DM もしくは投稿へのコメントにて</p>
+          <div class="event-actions"></div>
         </div>
       </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ これまでの素敵会(写真) ============ -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="gallery-head reveal">
+      <span class="eyebrow">Moments</span>
+      <h2 class="section-title" style="display:inline-block;">これまでの素敵会</h2>
+      <p>
+        <span class="nb">お寿司を握り、カードに想いを書き、</span><br>
+        <span class="nb">初対面のはずの誰かと、</span><span class="nb">同じ食卓を囲む。</span>
+      </p>
+    </div>
+    <div class="gallery-grid reveal">
+      <figure><img src="gallery-02.jpg" alt="食卓を囲んで寿司を握る素敵会の参加者たち" loading="lazy"></figure>
+      <figure><img src="gallery-01.jpg" alt="こよりびの鉢巻をつけて寿司を握る参加者" loading="lazy"></figure>
+      <figure><img src="gallery-03.jpg" alt="会場で談笑する参加者たち" loading="lazy"></figure>
+      <figure><img src="gallery-04.jpg" alt="テーブルに並べられたこよりびカード" loading="lazy"></figure>
+      <figure class="tall"><img src="gallery-05.jpg" alt="花束を手に笑顔の参加者" loading="lazy"></figure>
+      <figure class="tall"><img src="gallery-07.jpg" alt="座敷で食卓を囲む参加者たち" loading="lazy"></figure>
+      <figure class="tall"><img src="gallery-08.jpg" alt="座敷に集まった参加者たちの集合写真" loading="lazy"></figure>
+      <figure><img src="gallery-06.jpg" alt="会の終わりに店の前で撮影した集合写真" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 写真の帯 ============ -->
+<div class="band">
+  <p>
+    <span class="nb">この人と出逢えてよかった。</span><br>
+    <span class="nb">今日ここに来てよかった。</span>
+  </p>
+</div>
+
+<!-- ============ 参加者の声 ============ -->
+<section id="voices">
+  <div class="wrap">
+    <div class="voices-head reveal">
+      <span class="eyebrow">Voices</span>
+      <h2 class="section-title" style="display:inline-block;">参加者の声</h2>
+      <p>素敵会に参加された方から届いた言葉です。</p>
+    </div>
+
+    <div class="voices">
+
+      <blockquote class="voice reveal">
+        <span class="strong">まだこんなに素敵な人たちがいるんだ、自分も出会えるんだっていう感動の気持ち。</span>
+        <p>
+          深い話をできる心地よくて幸せな気持ち。
+          『今』を純粋に楽しめた屈託のない童心に帰れたような気持ち。
+          色んな感情を感じることができた会で、間違いなく最高でした。
+        </p>
+      </blockquote>
+
+      <blockquote class="voice reveal">
+        <span class="strong">それぞれが色んな方向で頑張ってて刺激になる良い機会やった！</span>
+        <p>素敵なご縁を繋げることが出来るよう、まずは自分の出来ること頑張るわ！</p>
+      </blockquote>
+
+      <blockquote class="voice reveal">
+        <p style="margin-bottom:.9rem;">たくさんの刺激を受けました！</p>
+        <span class="strong">大学生の自分がこんな色々な経験をされてる方のお話を聞かせていただく場に飛び込めたこと、すごく楽しかったです！</span>
+        <p>
+          お寿司作りやコースター、カードの送りあいとか、すごく相手を知ろうって気持ちに溢れる企画で、
+          ぜひまた参加させてください！
+        </p>
+      </blockquote>
+
+      <blockquote class="voice reveal">
+        <p style="margin-bottom:.9rem;">ほんまに楽しかった。こんな人数が集まるのもすごいことやし、</p>
+        <span class="strong">みんなそれぞれ軸を持った人が居て、勉強になりました。</span>
+      </blockquote>
+
+      <blockquote class="voice reveal">
+        <p style="margin-bottom:.9rem;">今まで陸上の繋がりでしか人と関わる機会が無く、</p>
+        <span class="strong">今回いろんなキャリアの人の話を聞く事が出来て、純粋に楽しかったです。</span>
+      </blockquote>
+
+      <blockquote class="voice reveal">
+        <span class="strong">めっちゃ楽しくて、みんなも楽しそうで、良かった！</span>
+        <p>
+          こよりびカードも、なかなか直接口で言うには照れくさいところも伝えることができるし、
+          凄い良かった！大切にします！
+        </p>
+      </blockquote>
 
     </div>
   </div>
@@ -502,6 +711,21 @@ body.op-lock{ overflow:hidden; }
 </footer>
 
 <script>
+/* ==========================================================
+   ★★★ ここだけ編集すれば申し込みフォームが切り替わります ★★★
+   Googleフォームを作ったら、対応する会の "" の中にURLを貼る。
+   空のままなら「Googleフォーム」ボタンは自動で表示されません。
+   ========================================================== */
+const INSTAGRAM_URL = "https://www.instagram.com/koyoribi.jp/";
+const FORM_URLS = {
+  meguri:   "",   // 素敵会 in 大阪「巡」
+  thetable: "",   // The Table
+  itto:     "",   // 素敵会「一燈」
+  reloved:  ""    // Re-Loved Market
+};
+/* ========================================================== */
+
+
 /* ロゴの七枚花弁を生成 */
 (function(){
   const colors = ["#B3913E","#D8C287","#8F7430","#E3CE93","#A08434","#CDB06A","#93783A"];
@@ -519,13 +743,69 @@ body.op-lock{ overflow:hidden; }
   });
 })();
 
+/* イベントの申し込みボタン生成 + 終了判定 */
+(function(){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const grid = document.getElementById("eventGrid");
+
+  document.querySelectorAll(".event-card").forEach(card=>{
+    const endStr  = card.dataset.end;
+    const formKey = card.dataset.form;
+    const actions = card.querySelector(".event-actions");
+    const end = new Date(endStr + "T23:59:59");
+    const isPast = end < today;
+
+    if(isPast){
+      card.classList.add("is-past");
+      const badge = document.createElement("span");
+      badge.className = "past-badge";
+      badge.textContent = "終了しました";
+      card.querySelector(".event-photo").appendChild(badge);
+
+      const done = document.createElement("span");
+      done.className = "btn-done";
+      done.textContent = "受付終了";
+      actions.appendChild(done);
+
+      /* 終了した会は一覧の最後へ移動 */
+      grid.appendChild(card);
+      return;
+    }
+
+    /* Instagram(主導線) */
+    const ig = document.createElement("a");
+    ig.className = "btn-apply";
+    ig.href = INSTAGRAM_URL;
+    ig.target = "_blank"; ig.rel = "noopener";
+    ig.textContent = "Instagram で申し込む";
+    actions.appendChild(ig);
+
+    /* Googleフォーム(URLが入っている時だけ表示) */
+    const formUrl = FORM_URLS[formKey];
+    if(formUrl){
+      const gf = document.createElement("a");
+      gf.className = "btn-form";
+      gf.href = formUrl;
+      gf.target = "_blank"; gf.rel = "noopener";
+      gf.textContent = "フォームで申し込む";
+      actions.appendChild(gf);
+    }
+
+    const note = document.createElement("p");
+    note.className = "apply-note";
+    note.textContent = formUrl
+      ? "DM・コメント、またはフォームからお申し込みください"
+      : "Instagram の DM もしくは投稿へのコメントにて";
+    actions.appendChild(note);
+  });
+})();
+
 /* オープニング終了後にスクロールを解放 */
 (function(){
   const op = document.getElementById("opening");
   const unlock = ()=> document.body.classList.remove("op-lock");
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){ unlock(); return; }
   setTimeout(unlock, 3900);
-  /* 念のためのフォールバック */
   setTimeout(()=>{ if(op) op.style.display = "none"; }, 4600);
 })();
 

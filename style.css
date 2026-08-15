@@ -238,3 +238,43 @@ footer.site .mark:hover svg{ transform:rotate(360deg); }
 }
 .btn-apply:hover::after{ animation:shine .9s ease forwards; }
 @keyframes shine{ to{ left:130%; } }
+
+/* ---------- 横スクロール防止(スマホの中央ズレ対策) ---------- */
+html, body{
+  max-width:100%;
+  overflow-x:hidden;
+}
+.wrap, .wrap-narrow{ width:100%; }
+section, header.site, footer.site{ max-width:100%; }
+
+/* ---------- フォーム申し込みボタン(副導線) ---------- */
+.btn-form{
+  display:block;
+  text-align:center;
+  background:transparent;
+  border:1px solid var(--kin);
+  color:var(--kin-deep);
+  padding:.85rem 1rem;
+  font-size:.86rem;
+  letter-spacing:.2em;
+  text-indent:.2em;
+  transition:background .35s, color .35s, transform .35s cubic-bezier(.25,.8,.3,1);
+}
+.btn-form:hover, .btn-form:focus-visible{
+  background:var(--kin);
+  color:var(--washi);
+  transform:translateY(-2px);
+}
+
+/* 申し込みボタンをカード幅いっぱいに */
+.event-actions .btn-apply{
+  display:block;
+  text-align:center;
+  padding:.95rem 1rem;
+}
+
+/* 終了した会はホバーで浮かせない */
+.event-card.is-past.hover-lift:hover{
+  transform:none;
+  box-shadow:none;
+}
