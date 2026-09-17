@@ -127,9 +127,56 @@
       </p>
     </div>
 
-    <ul class="intro-chips reveal" aria-label="この日の空気">
-      <li>灯り</li><li>音楽</li><li>手づくり</li><li>対話</li><li>遊び</li><li>出会い</li>
-    </ul>
+    <!-- 提灯と花火のイラスト（CSS/SVGアニメーション） -->
+    <div class="intro-scene reveal" aria-hidden="true">
+      <span class="sc-star a"></span><span class="sc-star b"></span>
+      <span class="sc-star c"></span><span class="sc-star d"></span>
+      <span class="sc-star e"></span>
+
+      <div class="sc-fw f1"></div>
+      <div class="sc-fw f2"></div>
+      <div class="sc-fw f3"></div>
+
+      <div class="sc-wire">
+        <span class="sc-lantern"></span><span class="sc-lantern"></span>
+        <span class="sc-lantern"></span><span class="sc-lantern"></span>
+        <span class="sc-lantern"></span><span class="sc-lantern"></span>
+        <span class="sc-lantern"></span>
+      </div>
+
+      <svg class="sc-people" viewBox="0 0 400 76" preserveAspectRatio="xMidYMax meet">
+        <!-- 大人と子どものシルエット -->
+        <g fill="#0E0D14">
+          <!-- 大人A -->
+          <circle cx="78" cy="30" r="7"/>
+          <path d="M71 40h14l4 36h-7l-2-18-2 18h-7z"/>
+          <!-- 子どもA（走る） -->
+          <circle cx="104" cy="44" r="5.5"/>
+          <path d="M98 51h12l2 25h-5l-2-11-3 11h-5z"/>
+          <path d="M110 55l9-5 2 3-9 6z"/>
+          <!-- 子どもB -->
+          <circle cx="146" cy="46" r="5"/>
+          <path d="M141 52h10l2 24h-4l-2-10-3 10h-4z"/>
+          <!-- 大人B（手をつなぐ） -->
+          <circle cx="168" cy="29" r="7"/>
+          <path d="M161 39h14l4 37h-7l-2-19-2 19h-7z"/>
+          <path d="M152 54h12v3h-12z"/>
+          <!-- 大人C -->
+          <circle cx="248" cy="31" r="6.5"/>
+          <path d="M242 40h13l3 36h-6l-2-17-2 17h-6z"/>
+          <!-- 子どもC（ジャンプ） -->
+          <circle cx="272" cy="42" r="5.5"/>
+          <path d="M266 49h12l1 18-4 1-2-8-3 9-4-1z"/>
+          <path d="M277 46l8-7 3 3-8 7z"/>
+          <path d="M267 46l-8-7-3 3 8 7z"/>
+          <!-- 大人D -->
+          <circle cx="316" cy="32" r="6.5"/>
+          <path d="M310 41h13l3 35h-6l-2-17-2 17h-6z"/>
+        </g>
+        <!-- 地面 -->
+        <rect x="0" y="74" width="400" height="2" fill="#0E0D14" opacity=".55"/>
+      </svg>
+    </div>
   </div>
 </section>
 
@@ -139,7 +186,7 @@
 <section class="sec quote-sec" aria-label="この日に残したい気持ち">
   <div class="quote-glow" aria-hidden="true"></div>
   <div class="wrap-n">
-    <p class="quote-lead reveal">帰り道に、こう思える一日にしたい。</p>
+    <p class="quote-lead reveal">まずは安心して来てください。</p>
     <p class="quote-main reveal">
       <span class="q-line"><span class="q-mark" aria-hidden="true">「</span>なんか、</span><br>
       <span class="q-line">いい人ばっかりだ。<span class="q-mark" aria-hidden="true">」</span></span>
@@ -159,50 +206,44 @@
   <div class="wrap">
     <p class="eyebrow reveal">EXPERIENCE</p>
     <h2 class="sec-title reveal">この日、できること。</h2>
-    <p class="sec-lead reveal">好きなものから、ひとつずつ。ぜんぶ回らなくても大丈夫です。</p>
+    <p class="sec-lead reveal">好きなものから、ひとつずつ。<br>ぜんぶ回らなくても大丈夫です。</p>
 
     <ul class="exp-grid">
       <li class="exp-card reveal" tabindex="0">
         <span class="exp-ico" aria-hidden="true">
           <svg viewBox="0 0 48 48"><circle cx="17" cy="31" r="8"/><circle cx="32" cy="20" r="6"/><path d="M8 40h32"/></svg>
         </span>
-        <h3>遊ぶ</h3><p>小学4年生が運営する、遊び縁日。</p>
+        <h3>遊ぶ</h3><p>小学4年生が運営する、<br>想いの伝わる企画。</p>
       </li>
       <li class="exp-card reveal" tabindex="0">
         <span class="exp-ico" aria-hidden="true">
           <svg viewBox="0 0 48 48"><path d="M16 12h16l-2 24H18z"/><path d="M14 12h20"/><path d="M24 36v6"/></svg>
         </span>
-        <h3>飲む</h3><p>クラフトコーラ。懐かしいけど、新しい。</p>
+        <h3>飲む</h3><p>クラフトコーラ。<br>拘りと懐かしさ。</p>
       </li>
       <li class="exp-card reveal" tabindex="0">
         <span class="exp-ico" aria-hidden="true">
           <svg viewBox="0 0 48 48"><circle cx="18" cy="33" r="6"/><path d="M24 33V12l14-4v21"/><circle cx="32" cy="29" r="6"/></svg>
         </span>
-        <h3>歌う</h3><p>生歌が流れる。つい口ずさんでしまう。</p>
-      </li>
-      <li class="exp-card reveal" tabindex="0">
-        <span class="exp-ico" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><path d="M8 14h22v16H18l-8 8V30H8z"/><path d="M34 20h6v14h-4l-6 6v-6"/></svg>
-        </span>
-        <h3>話す</h3><p>教育のこと、これからのこと。少しだけ。</p>
+        <h3>歌う</h3><p>プロシンガー。<br>生歌が流れる。</p>
       </li>
       <li class="exp-card reveal" tabindex="0">
         <span class="exp-ico" aria-hidden="true">
           <svg viewBox="0 0 48 48"><circle cx="24" cy="11" r="5"/><path d="M24 18v14"/><path d="M12 24h24"/><path d="M18 42l6-10 6 10"/></svg>
         </span>
-        <h3>身体を動かす</h3><p>ヨガ。少しだけ、自分の在り方に向き合う。</p>
+        <h3>ヨガ</h3><p>瞑想や呼吸法。<br>自分の在り方に向き合う。</p>
       </li>
       <li class="exp-card reveal" tabindex="0">
         <span class="exp-ico" aria-hidden="true">
           <svg viewBox="0 0 48 48"><circle cx="16" cy="18" r="8"/><circle cx="32" cy="30" r="8"/><path d="M16 26v6"/></svg>
         </span>
-        <h3>考える</h3><p>色と言葉のワークショップ。3分でできます。</p>
+        <h3>考える</h3><p>色と言葉の<br>ワークショップ。</p>
       </li>
-      <li class="exp-card reveal wide" tabindex="0">
+      <li class="exp-card reveal" tabindex="0">
         <span class="exp-ico" aria-hidden="true">
           <svg viewBox="0 0 48 48"><rect x="8" y="15" width="32" height="22" rx="3"/><circle cx="24" cy="26" r="7"/><path d="M18 15l3-4h6l3 4"/></svg>
         </span>
-        <h3>写真を残す</h3><p>大切な人と、この日の最高の一枚を。</p>
+        <h3>記念撮影</h3><p>大切な人と、<br>最高の思い出を。</p>
       </li>
     </ul>
   </div>
@@ -331,19 +372,18 @@
 <section class="sec food" id="food">
   <div class="wrap">
     <p class="eyebrow reveal">FOOD &amp; FESTIVAL</p>
-    <h2 class="sec-title reveal">お腹も、ちゃんと。</h2>
+    <h2 class="sec-title reveal">提供メニュー</h2>
 
     <ul class="food-list">
       <li class="reveal"><span class="food-em" aria-hidden="true">🍜</span>焼きそば</li>
       <li class="reveal"><span class="food-em" aria-hidden="true">🍟</span>ポテト</li>
       <li class="reveal"><span class="food-em" aria-hidden="true">🥤</span>ソフトドリンク</li>
-      <li class="reveal"><span class="food-em" aria-hidden="true">🍹</span>クラフトコーラ</li>
     </ul>
 
     <p class="food-note reveal">
       イベントへの参加自体は無料です。<br>
       <strong>飲食・一部の体験・物販は有料</strong>となります。<br>
-      <span class="food-small">お支払いは金券制を予定しています（詳細は決まり次第ご案内します）。</span>
+      <span class="food-small">お支払いは金券制を予定しています。</span>
       <!-- TODO: 金券の詳細が決まったらここに追記 -->
     </p>
   </div>

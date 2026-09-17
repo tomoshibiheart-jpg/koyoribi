@@ -387,15 +387,129 @@ body.op-lock{ overflow:hidden; }
   color:var(--sumi); font-family:var(--mincho); font-weight:500;
   font-size:clamp(1rem,4.1vw,1.15rem);
 }
-.intro-chips{
-  list-style:none; display:flex; flex-wrap:wrap; justify-content:center;
-  gap:.5rem; margin-top:2.2rem;
+/* --- 提灯と花火のイラスト --- */
+.intro-scene{
+  position:relative;
+  margin:2.8rem auto 0;
+  width:100%;
+  max-width:560px;
+  aspect-ratio:16/9;
+  border-radius:18px;
+  overflow:hidden;
+  background:
+    radial-gradient(120% 80% at 50% 118%, rgba(200,64,44,.34), transparent 60%),
+    linear-gradient(180deg, #14131B 0%, #1E1D27 62%, #2A2631 100%);
+  box-shadow:0 18px 40px -26px rgba(44,38,32,.55);
 }
-.intro-chips li{
-  font-size:.8rem; letter-spacing:.1em;
-  padding:.35rem 1rem; border-radius:999px;
-  background:var(--kinari-d); color:var(--sumi-sub);
-  border:1px solid var(--line);
+
+/* 星 */
+.sc-star{
+  position:absolute; width:2.5px; height:2.5px; border-radius:50%;
+  background:#FFF3D6; opacity:.6;
+  animation:scTwinkle 4.2s ease-in-out infinite;
+}
+.sc-star.a{ top:16%; left:12%; }
+.sc-star.b{ top:26%; left:86%; animation-delay:.9s; }
+.sc-star.c{ top:40%; left:30%; animation-delay:1.7s; }
+.sc-star.d{ top:14%; left:62%; animation-delay:2.4s; }
+.sc-star.e{ top:34%; left:74%; animation-delay:3.1s; }
+@keyframes scTwinkle{ 0%,100%{ opacity:.2; } 50%{ opacity:.85; } }
+
+/* 花火 */
+.sc-fw{
+  position:absolute; width:3px; height:3px; border-radius:50%;
+  opacity:0;
+  animation:scFw 6.5s ease-out infinite;
+}
+.sc-fw::before{
+  content:""; position:absolute; inset:-1px;
+  border-radius:50%;
+  filter:drop-shadow(0 0 6px rgba(255,205,120,.85));
+  box-shadow:
+     0 -42px 0 0 #FFF0CC,    0 42px 0 0 #FFF0CC,
+    -42px 0 0 0 #FFF0CC,    42px 0 0 0 #FFF0CC,
+    -30px -30px 0 0 #F8C25A, 30px -30px 0 0 #F8C25A,
+    -30px  30px 0 0 #F8C25A, 30px  30px 0 0 #F8C25A,
+     0 -24px 0 -.5px #FFD98F, 0 24px 0 -.5px #FFD98F,
+    -24px 0 0 -.5px #FFD98F, 24px 0 0 -.5px #FFD98F,
+    -17px -17px 0 -.8px #E8A32C, 17px -17px 0 -.8px #E8A32C,
+    -17px  17px 0 -.8px #E8A32C, 17px  17px 0 -.8px #E8A32C;
+}
+.sc-fw::after{
+  content:""; position:absolute; left:50%; top:50%;
+  width:6px; height:6px; margin:-3px 0 0 -3px;
+  border-radius:50%;
+  border:1.5px solid rgba(255,214,150,.6);
+  animation:scRing 6.5s ease-out infinite;
+}
+.sc-fw.f1{ top:30%; left:23%; transform:scale(1.15); }
+.sc-fw.f2{ top:22%; left:72%; animation-delay:2.2s; transform:scale(1.3); }
+.sc-fw.f2::after{ animation-delay:2.2s; }
+.sc-fw.f3{ top:41%; left:49%; animation-delay:4.3s; transform:scale(.85); }
+.sc-fw.f3::after{ animation-delay:4.3s; }
+@keyframes scFw{
+  0%   { opacity:0; }
+  6%   { opacity:1; }
+  10%  { opacity:1; }
+  26%  { opacity:0; }
+  100% { opacity:0; }
+}
+.sc-fw::before{ animation:scBurst 6.5s ease-out infinite; }
+.sc-fw.f2::before{ animation-delay:2.2s; }
+.sc-fw.f3::before{ animation-delay:4.3s; }
+@keyframes scBurst{
+  0%   { transform:scale(.25); }
+  8%   { transform:scale(1); }
+  26%  { transform:scale(1.4); }
+  100% { transform:scale(1.4); }
+}
+@keyframes scRing{
+  0%   { opacity:0; width:6px; height:6px; margin:-3px 0 0 -3px; }
+  6%   { opacity:.7; }
+  26%  { opacity:0; width:130px; height:130px; margin:-65px 0 0 -65px; }
+  100% { opacity:0; width:130px; height:130px; margin:-65px 0 0 -65px; }
+}
+
+/* 提灯の列 */
+.sc-wire{
+  position:absolute; top:0; left:-4%; right:-4%;
+  display:flex; justify-content:space-around; align-items:flex-start;
+}
+.sc-wire::before{
+  content:""; position:absolute; top:9px; left:0; right:0; height:1px;
+  background:rgba(242,208,138,.38);
+}
+.sc-lantern{
+  position:relative;
+  width:15px; height:21px; margin-top:9px;
+  border-radius:46% 46% 40% 40%;
+  background:linear-gradient(180deg,#F5BC55,#C8402C 78%);
+  box-shadow:0 0 14px rgba(232,163,44,.55), inset 0 -4px 7px rgba(0,0,0,.2);
+  transform-origin:top center;
+  animation:scSway 5.2s ease-in-out infinite;
+}
+.sc-lantern::before, .sc-lantern::after{
+  content:""; position:absolute; left:50%; transform:translateX(-50%);
+  width:9px; height:2px; background:#4A2A18; border-radius:1px;
+}
+.sc-lantern::before{ top:-1px; } .sc-lantern::after{ bottom:-1px; }
+.sc-lantern:nth-child(2n){ animation-duration:6.1s; height:18px; width:13px; }
+.sc-lantern:nth-child(3n){ animation-duration:6.8s; margin-top:15px; }
+@keyframes scSway{
+  0%,100%{ transform:rotate(-4deg); }
+  50%    { transform:rotate(4deg); }
+}
+
+/* 人のシルエット */
+.sc-people{
+  position:absolute; left:0; right:0; bottom:0;
+  width:100%; height:50%;
+  opacity:.94;
+}
+
+@media (max-width:420px){
+  .intro-scene{ aspect-ratio:3/2; }
+  .sc-wire .sc-lantern:nth-child(n+6){ display:none; }
 }
 
 /* ============================================================
@@ -474,8 +588,7 @@ body.op-lock{ overflow:hidden; }
   font-family:var(--mincho); font-size:1.05rem; font-weight:700;
   letter-spacing:.08em; margin-bottom:.4rem;
 }
-.exp-card p{ font-size:.78rem; line-height:1.85; color:var(--sumi-sub); }
-@media (min-width:760px){ .exp-card.wide{ grid-column:span 1; } }
+.exp-card p{ font-size:.78rem; line-height:1.9; color:var(--sumi-sub); letter-spacing:0; }
 
 /* 中盤CTA */
 .cta-mid{
@@ -808,6 +921,8 @@ body.op-lock{ overflow:hidden; }
 @media (max-width:400px){
   .lantern-row .lantern:nth-child(n+7){ display:none; }
   .exp-grid{ grid-template-columns:repeat(2,1fr); }
+  .exp-card{ padding:1.3rem .7rem 1.2rem; }
+  .exp-card p{ font-size:.73rem; }
   .past-grid{ grid-template-columns:repeat(2,1fr); }
 }
 
@@ -823,6 +938,8 @@ body.op-lock{ overflow:hidden; }
   }
   .reveal{ opacity:1 !important; transform:none !important; }
   .hero-logo,.hero-kicker span,.hero-title,.hero-meta,.hero-place,
-  .hero-copy,.hero-sub,.hero-inner .btn,.hero-note,.scroll-cue,.lantern{ opacity:1 !important; }
+  .hero-copy,.hero-sub,.hero-inner .btn,.hero-note,.scroll-cue,.lantern,
+  .sc-lantern,.sc-star{ opacity:1 !important; }
+  .sc-fw{ opacity:0 !important; }
   #opening{ display:none !important; }
 }
