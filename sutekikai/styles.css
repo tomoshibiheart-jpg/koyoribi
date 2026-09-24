@@ -598,6 +598,16 @@ body.op-lock{ overflow:hidden; }
 /* ロゴ画像は切らずに全体を見せる */
 .ex-photo.is-logo{ background:none; }
 .ex-photo.is-logo img{ object-fit:contain; }
+/* ロゴを押すと公式サイトへ */
+a.ex-photo{ display:grid; place-items:center; position:relative; cursor:pointer; }
+a.ex-photo img{ transition:transform .5s var(--ease); }
+a.ex-photo::after{
+  content:""; position:absolute; inset:0;
+  background:rgba(200,64,44,0);
+  transition:background .35s;
+}
+a.ex-photo:hover img, a.ex-photo:focus-visible img{ transform:scale(1.04); }
+a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
 .ex-ph{
   font-family:var(--latin);
   font-size:.7rem; letter-spacing:.24em;
@@ -616,6 +626,34 @@ body.op-lock{ overflow:hidden; }
   font-family:var(--mincho); font-size:1.12rem; font-weight:700;
   line-height:1.6; letter-spacing:.04em; margin-bottom:.15rem;
 }
+/* 見出しを押すと公式サイトへ */
+.ex-name a{
+  display:inline-flex; align-items:center; gap:.3em;
+  transition:color .3s;
+}
+.ex-name a::after{
+  content:"↗";
+  font-family:var(--maru); font-size:.62em; font-weight:400;
+  color:var(--shu); opacity:.55;
+  transition:transform .35s var(--ease), opacity .3s;
+}
+.ex-name a:hover, .ex-name a:focus-visible{ color:var(--shu-dark); }
+.ex-name a:hover::after{ transform:translate(2px,-2px); opacity:1; }
+
+/* キャッチコピー */
+.ex-catch{
+  font-family:var(--mincho); font-weight:700;
+  font-size:1rem; line-height:1.75; letter-spacing:.04em;
+  color:var(--shu-dark);
+  margin:.9rem 0 .7rem;
+  padding-left:.85rem;
+  position:relative;
+}
+.ex-catch::before{
+  content:""; position:absolute; left:0; top:.35em; bottom:.35em;
+  width:2px; border-radius:1px;
+  background:linear-gradient(var(--ki), var(--shu));
+}
 .ex-person{ font-size:.78rem; color:var(--sumi-sub); margin-bottom:.8rem; }
 .ex-desc{ font-size:.82rem; line-height:1.95; color:var(--sumi-sub); flex:1; }
 .ex-todo{
@@ -623,6 +661,18 @@ body.op-lock{ overflow:hidden; }
   color:rgba(107,96,83,.7);
   border-top:1px dashed var(--line); padding-top:.7rem;
 }
+.ex-links{
+  margin-top:1rem; padding-top:.8rem;
+  border-top:1px dashed var(--line);
+  display:flex; flex-wrap:wrap; gap:.4rem 1.1rem;
+}
+.ex-links a{
+  font-size:.78rem; font-weight:700; color:var(--shu-dark);
+  border-bottom:1px solid rgba(200,64,44,.3);
+  padding-bottom:.08rem;
+  transition:border-color .3s, color .3s;
+}
+.ex-links a:hover{ border-color:var(--shu); color:var(--shu); }
 .ex-link{ margin-top:.7rem; font-size:.78rem; font-weight:700; color:var(--shu-dark); }
 .ex-link:hover{ text-decoration:underline; }
 
@@ -768,7 +818,7 @@ body.op-lock{ overflow:hidden; }
    ============================================================ */
 .final-cta{
   position:relative; text-align:center;
-  padding:clamp(5rem,13vw,7.5rem) 0 clamp(4rem,10vw,6rem);
+  padding:clamp(4.2rem,11vw,6rem) 0 clamp(3.6rem,9vw,5rem);
   background:
     radial-gradient(110% 70% at 50% 110%, rgba(200,64,44,.45), transparent 62%),
     linear-gradient(180deg, var(--yoru) 0%, #221F2B 100%);
