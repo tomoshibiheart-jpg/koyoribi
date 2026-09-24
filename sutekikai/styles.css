@@ -513,43 +513,6 @@ body.op-lock{ overflow:hidden; }
 }
 
 /* ============================================================
-   SECTION 3 引用
-   ============================================================ */
-.quote-sec{
-  position:relative; text-align:center;
-  padding:clamp(5rem,14vw,9rem) 0;
-  overflow:hidden;
-}
-.quote-glow{
-  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  width:min(760px,130vw); aspect-ratio:1;
-  background:radial-gradient(circle, rgba(232,163,44,.22), transparent 62%);
-  animation:breathe 8s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes breathe{
-  0%,100%{ opacity:.55; transform:translate(-50%,-50%) scale(.95); }
-  50%    { opacity:1;   transform:translate(-50%,-50%) scale(1.06); }
-}
-.quote-lead{ font-size:.85rem; color:var(--sumi-sub); letter-spacing:.12em; margin-bottom:1.6rem; }
-.quote-main{
-  font-family:var(--mincho); font-weight:700;
-  font-size:clamp(1.9rem,8.6vw,3.1rem);
-  line-height:1.62; letter-spacing:.04em;
-  color:var(--shu-dark);
-  margin-bottom:2.2rem;
-  position:relative;
-}
-.q-mark{ color:var(--ki); font-weight:400; }
-.q-line{ display:inline-block; white-space:nowrap; }
-.nb{ display:inline-block; }
-.quote-after{
-  font-size:.9rem; line-height:2.2; color:var(--sumi-sub);
-  position:relative;
-}
-.quote-small{ display:inline-block; margin-top:.8rem; color:var(--shu); font-weight:700; }
-
-/* ============================================================
    SECTION 4 EXPERIENCE
    ============================================================ */
 .exp-grid{
@@ -685,6 +648,11 @@ body.op-lock{ overflow:hidden; }
 }
 .food-list li:hover{ transform:translateY(-3px) rotate(-1.2deg); }
 .food-em{ font-size:1.15rem; line-height:1; }
+.food-caution{
+  font-size:.74rem; line-height:1.9; color:var(--sumi-sub);
+  max-width:520px; margin:-1.4rem auto 2rem;
+  opacity:.9;
+}
 .food-note{
   font-size:.88rem; line-height:2.1; color:var(--sumi-sub);
   background:#fff; border:1px solid var(--line);
@@ -693,25 +661,6 @@ body.op-lock{ overflow:hidden; }
 }
 .food-note strong{ color:var(--shu-dark); }
 .food-small{ display:inline-block; margin-top:.5rem; font-size:.78rem; opacity:.85; }
-
-/* ============================================================
-   SECTION 7 PHOTO
-   ============================================================ */
-.photo-sec{ text-align:center; }
-.photo-frame{
-  aspect-ratio:3/2;
-  border-radius:18px;
-  background:
-    repeating-linear-gradient(-45deg, rgba(232,163,44,.10) 0 12px, transparent 12px 24px),
-    var(--kinari-d);
-  border:1px solid var(--line);
-  display:grid; place-items:center;
-  margin:0 0 1.8rem;
-  overflow:hidden;
-}
-.photo-frame img{ width:100%; height:100%; object-fit:cover; }
-.photo-body{ font-size:.92rem; line-height:2.2; color:var(--sumi-sub); }
-.photo-body strong{ color:var(--sumi); font-family:var(--mincho); }
 
 /* ============================================================
    SECTION 8 開催概要
@@ -737,31 +686,21 @@ body.op-lock{ overflow:hidden; }
   font-family:var(--mincho); font-weight:700;
   font-size:1.08rem; line-height:1.6;
 }
+.ol-venue{ border-left-color:var(--aka); }
+.ol-map{
+  display:inline-block; margin-top:.6rem;
+  font-family:var(--maru); font-size:.78rem; font-weight:700;
+  color:var(--shu-dark);
+  border-bottom:1px solid rgba(200,64,44,.35);
+  padding-bottom:.1rem;
+  transition:border-color .3s;
+}
+.ol-map:hover{ border-color:var(--shu); }
 .ol-sub{
   display:block; margin-top:.35rem;
   font-family:var(--maru); font-weight:400;
   font-size:.74rem; line-height:1.8; color:var(--sumi-sub);
 }
-
-/* ============================================================
-   SECTION 9 PAST
-   ============================================================ */
-.past-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(min(100%,180px), 1fr));
-  gap:.7rem;
-}
-.past-item{
-  margin:0; aspect-ratio:1;
-  border-radius:12px; overflow:hidden;
-  border:1px solid var(--line);
-  background:
-    repeating-linear-gradient(45deg, rgba(200,64,44,.07) 0 10px, transparent 10px 20px),
-    var(--kinari-d);
-  display:grid; place-items:center;
-}
-.past-item img{ width:100%; height:100%; object-fit:cover; transition:transform 1.2s var(--ease); }
-.past-item:hover img{ transform:scale(1.06); }
 
 /* ============================================================
    SECTION 10 こよりび
