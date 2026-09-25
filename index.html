@@ -200,22 +200,33 @@ body.op-lock{ overflow:hidden; }
 }
 .event-date{
   font-family:var(--latin);
-  font-size:.78rem; letter-spacing:.3em;
+  font-size:.78rem; letter-spacing:.2em;
   color:var(--kin);
   margin-bottom:.7rem;
 }
 .event-place{
   font-family:var(--serif);
-  letter-spacing:.2em;
+  letter-spacing:.12em;
   color:var(--sumi-soft);
   font-size:.78rem;
-  margin-left:.8em;
+  margin-left:.6em;
+  white-space:nowrap;
 }
 .event-name{
   font-size:clamp(1.1rem, 2.2vw, 1.3rem);
   letter-spacing:.12em;
   margin-bottom:1rem;
   line-height:1.8;
+}
+.event-venue{
+  display:inline-block;
+  margin-top:.7rem;
+  padding-top:.7rem;
+  border-top:1px dashed var(--line);
+  font-size:.82rem;
+  line-height:1.95;
+  color:var(--kin-deep);
+  font-weight:500;
 }
 .event-desc{
   font-size:.88rem; color:var(--sumi-soft);
@@ -533,15 +544,15 @@ body.op-lock{ overflow:hidden; }
       <!-- 11/7 縁日 -->
       <article class="event-card hover-lift reveal" data-end="2026-11-07" data-form="itto">
         <div class="event-photo">
-          <img src="event-itto.jpg" alt="素敵会「縁日」 11月7日(土)15:00開催の告知" loading="lazy">
+          <img src="event-itto.jpg" alt="素敵会「縁日」 11月7日(土)15:00-21:00 soko station 146 開催の告知" loading="lazy">
         </div>
         <div class="event-body">
-          <p class="event-date">2026.11.07 SAT 15:00-21:30<span class="event-place">東京</span></p>
+          <p class="event-date">2026.11.07 SAT 15:00-21:00<span class="event-place">新木場</span></p>
           <h3 class="event-name">素敵会「縁日」</h3>
           <p class="event-desc">
             世代を超えてつながる、想いが灯る一日。
-            子どもも大人も、初めましての人も。出店ブース、体験、撮影など、
-            みんなでつくる心あたたまる縁日です。(22:00 完全撤収／会場は東京都内・詳細は追ってご案内)
+            子どもも大人も、初めましての人も。出店ブース、体験、撮影など、みんなでつくる心あたたまる縁日です。<br>
+            <span class="event-venue">会場：soko station 146<br>東京都江東区新木場1-4-6 2F（新木場駅 徒歩5分）／22:00 完全撤収</span>
           </p>
           <div class="event-actions"></div>
         </div>
