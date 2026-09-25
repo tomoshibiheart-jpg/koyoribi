@@ -655,6 +655,24 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
   background:linear-gradient(var(--ki), var(--shu));
 }
 .ex-person{ font-size:.78rem; color:var(--sumi-sub); margin-bottom:.8rem; }
+/* 顔写真つきの名前 */
+.ex-person-face{ display:flex; align-items:center; gap:.5rem; }
+.ex-face{
+  width:34px; height:34px; border-radius:50%;
+  object-fit:cover; object-position:center 22%;
+  border:1.5px solid var(--kinari-d);
+  box-shadow:0 2px 8px -4px rgba(44,38,32,.4);
+  flex:0 0 auto;
+}
+/* 当日の内容メモ */
+.ex-note{
+  margin-top:.8rem;
+  font-size:.76rem; line-height:1.85;
+  color:var(--shu-dark);
+  background:rgba(200,64,44,.07);
+  border-radius:8px;
+  padding:.55rem .75rem;
+}
 .ex-desc{ font-size:.82rem; line-height:1.95; color:var(--sumi-sub); flex:1; }
 .ex-todo{
   margin-top:.9rem; font-size:.7rem; letter-spacing:.08em;
