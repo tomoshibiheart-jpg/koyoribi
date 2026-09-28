@@ -319,6 +319,13 @@ body.op-lock{ overflow:hidden; }
   margin-bottom:2rem;
   opacity:0; animation:hIn .9s var(--ease) 3.75s forwards;
 }
+.hero-map{
+  border-bottom:1px solid rgba(242,208,138,.5);
+  padding-bottom:.12rem;
+  transition:border-color .3s, color .3s;
+}
+.hero-map:hover, .hero-map:focus-visible{ border-color:var(--ki-pale); color:#FFF3D9; }
+.hm-pin{ margin-left:.3em; font-size:.85em; }
 .hero-free{
   display:inline-block; margin-left:.4rem;
   border:1px solid rgba(242,208,138,.6); border-radius:999px;
@@ -657,6 +664,8 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
 .ex-person{ font-size:.78rem; color:var(--sumi-sub); margin-bottom:.8rem; }
 /* 顔写真つきの名前 */
 .ex-person-face{ display:flex; align-items:center; gap:.5rem; }
+.ex-face + .ex-face{ margin-left:-10px; }
+.ex-face.is-mark{ background:#fff; object-fit:contain; padding:2px; }
 .ex-face{
   width:34px; height:34px; border-radius:50%;
   object-fit:cover; object-position:center 22%;
@@ -885,17 +894,28 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
    SECTION 12 FAQ
    ============================================================ */
 .faq{ background:var(--kinari-d); }
-.faq-list{ border-top:1px solid var(--line); }
-.faq-item{ border-bottom:1px solid var(--line); }
+.faq-list{ display:flex; flex-direction:column; gap:.6rem; }
+.faq-item{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  transition:box-shadow .3s, border-color .3s;
+}
+.faq-item:has(.faq-q[aria-expanded="true"]){
+  border-color:rgba(200,64,44,.32);
+  box-shadow:0 10px 26px -20px rgba(158,44,29,.55);
+}
 .faq-q{
   width:100%; text-align:left;
   display:flex; align-items:center; justify-content:space-between; gap:1rem;
-  padding:1.15rem .3rem;
+  padding:1.1rem 1.1rem;
   font-family:var(--mincho); font-weight:500;
   font-size:.95rem; line-height:1.7;
   transition:color .25s;
 }
-.faq-q:hover{ color:var(--shu-dark); }
+.faq-q:hover{ color:var(--shu-dark); background:var(--kinari); }
+.faq-q:active{ background:var(--kinari-d); }
 .faq-mark{
   position:relative; flex:0 0 18px; width:18px; height:18px;
 }
@@ -912,7 +932,7 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
   transition:max-height .42s var(--ease);
 }
 .faq-a p{
-  padding:0 .3rem 1.2rem;
+  padding:0 1.1rem 1.2rem;
   font-size:.86rem; line-height:2.05; color:var(--sumi-sub);
 }
 .faq-a a{ color:var(--shu-dark); text-decoration:underline; }
