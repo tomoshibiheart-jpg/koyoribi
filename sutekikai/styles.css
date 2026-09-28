@@ -695,6 +695,92 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
 .ex-link:hover{ text-decoration:underline; }
 
 /* ============================================================
+   TIME SCHEDULE
+   ============================================================ */
+.schedule{ padding-top:clamp(3rem,8vw,5rem); }
+.ts-wrap{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 14px 34px -26px rgba(44,38,32,.45);
+}
+.ts-toggle{
+  width:100%;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.25rem 1.3rem;
+  font-family:var(--mincho); font-weight:700;
+  font-size:1rem; letter-spacing:.06em;
+  color:var(--sumi);
+  transition:background .3s, color .3s;
+}
+.ts-toggle:hover{ background:var(--kinari); color:var(--shu-dark); }
+.ts-mark{ position:relative; flex:0 0 18px; width:18px; height:18px; }
+.ts-mark::before, .ts-mark::after{
+  content:""; position:absolute; top:50%; left:0;
+  width:18px; height:2px; background:var(--shu);
+  transform:translateY(-50%);
+  transition:transform .35s var(--ease);
+}
+.ts-mark::after{ transform:translateY(-50%) rotate(90deg); }
+.ts-toggle[aria-expanded="true"] .ts-mark::after{ transform:translateY(-50%) rotate(0deg); }
+
+.ts-panel{ overflow:hidden; max-height:0; transition:max-height .5s var(--ease); }
+.ts-inner{ padding:.2rem 1.3rem 1.6rem; }
+
+.ts-block{ position:relative; padding:.9rem 0 .2rem 3.6rem; }
+.ts-block::before{
+  content:""; position:absolute; left:1.05rem; top:0; bottom:0;
+  width:1px; background:var(--line);
+}
+.ts-block:last-of-type::before{ height:1.5rem; }
+.ts-hour{
+  position:absolute; left:0; top:.75rem;
+  font-family:var(--latin); font-size:.82rem; font-weight:500;
+  letter-spacing:.06em; color:var(--shu-dark);
+  background:#fff; padding:.15rem 0;
+  z-index:1;
+}
+.ts-block::after{
+  content:""; position:absolute; left:.78rem; top:1.05rem;
+  width:9px; height:9px; border-radius:50%;
+  background:var(--ki); border:2px solid #fff;
+  box-shadow:0 0 0 1px var(--line);
+}
+.ts-list{ list-style:none; }
+.ts-row{
+  display:flex; flex-wrap:wrap; gap:.1rem .8rem;
+  padding:.55rem 0;
+  border-bottom:1px dashed var(--line);
+}
+.ts-row:last-child{ border-bottom:none; }
+.ts-time{
+  font-family:var(--latin); font-size:.8rem; letter-spacing:.04em;
+  color:var(--sumi-sub); flex:0 0 auto; min-width:6.2em;
+}
+.ts-act{ font-size:.88rem; line-height:1.75; color:var(--sumi); flex:1 1 60%; }
+.ts-row.ts-open .ts-act,
+.ts-row.ts-close .ts-act{ font-family:var(--mincho); font-weight:700; }
+.ts-row.ts-hl{
+  background:rgba(232,163,44,.12);
+  border-radius:8px;
+  padding:.6rem .7rem;
+  margin:.2rem -.7rem;
+  border-bottom:none;
+}
+.ts-row.ts-hl .ts-act{ font-family:var(--mincho); font-weight:700; color:var(--shu-dark); }
+.ts-note{
+  margin-top:1.4rem;
+  font-size:.76rem; line-height:1.85; color:var(--sumi-sub);
+}
+
+@media (max-width:400px){
+  .ts-block{ padding-left:3.2rem; }
+  .ts-time{ min-width:100%; color:var(--shu-dark); font-weight:500; }
+  .ts-act{ flex:1 1 100%; }
+}
+
+/* ============================================================
    SECTION 6 FOOD
    ============================================================ */
 .food{

@@ -223,6 +223,37 @@ const CONFIG = {
   }
 
   /* ----------------------------------------------------------
+     8.5 タイムスケジュールの開閉
+     ---------------------------------------------------------- */
+  function schedule() {
+    const btn = document.querySelector(".ts-toggle");
+    const panel = document.getElementById("tsPanel");
+    if (!btn || !panel) return;
+    const label = btn.querySelector(".ts-toggle-label");
+
+    function close() {
+      btn.setAttribute("aria-expanded", "false");
+      panel.style.maxHeight = "0px";
+      if (label) label.textContent = "当日のスケジュールを見る";
+    }
+    function open() {
+      btn.setAttribute("aria-expanded", "true");
+      panel.style.maxHeight = panel.scrollHeight + "px";
+      if (label) label.textContent = "当日のスケジュール";
+    }
+    close();
+
+    btn.addEventListener("click", function () {
+      if (btn.getAttribute("aria-expanded") === "true") { close(); } else { open(); }
+    });
+    window.addEventListener("resize", function () {
+      if (btn.getAttribute("aria-expanded") === "true") {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
+
+  /* ----------------------------------------------------------
      9. CTAのクリックを記録（将来の計測用の受け口）
         ※ 現時点では外部送信しません。コンソールに出るだけです。
      ---------------------------------------------------------- */
@@ -248,6 +279,7 @@ const CONFIG = {
     parallax();
     stickyUI();
     faq();
+    schedule();
     trackClicks();
   }
 
