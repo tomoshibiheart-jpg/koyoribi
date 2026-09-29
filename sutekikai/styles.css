@@ -894,6 +894,28 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
    SECTION 12 FAQ
    ============================================================ */
 .faq{ background:var(--kinari-d); }
+/* FAQ全体の開閉 */
+.faq-wrap{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 14px 34px -26px rgba(44,38,32,.45);
+}
+.faq-toggle{
+  width:100%;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.25rem 1.3rem;
+  font-family:var(--mincho); font-weight:700;
+  font-size:1rem; letter-spacing:.06em;
+  color:var(--sumi);
+  transition:background .3s, color .3s;
+}
+.faq-toggle:hover{ background:var(--kinari); color:var(--shu-dark); }
+.faq-toggle[aria-expanded="true"] .ts-mark::after{ transform:translateY(-50%) rotate(0deg); }
+.faq-panel{ overflow:hidden; max-height:0; transition:max-height .5s var(--ease); }
+.faq-panel .faq-list{ padding:0 1.3rem 1.3rem; border-top:1px solid var(--line); }
+.faq-panel .faq-item:last-child{ border-bottom:none; }
 .faq-list{ display:flex; flex-direction:column; gap:.6rem; }
 .faq-item{
   background:#fff;

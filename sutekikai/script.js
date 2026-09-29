@@ -186,6 +186,40 @@ const CONFIG = {
   /* ----------------------------------------------------------
      8. FAQアコーディオン（キーボード操作対応）
      ---------------------------------------------------------- */
+  /* FAQ全体の開閉（外側） */
+  function faqWrapper() {
+    const btn = document.querySelector(".faq-toggle");
+    const panel = document.getElementById("faqPanel");
+    if (!btn || !panel) return;
+    const label = btn.querySelector(".faq-toggle-label");
+
+    function close() {
+      panel.style.overflow = "hidden";
+      panel.style.maxHeight = panel.scrollHeight + "px";
+      panel.offsetHeight; // 再描画させてからたたむ
+      panel.style.maxHeight = "0px";
+      btn.setAttribute("aria-expanded", "false");
+      if (label) label.textContent = "よくあるご質問を見る";
+    }
+    function open() {
+      btn.setAttribute("aria-expanded", "true");
+      panel.style.overflow = "hidden";
+      panel.style.maxHeight = panel.scrollHeight + "px";
+      if (label) label.textContent = "よくあるご質問";
+      // 開ききったら高さの上限を外す（中の質問を開いても切れないように）
+      setTimeout(function () {
+        if (btn.getAttribute("aria-expanded") === "true") {
+          panel.style.maxHeight = "none";
+          panel.style.overflow = "visible";
+        }
+      }, 520);
+    }
+    close();
+    btn.addEventListener("click", function () {
+      if (btn.getAttribute("aria-expanded") === "true") { close(); } else { open(); }
+    });
+  }
+
   function faq() {
     document.querySelectorAll(".faq-item").forEach(function (item, i) {
       const btn = item.querySelector(".faq-q");
@@ -203,7 +237,7 @@ const CONFIG = {
       }
       function open() {
         btn.setAttribute("aria-expanded", "true");
-        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.style.maxHeight = (panel.scrollHeight + 8) + "px";
       }
       close();
 
@@ -217,7 +251,7 @@ const CONFIG = {
     window.addEventListener("resize", function () {
       document.querySelectorAll('.faq-q[aria-expanded="true"]').forEach(function (btn) {
         const panel = document.getElementById(btn.getAttribute("aria-controls"));
-        if (panel) panel.style.maxHeight = panel.scrollHeight + "px";
+        if (panel) panel.style.maxHeight = (panel.scrollHeight + 8) + "px";
       });
     });
   }
@@ -279,6 +313,7 @@ const CONFIG = {
     parallax();
     stickyUI();
     faq();
+    faqWrapper();
     schedule();
     trackClicks();
   }
