@@ -874,7 +874,7 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
     radial-gradient(70% 100% at 50% 100%, rgba(232,163,44,.14), transparent 70%),
     var(--kinari-d);
 }
-.ko-logo{ width:54px; height:54px; margin:0 auto 1.1rem; }
+.ko-logo{ width:clamp(150px,38vw,190px); height:auto; margin:0 auto 1.3rem; }
 .ko-body{ font-size:.92rem; line-height:2.2; color:var(--sumi-sub); margin-bottom:2rem; }
 
 /* ============================================================
@@ -976,7 +976,7 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
   background:var(--sumi); color:#E8E0D2;
   text-align:center; padding:3.2rem 0 2.6rem;
 }
-.foot-logo{ width:40px; height:40px; margin:0 auto 1rem; opacity:.95; }
+.foot-logo{ width:clamp(105px,28vw,130px); height:auto; margin:0 auto 1.1rem; opacity:.95; }
 .foot-title{ font-family:var(--mincho); font-weight:700; font-size:1.15rem; letter-spacing:.18em; }
 .foot-date{ font-family:var(--latin); font-size:.78rem; letter-spacing:.2em; color:#C0B49F; margin-top:.4rem; }
 .foot-org{ margin-top:1.6rem; font-size:.78rem; line-height:2.1; color:#BFB4A2; }
