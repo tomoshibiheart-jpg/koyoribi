@@ -94,7 +94,8 @@ header.site{
 header.site.scrolled{ box-shadow:0 1px 0 var(--line); }
 
 .brand{ display:flex; align-items:center; gap:.7rem; }
-.brand svg{ width:30px; height:30px; }
+.brand-mark{ width:30px; height:30px; display:block; transition:transform 1.2s cubic-bezier(.3,.7,.25,1); }
+.brand:hover .brand-mark{ transform:rotate(360deg); }
 .brand .name{ font-size:1.02rem; letter-spacing:.3em; }
 
 nav.global{ display:flex; gap:clamp(1.2rem, 3vw, 2.4rem); }
@@ -160,7 +161,8 @@ footer.site{
   font-size:.82rem;
   letter-spacing:.14em;
 }
-footer.site .mark{ width:34px; margin:0 auto 1.4rem; opacity:.9; }
+footer.site .foot-logo{ width:150px; margin:0 auto 1.6rem; }
+footer.site .foot-logo img{ width:100%; height:auto; display:block; }
 footer.site .latin{
   font-family:var(--latin);
   letter-spacing:.5em; text-indent:.5em;
@@ -191,11 +193,6 @@ footer.site .copy{ margin-top:1.6rem; font-size:.72rem; opacity:.75; }
 }
 
 /* ---------- ホバー・マイクロインタラクション ---------- */
-.brand svg, .hero-flower svg, footer.site .mark svg{
-  transition:transform 1.2s cubic-bezier(.3,.7,.25,1);
-}
-.brand:hover svg, .brand:focus-visible svg{ transform:rotate(360deg); }
-footer.site .mark:hover svg{ transform:rotate(360deg); }
 
 .hover-lift{
   transition:transform .5s cubic-bezier(.25,.8,.3,1), box-shadow .5s;
