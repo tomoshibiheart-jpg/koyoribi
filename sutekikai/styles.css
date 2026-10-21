@@ -799,18 +799,31 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
   text-align:center;
 }
 .food-list{
-  list-style:none; display:flex; flex-wrap:wrap; justify-content:center;
-  gap:.7rem; margin-bottom:2.4rem;
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(min(100%,250px), 1fr));
+  gap:.55rem;
+  max-width:740px;
+  margin:0 auto 2.4rem;
+  text-align:left;
 }
 .food-list li{
-  display:flex; align-items:center; gap:.45rem;
+  display:flex; align-items:center; gap:.6rem;
   background:#fff; border:1px solid var(--line);
-  border-radius:999px; padding:.6rem 1.25rem;
-  font-family:var(--mincho); font-weight:500; font-size:.95rem;
+  border-radius:999px; padding:.62rem 1.15rem;
+  font-family:var(--mincho); font-weight:500; font-size:.92rem;
   transition:transform .3s var(--ease);
 }
-.food-list li:hover{ transform:translateY(-3px) rotate(-1.2deg); }
-.food-em{ font-size:1.15rem; line-height:1; }
+.food-list li:hover{ transform:translateY(-3px); }
+.food-em{ font-size:1.15rem; line-height:1; flex:0 0 auto; }
+.food-name{ flex:1; min-width:0; letter-spacing:0; }
+.food-price{
+  flex:0 0 auto;
+  font-family:var(--latin);
+  font-size:.86rem; font-weight:500;
+  color:var(--shu-dark);
+  letter-spacing:.02em;
+}
 .food-caution{
   font-size:.74rem; line-height:1.9; color:var(--sumi-sub);
   max-width:520px; margin:-1.4rem auto 2rem;
@@ -830,29 +843,38 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
    ============================================================ */
 .outline-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(min(100%,230px), 1fr));
-  gap:.8rem;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:.55rem;
 }
 .ol-card{
   background:#fff; border:1px solid var(--line);
   border-left:3px solid var(--shu);
-  border-radius:12px;
-  padding:1.1rem 1.15rem;
+  border-radius:11px;
+  padding:.8rem .85rem;
+  min-width:0;
   transition:transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .ol-card:hover{ transform:translateY(-3px); box-shadow:0 12px 26px -20px rgba(158,44,29,.5); }
 .ol-card dt{
-  font-size:.72rem; letter-spacing:.16em; font-weight:700;
-  color:var(--shu-dark); margin-bottom:.35rem;
+  font-size:.66rem; letter-spacing:.14em; font-weight:700;
+  color:var(--shu-dark); margin-bottom:.22rem;
 }
 .ol-card dd{
   font-family:var(--mincho); font-weight:700;
-  font-size:1.08rem; line-height:1.6;
+  font-size:.96rem; line-height:1.5;
+}
+/* 会場だけは横いっぱい */
+.ol-venue{ grid-column:1 / -1; }
+@media (min-width:720px){
+  .outline-grid{ grid-template-columns:repeat(4, minmax(0,1fr)); gap:.7rem; }
+  .ol-venue{ grid-column:span 2; }
+  .ol-card{ padding:.95rem 1rem; }
+  .ol-card dd{ font-size:1.02rem; }
 }
 .ol-venue{ border-left-color:var(--aka); }
 .ol-map{
-  display:inline-block; margin-top:.6rem;
-  font-family:var(--maru); font-size:.78rem; font-weight:700;
+  display:inline-block; margin-top:.5rem;
+  font-family:var(--maru); font-size:.76rem; font-weight:700;
   color:var(--shu-dark);
   border-bottom:1px solid rgba(200,64,44,.35);
   padding-bottom:.1rem;
@@ -860,9 +882,9 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
 }
 .ol-map:hover{ border-color:var(--shu); }
 .ol-sub{
-  display:block; margin-top:.35rem;
+  display:block; margin-top:.28rem;
   font-family:var(--maru); font-weight:400;
-  font-size:.74rem; line-height:1.8; color:var(--sumi-sub);
+  font-size:.7rem; line-height:1.65; color:var(--sumi-sub);
 }
 
 /* ============================================================
@@ -914,7 +936,7 @@ a.ex-photo:hover::after{ background:rgba(200,64,44,.05); }
 .faq-toggle:hover{ background:var(--kinari); color:var(--shu-dark); }
 .faq-toggle[aria-expanded="true"] .ts-mark::after{ transform:translateY(-50%) rotate(0deg); }
 .faq-panel{ overflow:hidden; max-height:0; transition:max-height .5s var(--ease); }
-.faq-panel .faq-list{ padding:0 1.3rem 1.3rem; border-top:1px solid var(--line); }
+.faq-panel .faq-list{ padding:1.1rem 1.3rem 1.3rem; border-top:1px solid var(--line); }
 .faq-panel .faq-item:last-child{ border-bottom:none; }
 .faq-list{ display:flex; flex-direction:column; gap:.6rem; }
 .faq-item{
