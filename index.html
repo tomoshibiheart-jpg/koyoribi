@@ -10,6 +10,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="logo-mark.png">
 <link rel="stylesheet" href="style.css">
+<script>
+/* オープニングは「このサイトを開いた最初の1回」だけ。
+   想いページやレポートから戻ってきたときは再生しません。
+   タブを閉じて開き直すと、また最初の1回として再生されます。 */
+(function(){
+  try{
+    if(sessionStorage.getItem("koyoribi.opening") === "done"){
+      document.documentElement.className += " no-op";
+    }else{
+      sessionStorage.setItem("koyoribi.opening", "done");
+    }
+  }catch(e){ /* プライベートモード等では毎回再生 */ }
+})();
+</script>
 <style>
 /* 折り返し単位(スマホで不自然な改行を防ぐ) */
 .nb{ display:inline-block; }
@@ -93,6 +107,10 @@
 
 body.op-lock{ overflow:hidden; }
 
+/* 2回目以降:オープニングを飛ばして本編から */
+html.no-op #opening{ display:none; }
+html.no-op body.op-lock{ overflow:visible; }
+
 @media (prefers-reduced-motion: reduce){ #opening{ display:none; } }
 
 /* ============ Hero ============ */
@@ -165,6 +183,9 @@ body.op-lock{ overflow:hidden; }
   animation:cue 2.6s ease-in-out infinite;
 }
 @keyframes cue{ 0%{ transform:scaleY(0); transform-origin:top; } 55%{ transform:scaleY(1); transform-origin:top; } 56%{ transform-origin:bottom; } 100%{ transform:scaleY(0); transform-origin:bottom; } }
+
+html.no-op .hero-load,
+html.no-op .scroll-cue{ opacity:1; animation:none; }
 
 @media (prefers-reduced-motion: reduce){
   .hero-load, .scroll-cue{ opacity:1; animation:none; }
@@ -1053,7 +1074,12 @@ const LINE_URL      = "https://lin.ee/u3fz1Tz";
 (function(){
   const op = document.getElementById("opening");
   const unlock = ()=> document.body.classList.remove("op-lock");
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches){ unlock(); return; }
+  const skip = document.documentElement.classList.contains("no-op");
+  if(skip || matchMedia("(prefers-reduced-motion: reduce)").matches){
+    unlock();
+    if(op) op.style.display = "none";
+    return;
+  }
   setTimeout(unlock, 4100);
   setTimeout(()=>{ if(op) op.style.display = "none"; }, 4700);
 })();
