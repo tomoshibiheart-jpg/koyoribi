@@ -86,34 +86,6 @@
   .mvv-item{ grid-template-columns:1fr; gap:1.3rem; padding:2.8rem 0; }
 }
 
-/* ---------- 灯し手 ---------- */
-.nakama{ background:var(--washi); }
-.nakama-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
-  margin-top:1rem;
-}
-.nakama-cell{
-  background:var(--washi);
-  padding:2.2rem 1.8rem;
-  font-size:.92rem;
-  line-height:2.1;
-  color:var(--sumi-soft);
-  transition:transform .45s cubic-bezier(.25,.8,.3,1), background .45s;
-}
-.nakama-cell:hover{ transform:translateY(-4px); background:rgba(255,255,255,.75); }
-.nakama-cell .t{
-  display:block;
-  color:var(--sumi);
-  font-weight:500;
-  font-size:1rem;
-  margin-bottom:.7rem;
-  letter-spacing:.12em;
-}
-
 /* ---------- 結び ---------- */
 .musubi{ text-align:center; }
 .musubi p{
@@ -142,7 +114,6 @@
 <div class="page-hero">
   <span class="eyebrow">Philosophy</span>
   <h1>こよりびの想い</h1>
-  <p>木寄日 ― 木々が寄り添うことで生まれる光。</p>
 </div>
 
 <!-- ============ ブランドメッセージ ============ -->
@@ -233,21 +204,6 @@
 </section>
 
 <div class="rule" aria-hidden="true"></div>
-
-<!-- ============ 灯し手 ============ -->
-<section class="nakama">
-  <div class="wrap reveal">
-    <span class="eyebrow">Together</span>
-    <h2 class="section-title">共に文化をつくる灯し手へ</h2>
-    <div class="nakama-grid">
-      <div class="nakama-cell"><span class="t">つくる</span>イベントの企画や運営に、共に関わってくださる方。</div>
-      <div class="nakama-cell"><span class="t">表現する</span>写真、映像、デザイン、音楽、文章で、世界観を表現してくださる方。</div>
-      <div class="nakama-cell"><span class="t">生かす</span>自分の経験や専門性を、誰かのために生かしたい方。</div>
-      <div class="nakama-cell"><span class="t">支える</span>場所や食事、技術、資金を通じて、活動を支えてくださる企業・個人。</div>
-      <div class="nakama-cell"><span class="t">広げる</span>この考え方に共感し、自分の地域でも灯りを広げたい方。</div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ 結び ============ -->
 <section class="musubi">
