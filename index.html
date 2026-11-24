@@ -410,47 +410,95 @@ body.op-lock{ overflow:hidden; }
   pointer-events:none;
 }
 
-/* ============ 会員バンド ============ */
+/* ============ 会員 ============ */
 .member{
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
   background:
-    radial-gradient(760px 300px at 50% 0%, rgba(235,220,168,.4), transparent 70%),
+    radial-gradient(900px 380px at 50% 0%, rgba(235,220,168,.46), transparent 72%),
     var(--washi-deep);
+  padding:clamp(3.4rem, 8vw, 5rem) 1.3rem clamp(3rem, 7vw, 4.2rem);
   text-align:center;
-  padding:clamp(2.6rem, 6vw, 3.6rem) 1.4rem;
 }
-.member-lead{
-  font-size:clamp(.95rem, 2.1vw, 1.08rem);
-  font-weight:600; letter-spacing:.12em;
-  margin-bottom:1.4rem;
+.member-title{
+  font-size:clamp(1.3rem, 3.6vw, 1.8rem);
+  font-weight:600; letter-spacing:.16em;
+  margin-bottom:clamp(2rem, 5vw, 2.8rem);
 }
-.member-btn{
-  display:inline-flex; align-items:center; gap:.9em;
-  font-size:clamp(.92rem, 2vw, 1rem); font-weight:600;
-  letter-spacing:.2em; text-indent:.2em;
+.plan-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap:clamp(1rem, 2.6vw, 1.6rem);
+  max-width:760px; margin:0 auto;
+  text-align:left;
+}
+.plan{
+  background:rgba(255,255,255,.88);
+  border:1px solid var(--line);
+  padding:clamp(1.6rem, 3.6vw, 2.1rem);
+  display:flex; flex-direction:column;
+  transition:transform .5s cubic-bezier(.25,.8,.3,1), box-shadow .5s, border-color .4s;
+}
+.plan:hover{ transform:translateY(-5px); border-color:var(--kin); box-shadow:0 20px 44px -24px rgba(143,116,48,.5); }
+.plan-head{ display:flex; align-items:center; gap:.7rem; margin-bottom:.7rem; }
+.plan-name{ font-size:.95rem; font-weight:600; letter-spacing:.12em; }
+.plan-badge{
+  font-family:var(--latin); font-size:.66rem; font-weight:500;
+  letter-spacing:.1em; color:#4B7A52;
+  background:rgba(104,154,112,.16); border-radius:999px;
+  padding:.24rem .7rem;
+}
+.plan-price{
+  font-size:clamp(1.9rem, 5.4vw, 2.4rem);
+  font-weight:600; letter-spacing:.02em; line-height:1.2;
+  color:var(--sumi);
+}
+.plan-price .yen{ font-size:.56em; margin-left:.12em; }
+.plan-unit{ margin-top:.5rem; font-size:.76rem; letter-spacing:.12em; color:var(--sumi-soft); }
+.plan-meta{
+  margin-top:1.3rem; padding-top:1.3rem;
+  border-top:1px solid var(--line);
+  font-size:.82rem; line-height:2.1; color:var(--sumi-soft);
+}
+.plan-meta strong{ color:var(--sumi); font-weight:600; }
+.plan-btn{
+  display:block; text-align:center; margin-top:1.5rem;
+  background:var(--kin-deep); border:1px solid var(--kin-deep);
   color:var(--washi);
-  background:var(--kin-deep);
-  border:1px solid var(--kin-deep);
-  padding:1.05rem 2.4rem;
-  box-shadow:0 12px 30px -16px rgba(143,116,48,.85);
+  font-size:.95rem; font-weight:600;
+  letter-spacing:.2em; text-indent:.2em;
+  padding:1.05rem 1rem;
+  box-shadow:0 12px 28px -14px rgba(143,116,48,.85);
   transition:background .35s, transform .4s cubic-bezier(.25,.8,.3,1), box-shadow .4s;
 }
-.member-btn .arrow{ transition:transform .4s cubic-bezier(.25,.8,.3,1); }
-.member-btn:hover, .member-btn:focus-visible{
-  background:#7A6228; transform:translateY(-3px);
-  box-shadow:0 18px 36px -16px rgba(143,116,48,.95);
+.plan-btn:hover, .plan-btn:focus-visible{
+  background:#7A6228; transform:translateY(-2px);
+  box-shadow:0 18px 34px -14px rgba(143,116,48,.95);
 }
-.member-btn:hover .arrow{ transform:translateX(6px); }
-.member-btn.is-soon{
-  background:transparent; color:var(--kin-deep);
-  border-style:dashed; box-shadow:none; cursor:default;
+.member-foot{
+  max-width:760px; margin:clamp(2.2rem,5vw,3rem) auto 0;
+  padding-top:clamp(1.8rem,4vw,2.4rem);
+  border-top:1px solid var(--line);
 }
-.member-btn.is-soon:hover{ transform:none; background:transparent; }
-.member-note{
-  margin-top:1.1rem; font-size:.74rem;
-  letter-spacing:.16em; color:var(--sumi-soft);
+.member-foot .already{ font-size:.82rem; letter-spacing:.1em; color:var(--sumi-soft); }
+.portal-link{
+  display:inline-block; margin-top:.7rem;
+  font-size:.94rem; font-weight:600; letter-spacing:.12em;
+  color:var(--kin-deep);
+  border-bottom:1px solid var(--kin);
+  padding-bottom:.25rem;
+  transition:color .3s, border-color .3s;
 }
+.portal-link:hover{ color:#7A6228; border-color:var(--kin-deep); }
+.legal-links{
+  margin-top:1.8rem;
+  display:flex; justify-content:center; align-items:center;
+  flex-wrap:wrap; gap:.4rem 1rem;
+  font-size:.78rem; letter-spacing:.08em;
+}
+.legal-links a{ color:var(--sumi-soft); border-bottom:1px solid var(--line); padding-bottom:.15rem; transition:color .3s, border-color .3s; }
+.legal-links a:hover{ color:var(--kin-deep); border-color:var(--kin); }
+.legal-links .sep{ color:var(--line); }
 
 /* ============ Report / News ============ */
 .stream-grid{
@@ -459,22 +507,34 @@ body.op-lock{ overflow:hidden; }
   gap:clamp(2.2rem, 5vw, 3.4rem);
 }
 .col-head{ margin-bottom:1.8rem; }
-.col-head h2{
-  font-size:clamp(1.2rem, 2.6vw, 1.45rem);
-  letter-spacing:.14em;
+.col-head .eyebrow{
+  font-size:clamp(1.15rem, 3.2vw, 1.5rem);
+  font-weight:600;
+  letter-spacing:.42em; text-indent:.42em;
+  color:var(--kin-deep);
+  margin-bottom:0;
+  padding-bottom:1rem;
+  border-bottom:1px solid var(--line);
 }
-.col-head .eyebrow{ margin-bottom:.9rem; }
-.feed{ list-style:none; border-top:1px solid var(--line); }
+.feed{ list-style:none; }
 .feed-item{ border-bottom:1px solid var(--line); }
-.feed-btn{
-  width:100%; display:block; text-align:left;
-  background:none; border:0; cursor:pointer;
-  font-family:inherit; color:inherit;
+.feed-link{
+  display:flex; align-items:center; gap:1.1rem;
   padding:1.25rem .4rem 1.25rem 0;
   position:relative;
-  transition:color .3s;
+  transition:color .3s, background .3s;
 }
-.feed-btn:hover{ color:var(--kin-deep); }
+.feed-link:hover{ color:var(--kin-deep); }
+.feed-thumb{
+  flex:0 0 auto; width:72px; height:72px;
+  overflow:hidden; border:1px solid var(--line); background:var(--washi-deep);
+}
+.feed-thumb img{
+  width:100%; height:100%; object-fit:cover; object-position:center top;
+  transition:transform .6s cubic-bezier(.25,.8,.3,1);
+}
+.feed-link:hover .feed-thumb img{ transform:scale(1.07); }
+.feed-text{ flex:1; min-width:0; }
 .feed-date{
   display:block; font-family:var(--latin);
   font-size:.74rem; letter-spacing:.18em; color:var(--kin);
@@ -485,35 +545,17 @@ body.op-lock{ overflow:hidden; }
   letter-spacing:.08em; line-height:1.85;
   padding-right:2.2rem;
 }
-.feed-btn::after{
-  content:""; position:absolute; right:.5rem; top:50%;
-  width:9px; height:9px; margin-top:-6px;
-  border-right:1.4px solid var(--kin); border-bottom:1.4px solid var(--kin);
+.feed-link::after{
+  content:""; flex:0 0 auto;
+  width:9px; height:9px; margin-right:.4rem;
+  border-top:1.4px solid var(--kin); border-right:1.4px solid var(--kin);
   transform:rotate(45deg);
   transition:transform .4s cubic-bezier(.25,.8,.3,1);
 }
-.feed-item.is-open .feed-btn::after{ transform:rotate(-135deg); margin-top:-2px; }
-.feed-panel{ max-height:0; overflow:hidden; transition:max-height .5s cubic-bezier(.25,.8,.3,1); }
-.feed-inner{ padding:0 0 1.7rem; }
-.feed-inner img{
-  width:100%; max-width:290px; height:auto; display:block;
-  margin:0 auto 1.2rem;
-  border:1px solid var(--line);
-}
-.feed-inner p{ font-size:.86rem; line-height:2.15; color:var(--sumi-soft); }
-.feed-inner p + p{ margin-top:.9rem; }
-.feed-meta{
-  margin-top:1rem; padding-top:.9rem;
-  border-top:1px dashed var(--line);
-  font-size:.78rem; letter-spacing:.08em; color:var(--kin-deep);
-}
-.feed-inner .btn-apply{
-  display:block; text-align:center; margin-top:1.3rem;
-  padding:.95rem 1rem; font-size:.86rem;
-  letter-spacing:.16em; text-indent:.16em;
-}
-.col.is-news .feed-item{ background:linear-gradient(90deg, rgba(235,220,168,.2), transparent 70%); }
+.feed-link:hover::after{ transform:rotate(45deg) translate(3px,-3px); }
+.col.is-news .feed-item{ background:linear-gradient(90deg, rgba(235,220,168,.22), transparent 72%); }
 .col.is-news .feed-date{ color:var(--kin-deep); }
+.col.is-news .feed-link{ padding-left:1rem; }
 
 /* ============ これからの集い(コンパクト) ============ */
 .next{ border-top:1px solid var(--line); padding-top:clamp(2.6rem, 6vw, 3.6rem); margin-top:clamp(3rem, 7vw, 4.4rem); }
@@ -724,11 +766,39 @@ body.op-lock{ overflow:hidden; }
   <div class="scroll-cue" aria-hidden="true">SCROLL</div>
 </div>
 
-<!-- ============ 会員(準備中) ============ -->
-<div class="member">
-  <p class="member-lead">こよりびの灯りを、もっと近くで。</p>
-  <a class="member-btn" id="memberBtn" href="#">こよりび会員になる<span class="arrow" aria-hidden="true">→</span></a>
-  <p class="member-note">会員制（有料）／ 準備中</p>
+<!-- ============ 会員 ============ -->
+<div class="member" id="member">
+  <h2 class="member-title">こよりび会員になる</h2>
+
+  <div class="plan-grid">
+    <div class="plan">
+      <div class="plan-head"><span class="plan-name">月額会員</span></div>
+      <p class="plan-price">2,200<span class="yen">円</span></p>
+      <p class="plan-unit">税込／月</p>
+      <p class="plan-meta">毎月自動更新<br><strong>入会金無料</strong></p>
+      <a class="plan-btn" href="https://buy.stripe.com/6oU4gzfzNgnE7UY14ie7m00" target="_blank" rel="noopener">入会する</a>
+    </div>
+
+    <div class="plan">
+      <div class="plan-head"><span class="plan-name">年間会員</span><span class="plan-badge">10%OFF</span></div>
+      <p class="plan-price">23,760<span class="yen">円</span></p>
+      <p class="plan-unit">税込／年</p>
+      <p class="plan-meta">毎年自動更新<br><strong>月額換算 1,980円</strong></p>
+      <a class="plan-btn" href="https://buy.stripe.com/8x2fZhcnBc7ocbe00ee7m01" target="_blank" rel="noopener">入会する</a>
+    </div>
+  </div>
+
+  <div class="member-foot">
+    <p class="already">すでに会員の方はこちら</p>
+    <a class="portal-link" href="https://billing.stripe.com/p/login/6oU4gzfzNgnE7UY14ie7m00" target="_blank" rel="noopener">会員情報・お支払いの管理</a>
+    <p class="legal-links">
+      <a href="terms.html">会員利用規約</a>
+      <span class="sep" aria-hidden="true">｜</span>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <span class="sep" aria-hidden="true">｜</span>
+      <a href="tokushoho.html">特定商取引法に基づく表記</a>
+    </p>
+  </div>
 </div>
 
 <!-- ============ 序 ============ -->
@@ -758,107 +828,80 @@ body.op-lock{ overflow:hidden; }
 
     <div class="stream-grid">
 
-      <!-- ① レポート(これまでのこと) -->
-      <div class="col reveal">
+      <!-- ① レポート -->
+      <div class="col reveal" id="report">
         <div class="col-head">
           <span class="eyebrow">Report</span>
-          <h2>これまでのこと</h2>
         </div>
         <ul class="feed">
 
           <li class="feed-item">
-            <button class="feed-btn" type="button" aria-expanded="false">
-              <span class="feed-date">2026.11.07</span>
-              <span class="feed-title">素敵会「秋の縁日」を開催しました</span>
-            </button>
-            <div class="feed-panel">
-              <div class="feed-inner">
-                <img src="event-itto.jpg" alt="素敵会「秋の縁日」" loading="lazy">
-                <p>世代を超えてつながる、想いが灯る一日。子どもも大人も、初めましての人も。出店ブース、体験、ミニヨーガ、ライブ、公開ラジオ収録まで、みんなでつくる秋の縁日になりました。</p>
-                <p class="feed-meta">会場：soko station 146（東京・新木場）</p>
-              </div>
-            </div>
+            <a class="feed-link" href="report-itto.html">
+              <span class="feed-thumb"><img src="event-itto.jpg" alt="" loading="lazy"></span>
+              <span class="feed-text">
+                <span class="feed-date">2026.11.07</span>
+                <span class="feed-title">素敵会「秋の縁日」を開催しました</span>
+              </span>
+            </a>
           </li>
 
           <li class="feed-item">
-            <button class="feed-btn" type="button" aria-expanded="false">
-              <span class="feed-date">2026.10.03</span>
-              <span class="feed-title">The Table presented by こよりび を開催しました</span>
-            </button>
-            <div class="feed-panel">
-              <div class="feed-inner">
-                <img src="event-thetable.jpg" alt="The Table presented by こよりび" loading="lazy">
-                <p>全員が、主役。ひとつの食卓を囲み、みんなが繋がる。大学生や社会人、プロの歌手、カメラマン、日本文化を継承する職人まで集う、バイタリティに溢れる一夜になりました。</p>
-                <p class="feed-meta">会場：東京</p>
-              </div>
-            </div>
+            <a class="feed-link" href="report-thetable.html">
+              <span class="feed-thumb"><img src="event-thetable.jpg" alt="" loading="lazy"></span>
+              <span class="feed-text">
+                <span class="feed-date">2026.10.03</span>
+                <span class="feed-title">The Table presented by こよりび を開催しました</span>
+              </span>
+            </a>
           </li>
 
           <li class="feed-item">
-            <button class="feed-btn" type="button" aria-expanded="false">
-              <span class="feed-date">2026.09.26</span>
-              <span class="feed-title">素敵会「Re-Loved Market」を開催しました</span>
-            </button>
-            <div class="feed-panel">
-              <div class="feed-inner">
-                <img src="event-reloved.jpg" alt="素敵会「Re-Loved Market」" loading="lazy">
-                <p>“Re-Loved” ― 一度、人の手に渡って愛されたもの。その品を次の誰かへ手渡すマーケットをつくり、想いとモノが循環する一日になりました。</p>
-                <p class="feed-meta">会場：代々木公園</p>
-              </div>
-            </div>
+            <a class="feed-link" href="report-reloved.html">
+              <span class="feed-thumb"><img src="event-reloved.jpg" alt="" loading="lazy"></span>
+              <span class="feed-text">
+                <span class="feed-date">2026.09.26</span>
+                <span class="feed-title">素敵会「Re-Loved Market」を開催しました</span>
+              </span>
+            </a>
           </li>
 
           <li class="feed-item">
-            <button class="feed-btn" type="button" aria-expanded="false">
-              <span class="feed-date">2026.08.08</span>
-              <span class="feed-title">素敵会 in 大阪「巡」を開催しました</span>
-            </button>
-            <div class="feed-panel">
-              <div class="feed-inner">
-                <img src="event-meguri.jpg" alt="素敵会 in 大阪「巡」" loading="lazy">
-                <p>人情深い大阪の皆さんと、想いや温かさ、繋がりが巡る時間に。お寿司の振る舞い、立食での交流、ビンゴ大会、そして想いを伝え合う「こよりびカード」。</p>
-                <p class="feed-meta">会場：大阪</p>
-              </div>
-            </div>
+            <a class="feed-link" href="report-meguri.html">
+              <span class="feed-thumb"><img src="event-meguri.jpg" alt="" loading="lazy"></span>
+              <span class="feed-text">
+                <span class="feed-date">2026.08.08</span>
+                <span class="feed-title">こよりび素敵会 大阪「巡」を開催しました</span>
+              </span>
+            </a>
           </li>
 
         </ul>
       </div>
 
-      <!-- ② ニュース(これからのこと) -->
-      <div class="col is-news reveal">
+      <!-- ② ニュース -->
+      <div class="col is-news reveal" id="news">
         <div class="col-head">
           <span class="eyebrow">News</span>
-          <h2>これからのこと</h2>
         </div>
         <ul class="feed">
 
           <li class="feed-item">
-            <button class="feed-btn" type="button" aria-expanded="false">
-              <span class="feed-date">Coming soon</span>
-              <span class="feed-title">こよりびの映画制作クラウドファンディングがはじまります</span>
-            </button>
-            <div class="feed-panel">
-              <div class="feed-inner">
-                <p>人と人が寄り添うことで生まれる光を、映像でも遺したい。その第一歩として、こよりびの映画制作を CAMPFIRE で立ち上げます。</p>
-                <p>応援いただける方は、ぜひページをのぞいてみてください。</p>
-                <!-- ★ 公開後のCAMPFIRE公式URL。変更する場合はここだけ差し替えてください -->
-                <a class="btn-apply" href="https://camp-fire.jp/projects/999505/" target="_blank" rel="noopener">クラウドファンディングを見る</a>
-              </div>
-            </div>
+            <!-- ★ 公開後のCAMPFIRE公式URL。変更する場合はここだけ差し替えてください -->
+            <a class="feed-link" href="https://camp-fire.jp/projects/999505/" target="_blank" rel="noopener">
+              <span class="feed-text">
+                <span class="feed-date">Coming soon</span>
+                <span class="feed-title">こよりびの映画制作クラウドファンディングがはじまります</span>
+              </span>
+            </a>
           </li>
 
           <li class="feed-item">
-            <button class="feed-btn" type="button" aria-expanded="false">
-              <span class="feed-date">Coming soon</span>
-              <span class="feed-title">こよりび会員制度をはじめます</span>
-            </button>
-            <div class="feed-panel">
-              <div class="feed-inner">
-                <p>こよりびの灯りを、もっと近くで受け取れる場所をつくります。会員の方に向けた集いや、継灯の輪をひろげる取り組みを準備中です。</p>
-                <p class="feed-meta">詳細が決まり次第、このページでお知らせします。</p>
-              </div>
-            </div>
+            <a class="feed-link" href="#member">
+              <span class="feed-text">
+                <span class="feed-date">2026.11.25</span>
+                <span class="feed-title">こよりび会員制度をはじめました</span>
+              </span>
+            </a>
           </li>
 
         </ul>
@@ -885,7 +928,7 @@ body.op-lock{ overflow:hidden; }
           </li>
         -->
       </ul>
-      <p class="next-empty" id="nextEmpty">次の集いは、ただいま準備中です。</p>
+      <p class="next-empty" id="nextEmpty">2027年の集いは、準備中です。</p>
     </div>
 
   </div>
@@ -980,65 +1023,13 @@ body.op-lock{ overflow:hidden; }
 <script>
 /* ==========================================================
    ★★★ ここだけ編集すれば切り替わります ★★★
-   ・MEMBER_URL … 会員ページ(または先行案内フォーム)のURL。
-       空のままだと「こよりび会員になる」ボタンは準備中の見た目になり、
-       URLを入れた瞬間に押せるボタンに変わります。
    ・INSTAGRAM_URL / LINE_URL … SNSアイコンのリンク先。
+   ・会員の決済リンクは本文中の「会員」ブロックに直接書いてあります。
    ========================================================== */
-const MEMBER_URL    = "";
 const INSTAGRAM_URL = "https://www.instagram.com/koyoribi.jp/";
 const LINE_URL      = "https://line.me/ti/p/Zwlpm844HU";
 /* ========================================================== */
 
-
-/* 会員ボタン:URLが空なら「準備中」表示 */
-(function(){
-  const b = document.getElementById("memberBtn");
-  if(!b) return;
-  if(MEMBER_URL){
-    b.href = MEMBER_URL;
-    b.target = "_blank"; b.rel = "noopener";
-  }else{
-    b.classList.add("is-soon");
-    b.removeAttribute("href");
-    b.setAttribute("aria-disabled","true");
-    b.addEventListener("click", e=> e.preventDefault());
-  }
-})();
-
-/* Report / News のアコーディオン */
-(function(){
-  document.querySelectorAll(".feed-item").forEach(item=>{
-    const btn   = item.querySelector(".feed-btn");
-    const panel = item.querySelector(".feed-panel");
-    if(!btn || !panel) return;
-
-    btn.addEventListener("click", ()=>{
-      const open = item.classList.toggle("is-open");
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
-
-      if(open){
-        panel.style.maxHeight = panel.scrollHeight + 40 + "px";
-        /* 画像の読み込み後に高さがずれるのを防ぐ */
-        panel.querySelectorAll("img").forEach(img=>{
-          if(!img.complete){
-            img.addEventListener("load", ()=>{
-              if(item.classList.contains("is-open")){
-                panel.style.maxHeight = panel.scrollHeight + 40 + "px";
-              }
-            }, { once:true });
-          }
-        });
-        setTimeout(()=>{
-          if(item.classList.contains("is-open")) panel.style.maxHeight = "none";
-        }, 520);
-      }else{
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        requestAnimationFrame(()=>{ panel.style.maxHeight = "0px"; });
-      }
-    });
-  });
-})();
 
 /* これからの集い:開催日を過ぎた行は自動で非表示 */
 (function(){
