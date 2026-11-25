@@ -347,7 +347,7 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
 .reality-flow .t{ display:block; font-size:1rem; font-weight:600; letter-spacing:.1em; line-height:1.9; }
 .reality-flow .d{ display:block; margin-top:.55rem; font-size:.84rem; line-height:2.1; color:var(--sumi-soft); }
 .reality-close{
-  max-width:680px; margin:clamp(2.6rem,6vw,3.6rem) auto 0;
+  max-width:900px; margin:clamp(2.6rem,6vw,3.6rem) auto 0;
   padding-top:clamp(2rem,5vw,2.8rem); border-top:1px solid var(--line);
   text-align:center;
   font-size:clamp(1rem,2.3vw,1.18rem); font-weight:600; line-height:2.4; letter-spacing:.08em;
@@ -369,10 +369,11 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
 
 /* ============ 私たちが目指す姿 ============ */
 .steps{ background:var(--washi-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.steps-hill{ max-width:900px; margin:0 auto; }
+.steps .wrap{ max-width:1180px; }
+.steps-hill{ max-width:1100px; margin:0 auto; }
 .steps-hill svg{ width:100%; height:auto; display:block; }
 .step-grid{
-  max-width:980px; margin:clamp(1.4rem,4vw,2.2rem) auto 0;
+  max-width:1180px; margin:clamp(1.4rem,4vw,2.2rem) auto 0;
   display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,215px), 1fr));
   gap:clamp(1rem, 2.4vw, 1.4rem);
   align-items:end;
@@ -391,8 +392,10 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
 .step li::before{ content:"・"; position:absolute; left:-.1em; color:var(--kin); }
 .step li a{ color:var(--kin-deep); border-bottom:1px solid var(--line); }
 .step li a:hover{ border-color:var(--kin); }
-.step .soon{ font-size:.68rem; letter-spacing:.08em; color:var(--kin); margin-left:.3em; }
-.step .live{ font-size:.68rem; letter-spacing:.08em; color:#4B7A52; margin-left:.3em; }
+.step .soon{ font-size:.68rem; letter-spacing:.08em; color:var(--kin); margin-left:.3em; white-space:nowrap; }
+.step .live{ font-size:.68rem; letter-spacing:.08em; color:#4B7A52; margin-left:.3em; white-space:nowrap; }
+.step .meta{ display:block; white-space:nowrap; font-size:.72rem; letter-spacing:.04em; color:var(--sumi-soft); }
+.step .meta .soon, .step .meta .live{ margin-left:.35em; }
 @media (min-width:860px){
   .step-grid{ grid-template-columns:repeat(4, 1fr); margin-top:-4.5rem; }
   .step-grid .step:nth-child(2){ margin-bottom:2.4rem; }
@@ -444,7 +447,8 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
 .feel-close strong{ display:block; margin-top:1rem; color:var(--sumi); font-weight:600; font-size:1.04rem; letter-spacing:.06em; }
 
 /* ============ 会員ができること ============ */
-.perks{ max-width:980px; margin:0 auto; display:grid; gap:clamp(1.6rem, 4vw, 2.4rem); }
+#perks .wrap{ max-width:1100px; }
+.perks{ max-width:1100px; margin:0 auto; display:grid; gap:clamp(1.6rem, 4vw, 2.4rem); }
 .perk{
   display:grid; grid-template-columns:1fr; gap:clamp(1.2rem,3vw,2rem);
   border:1px solid var(--line); background:rgba(255,255,255,.6);
@@ -454,10 +458,11 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
   .perk{ grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); align-items:center; }
   .perk.is-flip .perk-body{ order:-1; }
 }
-.perk-media{ display:grid; grid-template-columns:1fr; gap:.7rem; }
+.perk-media{ display:grid; grid-template-columns:1fr; gap:.7rem; align-items:start; }
 .perk-media.two{ grid-template-columns:1fr 1fr; }
 .perk-media figure{ margin:0; }
-.perk-media img{ width:100%; height:100%; object-fit:cover; aspect-ratio:4/3; display:block; border:1px solid var(--line); }
+.perk-media img{ width:100%; height:auto; object-fit:cover; aspect-ratio:4/3; display:block; border:1px solid var(--line); }
+.perk.is-soon .perk-media img{ object-fit:contain; background:#F9F6EF; filter:none; }
 .perk-media figcaption{ margin-top:.5rem; font-size:.7rem; letter-spacing:.06em; color:var(--sumi-soft); line-height:1.8; }
 .perk-no{ font-family:var(--latin); font-size:.72rem; letter-spacing:.26em; color:var(--kin); display:block; margin-bottom:.6rem; }
 .perk h3{ font-size:clamp(1.05rem,2.6vw,1.2rem); letter-spacing:.1em; line-height:1.9; }
@@ -548,6 +553,28 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
 .legal-links .sep{ color:var(--line); }
 
 /* ============ FAQ ============ */
+.faq-wrap{ max-width:760px; margin:0 auto; }
+.faq-toggle{
+  width:100%; display:block; text-align:center; cursor:pointer;
+  font-family:inherit; color:var(--kin-deep);
+  background:none; border:1px solid var(--kin);
+  padding:1.05rem 2.8rem;
+  font-size:clamp(.95rem,2.1vw,1.02rem); font-weight:600;
+  letter-spacing:.2em; text-indent:.2em;
+  position:relative;
+  box-shadow:0 10px 26px -18px rgba(143,116,48,.75);
+  transition:background .4s, color .4s, box-shadow .4s;
+}
+.faq-toggle::after{
+  content:""; position:absolute; right:1.4rem; top:50%;
+  width:9px; height:9px; margin-top:-6px;
+  border-right:1.6px solid currentColor; border-bottom:1.6px solid currentColor;
+  transform:rotate(45deg); transition:transform .45s cubic-bezier(.25,.8,.3,1);
+}
+.faq-wrap.is-open .faq-toggle{ background:var(--kin); color:var(--washi); box-shadow:none; }
+.faq-wrap.is-open .faq-toggle::after{ transform:rotate(-135deg); margin-top:-2px; }
+.faq-outer{ max-height:0; overflow:hidden; transition:max-height .55s cubic-bezier(.25,.8,.3,1); }
+.faq-wrap.is-open .faq-outer{ margin-top:1.6rem; }
 .faq-list{ max-width:760px; margin:0 auto; border-top:1px solid var(--line); }
 .faq-item{ border-bottom:1px solid var(--line); }
 .faq-q{
@@ -781,7 +808,7 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
         <a class="feed-link" href="magazine.html">
           <span class="feed-text">
             <span class="feed-date">2026.11.25</span>
-            <span class="feed-title">こよりびマガジンを開設しました</span>
+            <span class="feed-title">こよりびマガジンを開設します</span>
           </span>
         </a>
       </li>
@@ -967,7 +994,7 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
         <ul>
           <li>こよりびフィルム<span class="soon">準備中</span></li>
           <li><a href="magazine.html">こよりびマガジン</a></li>
-          <li>こよりびSNS</li>
+          <li><a href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">こよりびSNS</a></li>
         </ul>
       </div>
 
@@ -976,9 +1003,9 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
         <h3>気づく・試す</h3>
         <p class="sd">自分の本音に突き動かされ、小さく実践する。</p>
         <ul>
-          <li>素敵会（会員主催）</li>
+          <li>会員主催イベント</li>
           <li>こよりびイベント</li>
-          <li>こよりび探索所（学生向け）<span class="live">第一期生 始動中</span></li>
+          <li>こよりび探索所<span class="meta">（学生向け）<span class="live">第一期生 始動中</span></span></li>
         </ul>
       </div>
 
@@ -988,7 +1015,7 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
         <p class="sd">失敗や迷いを打ち明け、話し合える場を持つ。</p>
         <ul>
           <li>余韻会</li>
-          <li>こよりびハウス<span class="soon">2027年1月頃</span></li>
+          <li>こよりびハウス<span class="meta"><span class="soon">2027年1月頃</span></span></li>
         </ul>
       </div>
 
@@ -997,7 +1024,7 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
         <h3>暮らしに根付く</h3>
         <p class="sd">仕事、消費、住まい、人間関係などに変化を広げる。</p>
         <ul>
-          <li>こよりヴィレッジ<span class="soon">将来構想</span></li>
+          <li>こよりヴィレッジ<span class="meta"><span class="soon">将来構想</span></span></li>
         </ul>
       </div>
     </div>
@@ -1151,7 +1178,7 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
           <span class="perk-no">01</span>
           <h3>こよりびが主催する<br class="sp-br">イベントへの自由な参加</h3>
           <p>さまざまな人や価値観と出会い、普段の生活では得られない体験を楽しむことができます。</p>
-          <p class="note">「自由な参加」とは、すべてのイベントが無料になるという意味ではありません。イベントによっては、飲食費・体験費・交通費・宿泊費等が別途発生します。</p>
+          <p class="note">本項の「自由な参加」とは、こよりびが主催するイベントへお申し込みいただける権利を指すものであり、参加に要する費用の無償化を意味するものではありません。イベントの内容に応じ、飲食費・体験費・交通費・宿泊費等が別途発生いたします。</p>
         </div>
       </article>
 
@@ -1180,8 +1207,8 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
       <article class="perk is-soon reveal">
         <div class="perk-media">
           <figure>
-            <img src="ev/member-house.jpg" alt="こよりびハウスのイメージ" loading="lazy">
-            <figcaption>イメージ写真です</figcaption>
+            <img src="ev/house.svg" alt="こよりびハウスのイメージイラスト" loading="lazy">
+            <figcaption>イメージイラスト</figcaption>
           </figure>
         </div>
         <div class="perk-body">
@@ -1197,7 +1224,7 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
       <article class="perk is-soon is-flip reveal">
         <div class="perk-media">
           <figure>
-            <img src="ev/member-village.jpg" alt="こよりヴィレッジの構想イラスト" loading="lazy">
+            <img src="ev/village.svg" alt="こよりヴィレッジの構想イラスト" loading="lazy">
             <figcaption>構想イメージ</figcaption>
           </figure>
         </div>
@@ -1276,7 +1303,10 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
       <div class="rule-s" aria-hidden="true"></div>
     </div>
 
-    <div class="faq-list reveal">
+    <div class="faq-wrap reveal">
+      <button class="faq-toggle" type="button" aria-expanded="false" aria-controls="faqOuter">よくあるご質問を見る</button>
+      <div class="faq-outer" id="faqOuter">
+        <div class="faq-list">
 
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false">こよりびはどのようなコミュニティですか？</button>
@@ -1371,6 +1401,8 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
         </div></div>
       </div>
 
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1440,6 +1472,26 @@ const INSTAGRAM_URL = "https://www.instagram.com/koyoribi.jp/";
 const LINE_URL      = "https://lin.ee/u3fz1Tz";
 /* ========================================================== */
 
+
+/* FAQ:外側の折りたたみ */
+(function(){
+  const wrap = document.querySelector(".faq-wrap");
+  if(!wrap) return;
+  const btn = wrap.querySelector(".faq-toggle");
+  const outer = wrap.querySelector(".faq-outer");
+  btn.addEventListener("click", ()=>{
+    const open = wrap.classList.toggle("is-open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.textContent = open ? "よくあるご質問を閉じる" : "よくあるご質問を見る";
+    if(open){
+      outer.style.maxHeight = outer.scrollHeight + 40 + "px";
+      setTimeout(()=>{ if(wrap.classList.contains("is-open")) outer.style.maxHeight = "none"; }, 580);
+    }else{
+      outer.style.maxHeight = outer.scrollHeight + "px";
+      requestAnimationFrame(()=>{ outer.style.maxHeight = "0px"; });
+    }
+  });
+})();
 
 /* FAQ アコーディオン */
 (function(){
