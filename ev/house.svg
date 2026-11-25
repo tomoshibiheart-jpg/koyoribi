@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="こよりびハウスのイメージ：家に集まって語り合う人たち">
+  <defs>
+    <linearGradient id="hSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F6EFDC"/><stop offset="100%" stop-color="#F9F6EF"/>
+    </linearGradient>
+    <radialGradient id="hLamp" cx="50%" cy="0%" r="72%">
+      <stop offset="0%" stop-color="#F6E3AE" stop-opacity=".9"/>
+      <stop offset="55%" stop-color="#EBDCA8" stop-opacity=".3"/>
+      <stop offset="100%" stop-color="#EBDCA8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hWin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E7D9A8"/><stop offset="100%" stop-color="#D9C38A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#hSky)"/>
+
+  <!-- 家 -->
+  <path d="M400 58 L706 238 L706 548 L94 548 L94 238 Z" fill="#FDFBF5"/>
+  <path d="M400 58 L706 238 L706 548 L94 548 L94 238 Z" fill="none" stroke="#C3A86C" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M400 58 L742 258 L722 278 L400 90 L78 278 L58 258 Z" fill="#C7A878" stroke="#A8865A" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- ランプと灯り -->
+  <ellipse cx="400" cy="300" rx="262" ry="212" fill="url(#hLamp)"/>
+  <path d="M400 152 v44" stroke="#A8865A" stroke-width="3"/>
+  <path d="M366 230 q34 -46 68 0 z" fill="#E3CE8C" stroke="#A8865A" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="400" cy="238" r="7" fill="#FBF1CF"/>
+
+  <!-- 窓 -->
+  <rect x="126" y="282" width="100" height="84" rx="6" fill="url(#hWin)" stroke="#A8865A" stroke-width="2.5"/>
+  <path d="M126 324 h100 M176 282 v84" stroke="#A8865A" stroke-width="2"/>
+  <rect x="574" y="282" width="100" height="84" rx="6" fill="url(#hWin)" stroke="#A8865A" stroke-width="2.5"/>
+  <path d="M574 324 h100 M624 282 v84" stroke="#A8865A" stroke-width="2"/>
+
+  <!-- 観葉植物 -->
+  <path d="M108 548 v-42 h42 v42 z" fill="#C7A878" stroke="#A8865A" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M129 506 c-30 -14 -40 -46 -34 -72 26 6 44 30 44 58" fill="#A4B596"/>
+  <path d="M129 506 c30 -18 38 -52 30 -78 -26 8 -42 34 -42 62" fill="#B7CBA2"/>
+  <path d="M692 548 v-40 h-42 v40 z" fill="#C7A878" stroke="#A8865A" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M671 508 c-26 -12 -34 -40 -29 -62 22 5 38 26 38 50" fill="#A4B596"/>
+  <path d="M671 508 c26 -16 32 -46 26 -68 -22 7 -36 30 -36 54" fill="#B7CBA2"/>
+
+  <!-- 奥の人 -->
+  <g>
+    <path d="M257 428 C257 311 335 311 335 428 Z" fill="#8C9BAE"/>
+    <circle cx="296" cy="318" r="25" fill="#C08C7A"/>
+    <path d="M360 428 C360 297 440 297 440 428 Z" fill="#A4B596"/>
+    <circle cx="400" cy="306" r="26" fill="#D0B087"/>
+    <path d="M465 428 C465 311 543 311 543 428 Z" fill="#9A8CA8"/>
+    <circle cx="504" cy="318" r="25" fill="#B98C8C"/>
+  </g>
+  <!-- 左右の人 -->
+  <g>
+    <path d="M170 452 C170 346 242 346 242 452 Z" fill="#7E9AA6"/>
+    <circle cx="206" cy="352" r="23" fill="#C9A05E"/>
+    <path d="M558 452 C558 346 630 346 630 452 Z" fill="#C2B089"/>
+    <circle cx="594" cy="352" r="23" fill="#A8866E"/>
+  </g>
+
+  <!-- テーブル -->
+  <ellipse cx="400" cy="462" rx="212" ry="54" fill="#D0B183" stroke="#A8865A" stroke-width="3"/>
+  <ellipse cx="400" cy="454" rx="212" ry="54" fill="#E3CDA4" stroke="#A8865A" stroke-width="3"/>
+
+  <!-- テーブルの上 -->
+  <ellipse cx="400" cy="434" rx="34" ry="14" fill="#C9A05E" stroke="#A8865A" stroke-width="2"/>
+  <path d="M396 420 q-5 -15 4 -23" stroke="#E3CE8C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M408 422 q-4 -13 3 -20" stroke="#E3CE8C" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <ellipse cx="312" cy="448" rx="30" ry="12" fill="#FBF7EC" stroke="#C3A86C" stroke-width="2"/>
+  <ellipse cx="312" cy="445" rx="16" ry="7" fill="#DCA978"/>
+  <ellipse cx="488" cy="448" rx="30" ry="12" fill="#FBF7EC" stroke="#C3A86C" stroke-width="2"/>
+  <ellipse cx="488" cy="445" rx="16" ry="7" fill="#A4B596"/>
+  <g fill="#FBF7EC" stroke="#C3A86C" stroke-width="2">
+    <rect x="236" y="432" width="16" height="22" rx="4"/>
+    <rect x="548" y="432" width="16" height="22" rx="4"/>
+    <rect x="362" y="462" width="15" height="20" rx="4"/>
+    <rect x="423" y="462" width="15" height="20" rx="4"/>
+  </g>
+
+  <!-- 手前の人(後ろ姿) -->
+  <g>
+    <path d="M211 562 C211 473 297 473 297 562 Z" fill="#B98C8C"/>
+    <circle cx="254" cy="470" r="28" fill="#8E6F58"/>
+    <path d="M355 562 C355 498 445 498 445 562 Z" fill="#C2B089"/>
+    <circle cx="400" cy="488" r="29" fill="#5E5347"/>
+    <path d="M503 562 C503 473 589 473 589 562 Z" fill="#7E9AA6"/>
+    <circle cx="546" cy="470" r="28" fill="#8C6A4C"/>
+  </g>
+
+  <path d="M94 548 h612" stroke="#C3A86C" stroke-width="3"/>
+
+  <circle cx="240" cy="262" r="4" fill="#E3CE8C" opacity=".8"/>
+  <circle cx="562" cy="252" r="3.4" fill="#E3CE8C" opacity=".8"/>
+  <circle cx="332" cy="232" r="3" fill="#E3CE8C" opacity=".7"/>
+  <circle cx="478" cy="242" r="3.4" fill="#E3CE8C" opacity=".7"/>
+</svg>
