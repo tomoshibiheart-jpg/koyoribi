@@ -30,6 +30,12 @@
 .rep-grid img{ width:100%; height:auto; display:block; border:1px solid var(--line); }
 .rep-grid figcaption{ margin-top:.6rem; font-size:.74rem; letter-spacing:.08em; color:var(--sumi-soft); }
 .rep-thanks{ margin-top:clamp(2.6rem,6vw,3.6rem); padding-top:2.2rem; border-top:1px solid var(--line); }
+.nav-join{ border:1px solid var(--kin); color:var(--kin-deep)!important;
+  padding:.5rem 1.1rem!important; font-size:.76rem!important; letter-spacing:.14em!important;
+  transition:background .35s, color .35s; }
+.nav-join::after{ display:none!important; }
+.nav-join:hover{ background:var(--kin); color:var(--washi)!important; }
+@media (max-width:640px){ .nav-join{ padding:.42rem .8rem!important; font-size:.7rem!important; letter-spacing:.08em!important; } }
 .rep-back{ text-align:center; padding:0 1.5rem clamp(5rem,10vw,7rem); }
 </style>
 </head>
@@ -42,8 +48,9 @@
   </a>
   <nav class="global" aria-label="サイト内メニュー">
     <a href="philosophy.html">想い</a>
-    <a href="index.html#report">記録</a>
-    <a href="index.html#voices">声</a>
+    <a href="reports.html">記録</a>
+    <a href="magazine.html">読む</a>
+    <a class="nav-join" href="index.html#member">会員になる</a>
   </nav>
 </header>
 
@@ -84,7 +91,7 @@
 </section>
 
 <div class="rep-back">
-  <a class="btn" href="index.html#report">記録の一覧へ戻る</a>
+  <a class="btn" href="reports.html">記録の一覧へ戻る</a>
 </div>
 
 <footer class="site">

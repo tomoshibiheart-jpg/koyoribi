@@ -54,37 +54,12 @@
   letter-spacing:.18em;
 }
 
-/* ---------- MVV ---------- */
-.mvv{ background:var(--washi-deep); }
-.mvv-item{
-  display:grid;
-  grid-template-columns:minmax(140px, 230px) 1fr;
-  gap:clamp(1.6rem, 5vw, 4rem);
-  padding:3.6rem 0;
-  transition:background .5s;
-}
-.mvv-item + .mvv-item{ border-top:1px solid var(--line); }
-.mvv-label .en{
-  font-family:var(--latin);
-  font-size:.72rem; letter-spacing:.45em;
-  color:var(--kin);
-  text-transform:uppercase;
-  display:block; margin-bottom:1rem;
-}
-.mvv-label .ja{
-  font-size:clamp(1.18rem, 2.5vw, 1.5rem);
-  font-weight:500;
-  line-height:1.95;
-}
-.mvv-body p{
-  color:var(--sumi-soft);
-  font-size:.98rem;
-  line-height:2.6;
-}
-.mvv-body p + p{ margin-top:1.7rem; }
-@media (max-width:640px){
-  .mvv-item{ grid-template-columns:1fr; gap:1.3rem; padding:2.8rem 0; }
-}
+.nav-join{ border:1px solid var(--kin); color:var(--kin-deep)!important;
+  padding:.5rem 1.1rem!important; font-size:.76rem!important; letter-spacing:.14em!important;
+  transition:background .35s, color .35s; }
+.nav-join::after{ display:none!important; }
+.nav-join:hover{ background:var(--kin); color:var(--washi)!important; }
+@media (max-width:640px){ .nav-join{ padding:.42rem .8rem!important; font-size:.7rem!important; letter-spacing:.08em!important; } }
 
 /* ---------- 結び ---------- */
 .musubi{ text-align:center; }
@@ -106,8 +81,9 @@
   </a>
   <nav class="global" aria-label="サイト内メニュー">
     <a href="philosophy.html" class="current">想い</a>
-    <a href="index.html#sutekikai">集い</a>
-    <a href="index.html#voices">声</a>
+    <a href="index.html#report">記録</a>
+    <a href="magazine.html">読む</a>
+    <a class="nav-join" href="index.html#member">会員になる</a>
   </nav>
 </header>
 
@@ -138,71 +114,6 @@
   </div>
 </section>
 
-<!-- ============ 私たちの想い(MVV) ============ -->
-<section class="mvv">
-  <div class="wrap">
-    <div class="reveal" style="text-align:center; margin-bottom:1.5rem;">
-      <span class="eyebrow">Mission / Vision / Value</span>
-      <h2 class="section-title" style="display:inline-block;">私たちの想い</h2>
-    </div>
-
-    <div class="mvv-item reveal">
-      <div class="mvv-label">
-        <span class="en">Mission</span>
-        <div class="ja"><span class="nb">ちょっと前向きに</span><span class="nb">なれる毎日を紡ぐ。</span></div>
-      </div>
-      <div class="mvv-body">
-        <p>
-          <span class="nb">誰かの一言に救われた、あの日。</span><br>
-          <span class="nb">思いがけない出逢いに、</span><span class="nb">心がほどけた日。</span><br>
-          <span class="nb">受け取った灯りを、</span><span class="nb">今度は誰かへ手渡せた日。</span>
-        </p>
-        <p>
-          <span class="nb">人は、そんな小さな灯りを</span><span class="nb">重ねながら、</span><br>
-          <span class="nb">少しずつ前へ歩いていけるのだと</span><span class="nb">思います。</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="mvv-item reveal">
-      <div class="mvv-label">
-        <span class="en">Vision</span>
-        <div class="ja"><span class="nb">世界にはまだ</span><span class="nb">美しさがある</span></div>
-      </div>
-      <div class="mvv-body">
-        <p>
-          <span class="nb">効率や利益が優先される社会の中で、</span><span class="nb">見落としてしまうもの。</span>
-        </p>
-        <p>
-          <span class="nb">人を思いやる、</span><span class="nb">損得を超えた優しさ。</span><br>
-          <span class="nb">自然に生まれる笑顔。</span><br>
-          <span class="nb">自分のことのように</span><span class="nb">誰かを応援する姿。</span>
-        </p>
-        <p>
-          <span class="nb">こよりびは、人と人が出逢うことで</span><span class="nb">生まれる、</span><span class="nb">目には見えない美しさを</span><span class="nb">信じています。</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="mvv-item reveal">
-      <div class="mvv-label">
-        <span class="en">Value</span>
-        <div class="ja">継灯<span style="font-size:.72em; color:var(--sumi-soft);">(けいとう)</span></div>
-      </div>
-      <div class="mvv-body">
-        <p>
-          <span class="nb">受け取った灯りを、</span><span class="nb">次の誰かへ手渡す。</span>
-        </p>
-        <p>
-          <span class="nb">こよりびでもらった灯りを</span><span class="nb">繋いでいく。</span><br>
-          <span class="nb">応援された人が、次は</span><span class="nb">誰かの挑戦を応援する。</span><br>
-          <span class="nb">それが、こよりびの</span><span class="nb">大切にする価値観です。</span>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <div class="rule" aria-hidden="true"></div>
 
 <!-- ============ 結び ============ -->
@@ -213,7 +124,8 @@
       <span class="nb">そこで受け取った光が、</span><span class="nb">次の誰かへと継がれていく。</span>
       <span class="nb">その循環を、</span><span class="nb">こよりびは求めています。</span>
     </p>
-    <a class="btn" href="index.html#sutekikai">これからの集いを見る</a>
+    <a class="btn" href="mvv.html">私たちのMVVを読む</a>
+    <p style="margin-top:1.6rem;"><a href="index.html#gathering" style="font-size:.84rem; letter-spacing:.14em; color:var(--sumi-soft); border-bottom:1px solid var(--line); padding-bottom:.2rem;">これからの集いを見る →</a></p>
   </div>
 </section>
 
