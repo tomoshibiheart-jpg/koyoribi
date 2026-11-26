@@ -94,8 +94,7 @@ header.site{
 header.site.scrolled{ box-shadow:0 1px 0 var(--line); }
 
 .brand{ display:flex; align-items:center; gap:.7rem; }
-.brand-mark{ width:30px; height:30px; display:block; transition:transform 1.2s cubic-bezier(.3,.7,.25,1); }
-.brand:hover .brand-mark{ transform:rotate(360deg); }
+.brand-mark{ width:30px; height:30px; display:block; }
 .brand .name{ font-size:1.02rem; letter-spacing:.3em; }
 
 nav.global{ display:flex; gap:clamp(1.2rem, 3vw, 2.4rem); }
@@ -297,8 +296,9 @@ section[id], div[id]{ scroll-margin-top:92px; }
 /* ---------- 下層ページ:スマホでの読みやすさ（PCには影響しません） ---------- */
 @media (max-width:700px){
   .pg-hero h1, .rep-hero h1, .lg-hero h1{ font-size:clamp(1.25rem, 5.6vw, 1.6rem); letter-spacing:.14em; }
-  .pg-lead{ font-size:.88rem; line-height:2.4; }
+  .pg-lead{ font-size:.85rem; line-height:2.35; }
   .pg-lead br{ display:none; }
+  .pg-lead .nb{ display:inline; }
   .rep-sub{ font-size:.8rem; line-height:2; }
   .rep-date{ font-size:.74rem; }
   .rep-body p{ font-size:.88rem; line-height:2.35; }
