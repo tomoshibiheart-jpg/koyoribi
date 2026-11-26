@@ -665,6 +665,92 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
   .nav-join{ padding:.42rem .8rem!important; font-size:.7rem!important; letter-spacing:.08em!important; }
 }
 
+
+/* ============================================================
+   スマートフォン専用の調整（PCの表示には影響しません）
+   ============================================================ */
+
+/* 固定ヘッダーの下に見出しが隠れないように */
+section[id], div[id]{ scroll-margin-top:92px; }
+
+@media (max-width:700px){
+
+  section[id], div[id]{ scroll-margin-top:74px; }
+
+  /* 見出し下のリード文:PC用の改行を解除して自然に折り返す */
+  .sec-head .lead br:not(.sp-br),
+  .reality-close br:not(.sp-br),
+  .feel-close br:not(.sp-br),
+  .steps-note br:not(.sp-br),
+  .member-sub br:not(.sp-br){ display:none; }
+
+  .sec-head .lead{ font-size:.86rem; line-height:2.3; }
+  .sec-head h2{ font-size:clamp(1.2rem, 5.6vw, 1.5rem); }
+
+  /* NEWS / REPORT の一覧 */
+  .feed-link{ gap:.85rem; padding:1.15rem .2rem; }
+  .feed-thumb{ width:68px; height:68px; }
+  .feed-title{ font-size:.87rem; letter-spacing:.02em; line-height:1.8; }
+  .feed-date{ font-size:.7rem; letter-spacing:.14em; margin-bottom:.3rem; }
+  .feed-link::after{ margin-right:.1rem; }
+  .col.is-news .feed-link{ padding-left:.6rem; }
+
+  /* 現実 */
+  .reality-close{ font-size:1rem; line-height:2.3; }
+  .reality-flow li{ padding:1.15rem 1.2rem; }
+  .reality-flow .t{ font-size:.96rem; }
+  .reality-flow .d{ font-size:.82rem; }
+
+  /* MVV */
+  .mvv-row .ja{ font-size:1.1rem; letter-spacing:.1em; }
+
+  /* 目指す姿:丘のラインは細くなりすぎるので非表示 */
+  .steps-hill{ display:none; }
+  .steps-note{ font-size:.82rem; line-height:2.2; }
+
+  /* 価値観 */
+  .value h3{ font-size:1rem; }
+  .value p{ font-size:.84rem; }
+
+  /* こんな想いを */
+  .feel-list li{ font-size:.86rem; letter-spacing:.015em; line-height:2.1; padding:.9rem 0 .9rem 1.6rem; }
+  .feel-list li::before{ left:.3rem; top:1.5rem; }
+  .feel-close{ font-size:.88rem; line-height:2.3; }
+  .feel-close strong{ font-size:.98rem; }
+
+  /* 参加者の声 */
+  .voice .strong{ font-size:.88rem; letter-spacing:.02em; line-height:2; }
+  .voice p{ font-size:.8rem; }
+
+  /* 会員ができること */
+  .perk h3{ font-size:1.02rem; letter-spacing:.06em; }
+  .perk p{ font-size:.85rem; }
+  .perk .note{ font-size:.78rem; line-height:1.95; }
+  .perk-media figcaption{ font-size:.66rem; }
+
+  /* 会員登録 */
+  .member-title{ font-size:1.3rem; }
+  .member-sub{ font-size:.85rem; }
+  .plan-list li{ font-size:.8rem; }
+  .member-terms{ font-size:.76rem; line-height:2.1; }
+  .legal-links{ gap:.4rem .8rem; font-size:.74rem; }
+
+  /* FAQ */
+  .faq-toggle{ padding:1rem 2.4rem; font-size:.92rem; letter-spacing:.1em; text-indent:.1em; }
+  .faq-q{ font-size:.88rem; padding:1.15rem 2.2rem 1.15rem 1.7rem; letter-spacing:.02em; }
+  .faq-q::before{ font-size:.78rem; }
+  .faq-a-in{ padding:0 .4rem 1.3rem 1.7rem; font-size:.82rem; line-height:2.2; }
+
+  /* ボタン類 */
+  .link-line{ padding:.95rem 1.6rem; font-size:.92rem; letter-spacing:.12em; text-indent:.12em; }
+}
+
+@media (max-width:360px){
+  .brand .name{ display:none; }
+  .value p br{ display:none; }
+  .value p{ font-size:.82rem; }
+  .reality-flow .d br{ display:none; }
+}
 </style>
 </head>
 <body class="op-lock">

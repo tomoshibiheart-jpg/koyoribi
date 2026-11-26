@@ -275,3 +275,39 @@ section, header.site, footer.site{ max-width:100%; }
   transform:none;
   box-shadow:none;
 }
+
+/* ---------- ヘッダー:iPhone幅でロゴとナビが詰まらないように ---------- */
+@media (max-width:520px){
+  header.site{ padding:.85rem 1rem; }
+  .brand{ gap:.5rem; }
+  .brand-mark{ width:26px; height:26px; }
+  .brand .name{ font-size:.84rem; letter-spacing:.12em; }
+  nav.global{ gap:.8rem; }
+  nav.global a{ font-size:.72rem; letter-spacing:.04em; }
+  .nav-join{ padding:.4rem .7rem!important; font-size:.66rem!important; letter-spacing:.04em!important; }
+}
+@media (max-width:360px){
+  .brand .name{ display:none; }
+}
+
+/* ---------- 固定ヘッダーの下に見出しが隠れないように ---------- */
+section[id], div[id]{ scroll-margin-top:92px; }
+@media (max-width:700px){ section[id], div[id]{ scroll-margin-top:74px; } }
+
+/* ---------- 下層ページ:スマホでの読みやすさ（PCには影響しません） ---------- */
+@media (max-width:700px){
+  .pg-hero h1, .rep-hero h1, .lg-hero h1{ font-size:clamp(1.25rem, 5.6vw, 1.6rem); letter-spacing:.14em; }
+  .pg-lead{ font-size:.88rem; line-height:2.4; }
+  .pg-lead br{ display:none; }
+  .rep-sub{ font-size:.8rem; line-height:2; }
+  .rep-date{ font-size:.74rem; }
+  .rep-body p{ font-size:.88rem; line-height:2.35; }
+  .rep-body p br{ display:none; }
+  .rep-fig figcaption{ font-size:.72rem; }
+  .lg-body .lead{ font-size:.85rem; }
+  .lg-body p, .lg-body li{ font-size:.84rem; line-height:2.25; }
+  .lg-body h2{ font-size:.95rem; }
+  .rp-title, .mg-title{ font-size:.95rem; letter-spacing:.04em; }
+  .mv-ja{ font-size:1.15rem; letter-spacing:.1em; }
+  .mv-body p{ font-size:.88rem; line-height:2.4; }
+}
