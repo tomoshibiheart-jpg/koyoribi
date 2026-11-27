@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ ｜ こよりび</title>
+<meta name="description" content="こよりびへのお問い合わせ窓口。メール・Instagram・公式LINEからご連絡いただけます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="logo-mark.png">
+<link rel="stylesheet" href="style.css">
+<style>
+.sp-br{ display:none; }
+@media (max-width:700px){ .sp-br{ display:inline; } }
+
+.pg-hero{
+  padding:10rem 1.5rem 3.4rem; text-align:center;
+  background:radial-gradient(760px 340px at 50% -20%, rgba(235,220,168,.4), transparent 70%), var(--washi);
+}
+.pg-hero h1{ font-size:clamp(1.5rem, 4vw, 2.1rem); letter-spacing:.2em; line-height:1.9; }
+.pg-lead{ max-width:620px; margin:1.6rem auto 0; font-size:.95rem; line-height:2.6; color:var(--sumi-soft); }
+.pg-body{ padding:clamp(2.6rem,6vw,4rem) 0 clamp(4rem,9vw,6rem); }
+
+.ct-grid{
+  max-width:900px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,260px), 1fr));
+  gap:clamp(1.1rem, 2.8vw, 1.7rem);
+}
+.ct-card{
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  border:1px solid var(--line); background:rgba(255,255,255,.62);
+  padding:clamp(2rem, 4.4vw, 2.6rem) clamp(1.3rem, 3vw, 1.8rem);
+  transition:transform .5s cubic-bezier(.25,.8,.3,1), box-shadow .5s, border-color .4s;
+}
+.ct-card:hover{ transform:translateY(-6px); border-color:var(--kin); box-shadow:0 22px 44px -26px rgba(143,116,48,.5); }
+.ct-icon{
+  width:62px; height:62px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--kin); color:var(--kin-deep);
+  margin-bottom:1.3rem;
+  transition:background .4s, color .4s;
+}
+.ct-icon svg{ width:27px; height:27px; display:block; }
+.ct-card:hover .ct-icon{ background:var(--kin); color:var(--washi); }
+.ct-name{ font-family:var(--latin); font-size:.7rem; letter-spacing:.32em; text-indent:.32em; color:var(--kin); margin-bottom:.7rem; }
+.ct-card h2{ font-size:1.02rem; letter-spacing:.1em; line-height:1.9; }
+.ct-val{
+  margin-top:.9rem; font-size:.84rem; letter-spacing:.04em;
+  color:var(--sumi-soft); word-break:break-all; line-height:1.9;
+}
+.ct-note{ margin-top:1rem; font-size:.78rem; line-height:2; color:var(--sumi-soft); }
+.ct-go{
+  margin-top:1.5rem; font-size:.8rem; letter-spacing:.14em;
+  color:var(--kin-deep); border-bottom:1px solid var(--line); padding-bottom:.2rem;
+}
+.ct-card:hover .ct-go{ border-color:var(--kin); }
+
+.ct-info{
+  max-width:720px; margin:clamp(3rem,7vw,4.4rem) auto 0;
+  border-top:1px solid var(--line); padding-top:clamp(2.2rem,5vw,3rem);
+}
+.ct-info h2{ font-size:1rem; letter-spacing:.14em; text-align:center; margin-bottom:1.6rem; }
+.ct-table{ width:100%; border-collapse:collapse; }
+.ct-table th, .ct-table td{
+  border-bottom:1px solid var(--line); padding:.95rem .4rem;
+  font-size:.85rem; line-height:2.1; text-align:left; vertical-align:top;
+}
+.ct-table th{ width:30%; min-width:7em; font-weight:600; color:var(--sumi); }
+.ct-table td{ color:var(--sumi-soft); }
+.ct-links{ margin-top:1.8rem; text-align:center; font-size:.78rem; letter-spacing:.06em; }
+.ct-links a{ color:var(--sumi-soft); border-bottom:1px solid var(--line); padding-bottom:.1rem; }
+.ct-links a:hover{ color:var(--kin-deep); }
+.ct-links span{ color:var(--line); margin:0 .5rem; }
+.pg-back{ text-align:center; padding:0 1.5rem clamp(5rem,10vw,7rem); }
+
+@media (max-width:600px){
+  .ct-table, .ct-table tbody, .ct-table tr, .ct-table th, .ct-table td{ display:block; width:100%; }
+  .ct-table tr{ padding:.6rem 0; border-bottom:1px solid var(--line); }
+  .ct-table th, .ct-table td{ border:0; padding:.2rem .2rem; }
+  .ct-table th{ font-size:.78rem; color:var(--kin-deep); }
+}
+</style>
+</head>
+<body>
+
+<header class="site" id="siteHeader">
+  <a class="brand" href="index.html" aria-label="こよりび トップページ">
+    <img class="brand-mark" src="logo-mark.png" alt="" width="30" height="30">
+    <span class="name">こよりび</span>
+  </a>
+</header>
+
+<div class="pg-hero">
+  <span class="eyebrow">Contact</span>
+  <h1>お問い合わせ</h1>
+  <p class="pg-lead">
+    こよりびについて、気になることがあれば気軽に聞いてください。<br class="sp-br">
+    参加のこと、会員のこと、取材や協業のご相談まで、どなたからでもお待ちしています。
+  </p>
+</div>
+
+<section class="pg-body">
+  <div class="wrap">
+
+    <div class="ct-grid">
+
+      <a class="ct-card reveal" href="mailto:contact@tomoshibi-inc.co.jp">
+        <span class="ct-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2.4"/>
+            <path d="M3.6 6.6 12 13l8.4-6.4"/>
+          </svg>
+        </span>
+        <span class="ct-name">Mail</span>
+        <h2>メールで問い合わせる</h2>
+        <p class="ct-val">contact@tomoshibi-inc.co.jp</p>
+        <p class="ct-note">入会・解約や、取材・協業のご相談はこちらへ。<br>3営業日以内にお返事します。</p>
+        <span class="ct-go">メールを書く →</span>
+      </a>
+
+      <a class="ct-card reveal" href="https://lin.ee/u3fz1Tz" target="_blank" rel="noopener">
+        <span class="ct-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3.6c-4.8 0-8.7 3.1-8.7 7 0 3.5 3.1 6.4 7.3 6.9.9.2.8.6.6 1.3l-.3 1.3c-.1.4.3.7.7.5 2.8-1.4 8-4.9 9-8.3.1-.5.2-1.1.2-1.7 0-3.9-3.9-7-8.8-7Z"/>
+          </svg>
+        </span>
+        <span class="ct-name">LINE</span>
+        <h2>公式LINEから話す</h2>
+        <p class="ct-val">@こよりび</p>
+        <p class="ct-note">いちばん気軽な窓口です。<br>集いのご案内もこちらで届きます。</p>
+        <span class="ct-go">友だち追加 →</span>
+      </a>
+
+      <a class="ct-card reveal" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener">
+        <span class="ct-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="18" rx="5.2"/>
+            <circle cx="12" cy="12" r="4.1"/>
+            <circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="ct-name">Instagram</span>
+        <h2>Instagramで見る・送る</h2>
+        <p class="ct-val">@koyoribi.jp</p>
+        <p class="ct-note">当日の様子や次の集いの告知は、<br>こちらがいちばん早いです。</p>
+        <span class="ct-go">プロフィールを見る →</span>
+      </a>
+
+    </div>
+
+    <div class="ct-info reveal">
+      <h2>運営について</h2>
+      <table class="ct-table">
+        <tr><th>運営</th><td>株式会社燈心　コミュニティ事業「こよりび」</td></tr>
+        <tr><th>代表者</th><td>藤田 括</td></tr>
+        <tr><th>所在地</th><td>〒116-0003<br>東京都荒川区南千住5-29-3 カーサコスタ南千住203</td></tr>
+        <tr><th>電話番号</th><td>080-8348-0628（受付 9:00〜17:00／土日祝を除く）</td></tr>
+        <tr><th>メール</th><td><a href="mailto:contact@tomoshibi-inc.co.jp" style="color:var(--kin-deep); border-bottom:1px solid var(--line);">contact@tomoshibi-inc.co.jp</a></td></tr>
+      </table>
+      <p class="ct-links">
+        <a href="terms.html">会員利用規約</a>
+        <span aria-hidden="true">｜</span>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <span aria-hidden="true">｜</span>
+        <a href="tokushoho.html">特定商取引法に基づく表記</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<div class="pg-back">
+  <a class="btn" href="index.html">トップへ戻る</a>
+</div>
+
+<footer class="site">
+  <div class="foot-logo"><img src="logo-full-jp.png" alt="こよりび KOYORIBI"></div>
+  <p class="company">運営 ― 株式会社燈心<br>コミュニティ事業「こよりび」</p>
+  <p class="copy">&copy; 2026 Tomoshibi Inc.</p>
+</footer>
+
+<script src="nav.js" defer></script>
+<script>
+(function(){
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{ threshold:.08 });
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+})();
+(function(){
+  const h = document.getElementById("siteHeader");
+  addEventListener("scroll", ()=> h.classList.toggle("scrolled", scrollY > 30), { passive:true });
+})();
+</script>
+</body>
+</html>

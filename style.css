@@ -84,7 +84,7 @@ section{ padding:clamp(5.5rem, 11vw, 9rem) 0; }
 /* ---------- ヘッダー ---------- */
 header.site{
   position:fixed; inset:0 0 auto 0;
-  z-index:50;
+  z-index:62;
   display:flex; align-items:center; justify-content:space-between;
   padding:1.1rem clamp(1.4rem, 4vw, 2.6rem);
   background:linear-gradient(rgba(249,246,239,.92), rgba(249,246,239,.75) 70%, transparent);
@@ -311,3 +311,126 @@ section[id], div[id]{ scroll-margin-top:92px; }
   .mv-ja{ font-size:1.15rem; letter-spacing:.1em; }
   .mv-body p{ font-size:.88rem; line-height:2.4; }
 }
+
+/* ============================================================
+   三本線メニュー／右から開く目次
+   ============================================================ */
+.head-right{ display:flex; align-items:center; gap:clamp(.7rem, 2vw, 1.2rem); }
+
+.nav-join{
+  display:inline-block;
+  border:1px solid var(--kin); color:var(--kin-deep);
+  padding:.5rem 1.1rem; font-size:.76rem; letter-spacing:.14em;
+  transition:background .35s, color .35s;
+}
+.nav-join:hover, .nav-join:focus-visible{ background:var(--kin); color:var(--washi); }
+
+.menu-btn{
+  width:44px; height:38px; padding:0;
+  background:none; border:0; cursor:pointer;
+  position:relative; display:block;
+}
+.menu-btn span{
+  position:absolute; left:9px; right:9px; height:1.6px;
+  background:var(--sumi); border-radius:2px;
+  transition:transform .42s cubic-bezier(.3,.8,.3,1), opacity .25s;
+}
+.menu-btn span:nth-child(1){ top:12px; }
+.menu-btn span:nth-child(2){ top:18.2px; }
+.menu-btn span:nth-child(3){ top:24.4px; }
+body.dw-open .menu-btn span:nth-child(1){ transform:translateY(6.2px) rotate(45deg); }
+body.dw-open .menu-btn span:nth-child(2){ opacity:0; }
+body.dw-open .menu-btn span:nth-child(3){ transform:translateY(-6.2px) rotate(-45deg); }
+
+.dw-scrim{
+  position:fixed; inset:0; z-index:60;
+  background:rgba(51,48,42,.38);
+  opacity:0; transition:opacity .4s ease;
+  backdrop-filter:blur(2px);
+}
+body.dw-open .dw-scrim{ opacity:1; }
+
+.drawer{
+  position:fixed; top:0; right:0; bottom:0; z-index:61;
+  width:min(360px, 86vw);
+  background:var(--washi);
+  border-left:1px solid var(--line);
+  box-shadow:-24px 0 60px -40px rgba(51,48,42,.55);
+  padding:6.2rem clamp(1.6rem, 5vw, 2.4rem) 2.4rem;
+  overflow-y:auto; -webkit-overflow-scrolling:touch;
+  transform:translateX(100%);
+  transition:transform .45s cubic-bezier(.3,.8,.3,1);
+}
+body.dw-open .drawer{ transform:none; }
+body.dw-open{ overflow:hidden; }
+
+.dw-title{
+  font-family:var(--latin); font-size:.68rem;
+  letter-spacing:.42em; text-indent:.42em;
+  color:var(--kin); text-transform:uppercase;
+  padding-bottom:1rem; margin-bottom:.4rem;
+  border-bottom:1px solid var(--line);
+}
+.dw-list{ list-style:none; }
+.dw-list > li{ border-bottom:1px solid var(--line); }
+.dw-main{
+  display:block; position:relative;
+  padding:1.15rem 1.6rem 1.15rem 0;
+  font-size:1rem; font-weight:600; letter-spacing:.12em;
+  transition:color .3s, padding-left .35s cubic-bezier(.25,.8,.3,1);
+}
+.dw-main::after{
+  content:""; position:absolute; right:.3rem; top:50%;
+  width:7px; height:7px; margin-top:-4px;
+  border-top:1.4px solid var(--kin); border-right:1.4px solid var(--kin);
+  transform:rotate(45deg);
+  transition:transform .35s cubic-bezier(.25,.8,.3,1);
+}
+.dw-main:hover, .dw-main:focus-visible{ color:var(--kin-deep); padding-left:.4rem; }
+.dw-main:hover::after{ transform:rotate(45deg) translate(2px,-2px); }
+.dw-kids{ list-style:none; padding:0 0 1.1rem 1.1rem; margin-top:-.3rem; }
+.dw-kids li + li{ margin-top:.2rem; }
+.dw-sub{
+  display:block; padding:.42rem 0 .42rem .9rem;
+  position:relative;
+  font-size:.86rem; letter-spacing:.1em; color:var(--sumi-soft);
+  transition:color .3s, padding-left .35s cubic-bezier(.25,.8,.3,1);
+}
+.dw-sub::before{
+  content:""; position:absolute; left:0; top:50%;
+  width:5px; height:1px; background:var(--kin-pale);
+}
+.dw-sub:hover, .dw-sub:focus-visible{ color:var(--kin-deep); padding-left:1.2rem; }
+
+.dw-foot{ margin-top:2.2rem; }
+.dw-join{
+  display:block; text-align:center;
+  background:var(--kin-deep); border:1px solid var(--kin-deep); color:var(--washi);
+  padding:.95rem 1rem; font-size:.88rem; font-weight:600;
+  letter-spacing:.16em; text-indent:.16em;
+  transition:background .35s;
+}
+.dw-join:hover, .dw-join:focus-visible{ background:#7A6228; }
+.dw-sns{
+  margin-top:1.4rem; text-align:center;
+  font-size:.76rem; letter-spacing:.1em; color:var(--sumi-soft);
+}
+.dw-sns a{ color:var(--sumi-soft); border-bottom:1px solid var(--line); padding-bottom:.1rem; }
+.dw-sns a:hover{ color:var(--kin-deep); }
+.dw-sns span{ color:var(--line); margin:0 .5rem; }
+
+@media (max-width:520px){
+  .drawer{ padding:5.4rem 1.5rem 2.2rem; }
+  .dw-main{ font-size:.95rem; padding:1.05rem 1.5rem 1.05rem 0; }
+}
+@media (prefers-reduced-motion: reduce){
+  .drawer, .dw-scrim, .menu-btn span{ transition:none; }
+}
+
+/* 目次を開いているあいだは、ヘッダーの入会ボタンを隠して×を目立たせる */
+body.dw-open .nav-join{ opacity:0; pointer-events:none; transition:opacity .25s; }
+body.dw-open header.site{ background:none; backdrop-filter:none; box-shadow:none; }
+
+/* 三本線ボタンのフォーカス表示をブランドに合わせる */
+.menu-btn:focus{ outline:none; }
+.menu-btn:focus-visible{ outline:1.5px solid var(--kin); outline-offset:3px; border-radius:4px; }

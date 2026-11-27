@@ -644,10 +644,15 @@ html.no-op .scroll-cue{ opacity:1; animation:none; }
 .foot-nav a:hover{ color:var(--kin-deep); }
 .foot-nav span{ color:var(--line); margin:0 .5rem; }
 
+.mag-lead{
+  max-width:640px; margin:0 auto;
+  text-align:center; font-size:.92rem; line-height:2.5; color:var(--sumi-soft);
+}
+#magazine{ background:var(--washi-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+
 /* ============ SNS ============ */
-.sns{ text-align:center; padding:clamp(4rem, 8vw, 6rem) 1.4rem; }
-.sns-lead{ font-size:.92rem; letter-spacing:.14em; color:var(--sumi-soft); margin-bottom:2rem; }
-.sns-row{ display:flex; justify-content:center; gap:clamp(1.8rem, 6vw, 3rem); }
+#contact{ text-align:center; }
+.sns-row{ display:flex; justify-content:center; gap:clamp(1.6rem, 6vw, 3rem); margin-bottom:clamp(2.4rem,5vw,3rem); }
 .sns-item{ display:flex; flex-direction:column; align-items:center; gap:.7rem; }
 .sns-icon{
   width:58px; height:58px; border-radius:50%;
@@ -871,121 +876,6 @@ section[id], div[id]{ scroll-margin-top:92px; }
     </div>
   </div>
 </section>
-
-<!-- ============ 3. NEWS ============ -->
-<section id="news">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-brand">こよりび<span class="en">NEWS</span></h2>
-      <div class="rule-s" aria-hidden="true"></div>
-    </div>
-
-    <ul class="feed reveal">
-      <li class="feed-item">
-        <!-- ★ 公開後のCAMPFIRE公式URL。変更する場合はここだけ差し替えてください -->
-        <a class="feed-link" href="https://camp-fire.jp/projects/999505/" target="_blank" rel="noopener">
-          <span class="feed-text">
-            <span class="feed-date">Coming soon</span>
-            <span class="feed-title">こよりびの映画制作クラウドファンディングがはじまります</span>
-          </span>
-        </a>
-      </li>
-      <li class="feed-item">
-        <a class="feed-link" href="#member">
-          <span class="feed-text">
-            <span class="feed-date">2026.11.25</span>
-            <span class="feed-title">こよりび会員制度をはじめました</span>
-          </span>
-        </a>
-      </li>
-      <li class="feed-item">
-        <a class="feed-link" href="magazine.html">
-          <span class="feed-text">
-            <span class="feed-date">2026.11.25</span>
-            <span class="feed-title">こよりびマガジンを開設します</span>
-          </span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============ 4. REPORT ============ -->
-<section id="report">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="sec-brand">こよりび<span class="en">REPORT</span></h2>
-      <div class="rule-s" aria-hidden="true"></div>
-    </div>
-
-    <ul class="feed reveal">
-      <li class="feed-item">
-        <a class="feed-link" href="report-itto.html">
-          <span class="feed-thumb"><img src="event-itto.jpg" alt="" loading="lazy"></span>
-          <span class="feed-text">
-            <span class="feed-date">2026.11.07</span>
-            <span class="feed-title">素敵会「秋の縁日」を開催しました</span>
-          </span>
-        </a>
-      </li>
-      <li class="feed-item">
-        <a class="feed-link" href="report-thetable.html">
-          <span class="feed-thumb"><img src="event-thetable.jpg" alt="" loading="lazy"></span>
-          <span class="feed-text">
-            <span class="feed-date">2026.10.03</span>
-            <span class="feed-title">The Table presented by こよりび を開催しました</span>
-          </span>
-        </a>
-      </li>
-      <li class="feed-item">
-        <a class="feed-link" href="report-reloved.html">
-          <span class="feed-thumb"><img src="event-reloved.jpg" alt="" loading="lazy"></span>
-          <span class="feed-text">
-            <span class="feed-date">2026.09.26</span>
-            <span class="feed-title">素敵会「Re-Loved Market」を開催しました</span>
-          </span>
-        </a>
-      </li>
-    </ul>
-
-    <div class="feed-more reveal">
-      <a class="link-line is-soft" href="reports.html">すべての活動を見る<span class="arrow" aria-hidden="true">→</span></a>
-    </div>
-  </div>
-</section>
-
-<div class="rule" aria-hidden="true"></div>
-
-<!-- ============ 5. これからの集い ============ -->
-<section id="gathering">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Gathering</span>
-      <h2>これからの集い</h2>
-      <p class="lead">どなたでもお越しいただける、こよりびの集いです。</p>
-      <div class="rule-s" aria-hidden="true"></div>
-    </div>
-
-    <ul class="next-list reveal" id="nextList">
-      <!--
-        ★ 次の会が決まったら、下の <li> をコピーして日付・名前・場所・申込URLを書き換えてください。
-           data-end は開催日。その日を過ぎると自動で非表示になります。
-
-        <li class="next-row" data-end="2027-01-24">
-          <span class="d">2027.01.24 SAT</span>
-          <span class="t">素敵会「◯◯」</span>
-          <span class="p">東京</span>
-          <a class="go" href="https://forms.gle/xxxx" target="_blank" rel="noopener">申し込む →</a>
-        </li>
-      -->
-    </ul>
-    <p class="next-empty" id="nextEmpty">
-      2027年の集いは、準備中です。<br>
-      決まり次第、このページと公式SNSでお知らせします。
-    </p>
-  </div>
-</section>
-
 <!-- ============ 6. 私たちが向き合う現実 ============ -->
 <section class="reality" id="reality">
   <div class="wrap">
@@ -1021,7 +911,6 @@ section[id], div[id]{ scroll-margin-top:92px; }
     </p>
   </div>
 </section>
-
 <!-- ============ 7. MVV ============ -->
 <section id="mvv">
   <div class="wrap">
@@ -1051,7 +940,6 @@ section[id], div[id]{ scroll-margin-top:92px; }
     </div>
   </div>
 </section>
-
 <!-- ============ 8. 私たちが目指す姿 ============ -->
 <section class="steps" id="steps">
   <div class="wrap">
@@ -1129,7 +1017,6 @@ section[id], div[id]{ scroll-margin-top:92px; }
     </p>
   </div>
 </section>
-
 <!-- ============ 9. 大切にしたい価値観 ============ -->
 <section id="values">
   <div class="wrap">
@@ -1164,7 +1051,6 @@ section[id], div[id]{ scroll-margin-top:92px; }
     </div>
   </div>
 </section>
-
 <!-- ============ 10. こんな想いを持ったことはありませんか？ ============ -->
 <section class="feel" id="feel">
   <div class="wrap">
@@ -1191,6 +1077,120 @@ section[id], div[id]{ scroll-margin-top:92px; }
   </div>
 </section>
 
+<div class="rule" aria-hidden="true"></div>
+
+<span id="activity" aria-hidden="true"></span>
+<!-- ============ 3. NEWS ============ -->
+<section id="news">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-brand">こよりび<span class="en">NEWS</span></h2>
+      <div class="rule-s" aria-hidden="true"></div>
+    </div>
+
+    <ul class="feed reveal">
+      <li class="feed-item">
+        <!-- ★ 公開後のCAMPFIRE公式URL。変更する場合はここだけ差し替えてください -->
+        <a class="feed-link" href="https://camp-fire.jp/projects/999505/" target="_blank" rel="noopener">
+          <span class="feed-text">
+            <span class="feed-date">Coming soon</span>
+            <span class="feed-title">こよりびの映画制作クラウドファンディングがはじまります</span>
+          </span>
+        </a>
+      </li>
+      <li class="feed-item">
+        <a class="feed-link" href="#member">
+          <span class="feed-text">
+            <span class="feed-date">2026.11.25</span>
+            <span class="feed-title">こよりび会員制度をはじめました</span>
+          </span>
+        </a>
+      </li>
+      <li class="feed-item">
+        <a class="feed-link" href="magazine.html">
+          <span class="feed-text">
+            <span class="feed-date">2026.11.25</span>
+            <span class="feed-title">こよりびマガジンを開設します</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- ============ 4. REPORT ============ -->
+<section id="report">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-brand">こよりび<span class="en">REPORT</span></h2>
+      <div class="rule-s" aria-hidden="true"></div>
+    </div>
+
+    <ul class="feed reveal">
+      <li class="feed-item">
+        <a class="feed-link" href="report-itto.html">
+          <span class="feed-thumb"><img src="event-itto.jpg" alt="" loading="lazy"></span>
+          <span class="feed-text">
+            <span class="feed-date">2026.11.07</span>
+            <span class="feed-title">素敵会「秋の縁日」を開催しました</span>
+          </span>
+        </a>
+      </li>
+      <li class="feed-item">
+        <a class="feed-link" href="report-thetable.html">
+          <span class="feed-thumb"><img src="event-thetable.jpg" alt="" loading="lazy"></span>
+          <span class="feed-text">
+            <span class="feed-date">2026.10.03</span>
+            <span class="feed-title">The Table presented by こよりび を開催しました</span>
+          </span>
+        </a>
+      </li>
+      <li class="feed-item">
+        <a class="feed-link" href="report-reloved.html">
+          <span class="feed-thumb"><img src="event-reloved.jpg" alt="" loading="lazy"></span>
+          <span class="feed-text">
+            <span class="feed-date">2026.09.26</span>
+            <span class="feed-title">素敵会「Re-Loved Market」を開催しました</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="feed-more reveal">
+      <a class="link-line is-soft" href="reports.html">すべての活動を見る<span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+<div class="rule" aria-hidden="true"></div>
+
+<!-- ============ 5. これからの集い ============ -->
+<section id="gathering">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Gathering</span>
+      <h2>これからの集い</h2>
+      <p class="lead">どなたでもお越しいただける、こよりびの集いです。</p>
+      <div class="rule-s" aria-hidden="true"></div>
+    </div>
+
+    <ul class="next-list reveal" id="nextList">
+      <!--
+        ★ 次の会が決まったら、下の <li> をコピーして日付・名前・場所・申込URLを書き換えてください。
+           data-end は開催日。その日を過ぎると自動で非表示になります。
+
+        <li class="next-row" data-end="2027-01-24">
+          <span class="d">2027.01.24 SAT</span>
+          <span class="t">素敵会「◯◯」</span>
+          <span class="p">東京</span>
+          <a class="go" href="https://forms.gle/xxxx" target="_blank" rel="noopener">申し込む →</a>
+        </li>
+      -->
+    </ul>
+    <p class="next-empty" id="nextEmpty">
+      2027年の集いは、準備中です。<br>
+      決まり次第、このページと公式SNSでお知らせします。
+    </p>
+  </div>
+</section>
 
 <!-- ============ 参加者の声 ============ -->
 <section id="voices">
@@ -1241,6 +1241,25 @@ section[id], div[id]{ scroll-margin-top:92px; }
   </div>
 </section>
 
+<div class="rule" aria-hidden="true"></div>
+
+<!-- ============ マガジン ============ -->
+<section id="magazine">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="sec-brand">こよりび<span class="en">MAGAZINE</span></h2>
+      <p class="lead">一人ひとりの生き方に、耳を傾ける。</p>
+      <div class="rule-s" aria-hidden="true"></div>
+    </div>
+    <p class="mag-lead reveal">
+      ご縁をいただいた方々の活動と、その背景にある想いをお届けするメディアです。
+      誰かの生き方に触れることが、自分自身の生き方を見つめ直すきっかけになるかもしれません。
+    </p>
+    <div class="feed-more reveal">
+      <a class="link-line" href="magazine.html">こよりびマガジンを読む<span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
 <!-- ============ 12. 会員ができること ============ -->
 <section id="perks">
   <div class="wrap">
@@ -1332,7 +1351,6 @@ section[id], div[id]{ scroll-margin-top:92px; }
     </div>
   </div>
 </section>
-
 <!-- ============ 13. 会員登録 ============ -->
 <div class="member" id="member">
   <h2 class="member-title">こよりび会員になる</h2>
@@ -1385,7 +1403,6 @@ section[id], div[id]{ scroll-margin-top:92px; }
     </p>
   </div>
 </div>
-
 <!-- ============ 14. FAQ ============ -->
 <section id="faq">
   <div class="wrap">
@@ -1500,32 +1517,51 @@ section[id], div[id]{ scroll-margin-top:92px; }
 </section>
 
 
+<!-- ============ お問い合わせ ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>お問い合わせ</h2>
+      <p class="lead">こよりびについて、気軽に聞いてみてください。</p>
+      <div class="rule-s" aria-hidden="true"></div>
+    </div>
 
-<!-- ============ SNS ============ -->
-<div class="rule" aria-hidden="true"></div>
-<div class="sns reveal">
-  <p class="sns-lead">こよりびについて、気軽に聞いてみてください。</p>
-  <div class="sns-row">
-    <a class="sns-item" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener" aria-label="こよりびのInstagram">
-      <span class="sns-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-          <rect x="3" y="3" width="18" height="18" rx="5.2"/>
-          <circle cx="12" cy="12" r="4.1"/>
-          <circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/>
-        </svg>
-      </span>
-      <span class="sns-name">Instagram</span>
-    </a>
-    <a class="sns-item" href="https://lin.ee/u3fz1Tz" target="_blank" rel="noopener" aria-label="こよりびのLINE">
-      <span class="sns-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3.6c-4.8 0-8.7 3.1-8.7 7 0 3.5 3.1 6.4 7.3 6.9.9.2.8.6.6 1.3l-.3 1.3c-.1.4.3.7.7.5 2.8-1.4 8-4.9 9-8.3.1-.5.2-1.1.2-1.7 0-3.9-3.9-7-8.8-7Z"/>
-        </svg>
-      </span>
-      <span class="sns-name">LINE</span>
-    </a>
+    <div class="sns-row reveal">
+      <a class="sns-item" href="https://www.instagram.com/koyoribi.jp/" target="_blank" rel="noopener" aria-label="こよりびのInstagram">
+        <span class="sns-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="18" rx="5.2"/>
+            <circle cx="12" cy="12" r="4.1"/>
+            <circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="sns-name">Instagram</span>
+      </a>
+      <a class="sns-item" href="https://lin.ee/u3fz1Tz" target="_blank" rel="noopener" aria-label="こよりびのLINE">
+        <span class="sns-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3.6c-4.8 0-8.7 3.1-8.7 7 0 3.5 3.1 6.4 7.3 6.9.9.2.8.6.6 1.3l-.3 1.3c-.1.4.3.7.7.5 2.8-1.4 8-4.9 9-8.3.1-.5.2-1.1.2-1.7 0-3.9-3.9-7-8.8-7Z"/>
+          </svg>
+        </span>
+        <span class="sns-name">LINE</span>
+      </a>
+      <a class="sns-item" href="mailto:contact@tomoshibi-inc.co.jp" aria-label="こよりびにメールで問い合わせる">
+        <span class="sns-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2.4"/>
+            <path d="M3.6 6.6 12 13l8.4-6.4"/>
+          </svg>
+        </span>
+        <span class="sns-name">Mail</span>
+      </a>
+    </div>
+
+    <div class="feed-more reveal">
+      <a class="link-line is-soft" href="contact.html">お問い合わせページへ<span class="arrow" aria-hidden="true">→</span></a>
+    </div>
   </div>
-</div>
+</section>
 
 <footer class="site">
   <div class="foot-logo">
@@ -1554,6 +1590,7 @@ section[id], div[id]{ scroll-margin-top:92px; }
   <p class="copy">&copy; 2026 Tomoshibi Inc.</p>
 </footer>
 
+<script src="nav.js" defer></script>
 <script>
 /* ==========================================================
    ★★★ ここだけ編集すれば切り替わります ★★★
